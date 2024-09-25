@@ -36,7 +36,7 @@ export function HeroAndNextSectionComponent() {
                         >
                             {/* Header Section */}
                             <header className="w-full px-6 py-4">
-                                <div className="max-w-7xl mx-auto flex justify-between items-center relative">
+                                <div className="max-w-8xl mx-auto flex justify-between items-center relative">
                   <div className="text-xl font-semibold">
                       <div className="logo">
                           <div className="icon">S</div>
@@ -243,8 +243,6 @@ export function HeroAndNextSectionComponent() {
                                             </p>
                                             <p className="text-md mb-4">
                                                 Ready to start your next project or have questions? We'd love to hear from you!
-                                                Contact us at <a href="mailto:info@ourcompany.com" className="text-blue-600 hover:underline">info@ourcompany.com</a>
-                                                Let's create something amazing together!
                                             </p>
                                         </div>
                                         <Button
@@ -269,21 +267,29 @@ export function HeroAndNextSectionComponent() {
 
             </div>
 
-            {/* Vertical Navbar */}
-            <nav className="fixed right-8 top-1/2 transform -translate-y-1/2 flex flex-col items-end space-y-4">
-                {sections.map((section) => (
-                    <Button
-                        key={section}
-                        variant="ghost"
-                        className={`text-xl font-medium transition-colors duration-200 ${
-                            currentSection === section ? 'text-black' : 'text-gray-500 hover:text-black'
-                        } font-audiowide`}
-                        onClick={() => navigateToSection(section)}
-                    >
-                        {section}
-                    </Button>
-                ))}
-            </nav>
+            <motion.section
+                key="projects"
+                variants={sectionVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                >
+                {/* Vertical Navbar */}
+                <nav className="fixed right-6 top-1/2 transform -translate-y-1/2 flex flex-col items-end space-y-4">
+                    {sections.map((section) => (
+                        <Button
+                            key={section}
+                            variant="ghost"
+                            className={`text-xl font-medium transition-colors duration-200 ${
+                                currentSection === section ? 'text-black' : 'text-gray-500 hover:text-black'
+                            } font-audiowide`}
+                            onClick={() => navigateToSection(section)}
+                        >
+                            {section}
+                        </Button>
+                    ))}
+                </nav>
+            </motion.section>
         </div>
     )
 }
