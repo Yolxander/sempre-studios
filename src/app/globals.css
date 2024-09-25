@@ -76,3 +76,36 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.logo {
+  width: 50.475px; /* 28.5px * 1.35 */
+  height: 50.475px; /* 28.5px * 1.35 */
+  position: relative;
+  border-radius: 99px; /* 55.415px * 1.35 */
+  overflow: hidden;
+  border: 1px #645959 solid; /* 0.71px * 1.35 */
+  backdrop-filter: blur(18.72px);
+  cursor: pointer;
+}
+
+.icon {
+  width: 20.23275px; /* 15.365px * 1.35 */
+  height: 21.29425px; /* 17.255px * 1.35 */
+  position: absolute;
+  left: 8.65875px; /* 6.415px * 1.35 */
+  top: 7.695px; /* 5.7px * 1.35 */
+  background: transparent;
+  /*font-family: 'Gugi', sans-serif;*/
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+
+.logo {
+  width: 38px;
+  height: 42px;
+  position: relative;
+}
