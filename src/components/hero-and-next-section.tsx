@@ -199,11 +199,11 @@ export function HeroAndNextSectionComponent() {
                             id="Projects"
                             ref={sectionRefs.current[3]}
                         >
-                            <div className="max-w-[85%] w-full px-8 gap-[20px]">
+                            <div className="max-w-[85%] w-full px-8 ">
                                 <div className="text-center mb-6">
-                                    <h2 className={`text-4xl font-bold font-audiowide font-audiowide ${audiowide.className}`}>Our Projects</h2>
+                                    <h2 className={`text-4xl font-bold ${audiowide.className}`}>Our Projects</h2>
                                 </div>
-                                <div className="grid grid-cols-12 gap-4 h-[calc(100vh-220px)]">
+                                <div className="grid grid-cols-12 gap-4 h-[calc(100vh-200px)]">
                                     <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
                                             <h3 className={`text-2xl font-bold mb-2 ${audiowide.className}`}>NORTH SIMCOE PROPERTY MANAGEMENT</h3>
@@ -262,7 +262,7 @@ export function HeroAndNextSectionComponent() {
                                 </div>
                             </div>
                             <div
-                                className="rounded-full border border-gray-300 p-2 cursor-pointer hover:bg-gray-100 transition-colors duration-300 mt-8"
+                                className="rounded-full border border-gray-300 p-2 cursor-pointer hover:bg-gray-100 transition-colors duration-300 my-9"
                                 onClick={() => navigateToSection("Home")}
                             >
                                 <ChevronUp size={24} className="text-gray-400" />
