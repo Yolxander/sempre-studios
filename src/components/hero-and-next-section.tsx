@@ -4,12 +4,19 @@ import React, { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react"
+import {Audiowide} from "@next/font/google";
 
 const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
     exit: { opacity: 0, y: -50, transition: { duration: 0.5 } }
 }
+
+// Initialize Audiowide font
+const audiowide = Audiowide({
+    weight: "400",
+    subsets: ["latin"],
+})
 
 const sections = ["Home", "About", "Services", "Projects"]
 
@@ -38,14 +45,14 @@ export function HeroAndNextSectionComponent() {
                             <header className="w-full px-6 py-4">
                                 <div className="max-w-8xl mx-auto flex justify-between items-center relative">
                   <div className="text-xl font-semibold">
-                      <div className="logo">
+                      <div className={`logo ${audiowide.className}`}>
                           <div className="icon">S</div>
                       </div></div>
                                     <div className="absolute left-20 right-20 top-1/2 -translate-y-1/2 h-0.5 bg-gray-200" aria-hidden="true"></div>
                                     <Button
                                         variant="outline"
                                         size="sm"
-                                        className="rounded-full px-4 py-2 text-md font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105"
+                                        className={`rounded-full px-4 py-2 text-md font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className}`}
                                     >
                                         Say Hi
                                     </Button>
@@ -54,10 +61,10 @@ export function HeroAndNextSectionComponent() {
 
                             {/* Hero Content Section */}
                             <section className="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
-                                <div className="space-y-4 mb-12">
-                                    <h1 className="text-6xl font-bold tracking-tight pr-[50px] font-audiowide" >Digital agency</h1>
-                                    <h1 className="text-6xl font-bold tracking-tight pl-[200px] font-audiowide">We change web</h1>
-                                    <h1 className="text-6xl font-bold tracking-tight font-audiowide">Try to start</h1>
+                                <div className={`space-y-4 mb-12 ${audiowide.className}`}>
+                                    <h1 className="text-6xl font-bold tracking-tight pr-[50px]" >Sempre Studios</h1>
+                                    <h1 className="text-6xl font-bold tracking-tight pl-[200px]">We change web</h1>
+                                    <h1 className="text-6xl font-bold tracking-tight">Try to start</h1>
                                 </div>
 
                                 <Button
@@ -110,7 +117,7 @@ export function HeroAndNextSectionComponent() {
                             exit="exit"
                             className="flex-grow flex flex-col items-center justify-center text-center px-4 relative min-h-screen"
                         >
-                            <h2 className="text-4xl font-bold mb-8 font-audiowide">About Us</h2>
+                            <h2 className={`text-4xl font-bold mb-8 ${audiowide.className}`}>About Us</h2>
                             <div className="max-w-2xl mb-12">
                                 <p className="text-md mb-6">
                                     We are a cutting-edge digital agency dedicated to transforming the web landscape. With our innovative approach and expert team, we bring your digital visions to life.
@@ -194,7 +201,7 @@ export function HeroAndNextSectionComponent() {
                         >
                             <div className="max-w-[85%] w-full px-8 gap-[20px]">
                                 <div className="text-center mb-6">
-                                    <h2 className="text-4xl font-bold font-audiowide">Our Projects</h2>
+                                    <h2 className="text-4xl font-bold font-audiowide font-audiowide">Our Projects</h2>
                                 </div>
                                 <div className="grid grid-cols-12 gap-4 h-[calc(100vh-220px)]">
                                     <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
