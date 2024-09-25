@@ -63,7 +63,7 @@ export function HeroAndNextSectionComponent() {
                                 <Button
                                     className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105"
                                 >
-                                    New project
+                                    Let's start
                                 </Button>
 
                                 <div className="flex flex-col items-center">
@@ -145,7 +145,7 @@ export function HeroAndNextSectionComponent() {
                             exit="exit"
                             className="flex-grow flex flex-col items-center justify-center px-4 relative min-h-screen"
                         >
-                            <div className="max-w-6xl w-full">
+                            <div className="max-w-[80%] w-full">
                                 <div className="text-center mb-12">
                                     <h2 className="text-5xl font-bold font-audiowide">Services</h2>
                                 </div>
@@ -192,12 +192,12 @@ export function HeroAndNextSectionComponent() {
                             id="Projects"
                             ref={sectionRefs.current[3]}
                         >
-                            <div className="max-w-6xl w-full px-8">
+                            <div className="max-w-[85%] w-full px-8 gap-[20px]">
                                 <div className="text-center mb-6">
                                     <h2 className="text-4xl font-bold font-audiowide">Our Projects</h2>
                                 </div>
-                                <div className="grid grid-cols-12 gap-4 h-[calc(100vh-240px)]">
-                                    <div className="col-span-12 md:col-span-8 border border-black rounded-2xl p-6 flex flex-col justify-between">
+                                <div className="grid grid-cols-12 gap-4 h-[calc(100vh-220px)]">
+                                    <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
                                             <h3 className="text-4xl font-bold mb-2 font-audiowide">NORTH SIMCOE PROPERTY MANAGEMENT</h3>
                                             <p className="text-md mb-4">Top property management company in Simcoe County, offering comprehensive services for property owners and tenants alike.</p>
@@ -209,7 +209,7 @@ export function HeroAndNextSectionComponent() {
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
                                         </Button>
                                     </div>
-                                    <div className="col-span-12 md:col-span-4 border border-black rounded-2xl p-6 flex flex-col justify-between">
+                                    <div className="col-span-12 md:col-span-4 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
                                             <h3 className="text-4xl font-bold mb-2 font-audiowide">RMD Property Management</h3>
                                             <p className="text-md mb-4">Expert care for your paradise in Costa Rica, providing top-notch property management services for international property owners.</p>
@@ -221,7 +221,7 @@ export function HeroAndNextSectionComponent() {
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
                                         </Button>
                                     </div>
-                                    <div className="col-span-12 md:col-span-4 border border-black rounded-2xl p-6 flex flex-col justify-between">
+                                    <div className="col-span-12 md:col-span-4 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
                                             <h3 className="text-4xl font-bold mb-2 font-audiowide">Premium Natural Wood Charcoal</h3>
                                             <p className="text-md mb-4">High-quality, sustainable wood charcoal products for grilling enthusiasts, restaurants, and industrial applications.</p>
@@ -233,7 +233,7 @@ export function HeroAndNextSectionComponent() {
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
                                         </Button>
                                     </div>
-                                    <div className="col-span-12 md:col-span-8 border border-black rounded-2xl p-6 flex flex-col justify-between">
+                                    <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
                                             <h3 className="text-4xl font-bold mb-2 font-audiowide">Learn More About Our Work</h3>
                                             <p className="text-md mb-4">
