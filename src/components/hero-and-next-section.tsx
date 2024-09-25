@@ -52,7 +52,7 @@ export function HeroAndNextSectionComponent() {
                                     <Button
                                         variant="outline"
                                         size="sm"
-                                        className={`rounded-full px-4 py-2 text-md font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className}`}
+                                        className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className}`}
                                     >
                                         Say Hi
                                     </Button>
@@ -119,13 +119,13 @@ export function HeroAndNextSectionComponent() {
                         >
                             <h2 className={`text-4xl font-bold mb-8 ${audiowide.className}`}>About Us</h2>
                             <div className="max-w-2xl mb-12">
-                                <p className="text-md mb-6">
+                                <p className="text-[20px] mb-6">
                                     We are a cutting-edge digital agency dedicated to transforming the web landscape. With our innovative approach and expert team, we bring your digital visions to life.
                                 </p>
-                                <p className="text-md mb-6">
+                                <p className="text-[20px] mb-6">
                                     Our mission is to create impactful digital experiences that drive growth and success for our clients. We combine creativity with technology to deliver solutions that stand out in the digital world.
                                 </p>
-                                <p className="text-md">
+                                <p className="text-[20px]">
                                     From web design and development to digital marketing and branding, we offer comprehensive services to elevate your online presence. Let's embark on a journey to redefine your digital identity.
                                 </p>
                             </div>
@@ -154,7 +154,7 @@ export function HeroAndNextSectionComponent() {
                         >
                             <div className="max-w-[80%] w-full">
                                 <div className="text-center mb-12">
-                                    <h2 className="text-5xl font-bold font-audiowide">Services</h2>
+                                    <h2 className={`text-5xl font-bold font-audiowide ${audiowide.className}`}>Services</h2>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                                     {[
@@ -167,8 +167,8 @@ export function HeroAndNextSectionComponent() {
                                     ].map((service, index) => (
                                         <div key={index} className="border-t border-gray-200 pt-6 relative">
                                             <div className="mb-4">
-                                                <h4 className="text-xl font-semibold mb-2 font-audiowide">{service.title}</h4>
-                                                <p className="text-gray-600 mb-4">
+                                                <h4 className={`text-[26px] font-semibold mb-2 font-audiowide ${audiowide.className}`}>{service.title}</h4>
+                                                <p className="text-gray-600 text-[20px] mb-4">
                                                     {service.description}
                                                 </p>
                                                 <Button variant="link" className="p-0 h-auto font-semibold text-black">
@@ -201,16 +201,16 @@ export function HeroAndNextSectionComponent() {
                         >
                             <div className="max-w-[85%] w-full px-8 gap-[20px]">
                                 <div className="text-center mb-6">
-                                    <h2 className="text-4xl font-bold font-audiowide font-audiowide">Our Projects</h2>
+                                    <h2 className={`text-4xl font-bold font-audiowide font-audiowide ${audiowide.className}`}>Our Projects</h2>
                                 </div>
                                 <div className="grid grid-cols-12 gap-4 h-[calc(100vh-220px)]">
                                     <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-4xl font-bold mb-2 font-audiowide">NORTH SIMCOE PROPERTY MANAGEMENT</h3>
-                                            <p className="text-md mb-4">Top property management company in Simcoe County, offering comprehensive services for property owners and tenants alike.</p>
+                                            <h3 className={`text-2xl font-bold mb-2 ${audiowide.className}`}>NORTH SIMCOE PROPERTY MANAGEMENT</h3>
+                                            <p className="text-[20px] mb-4">Top property management company in Simcoe County, offering comprehensive services for property owners and tenants alike.</p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-md py-1 px-3"
+                                            className="bg-black text-white hover:bg-gray-800 self-start text-[20px] py-1 px-3"
                                             onClick={() => window.open("https://northsimcoepm.com/", "_blank")}
                                         >
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
@@ -218,11 +218,11 @@ export function HeroAndNextSectionComponent() {
                                     </div>
                                     <div className="col-span-12 md:col-span-4 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-4xl font-bold mb-2 font-audiowide">RMD Property Management</h3>
-                                            <p className="text-md mb-4">Expert care for your paradise in Costa Rica, providing top-notch property management services for international property owners.</p>
+                                            <h3 className={`text-2xl font-bold mb-2 ${audiowide.className}`}>RMD Property Management</h3>
+                                            <p className="text-[20px] mb-4">Expert care for your paradise in Costa Rica, providing top-notch property management services for international property owners.</p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-md py-1 px-3"
+                                            className="bg-black text-white hover:bg-gray-800 self-start text-[20px] py-1 px-3"
                                             onClick={() => window.open("https://costa-rica-site.webflow.io/", "_blank")}
                                         >
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
@@ -230,11 +230,11 @@ export function HeroAndNextSectionComponent() {
                                     </div>
                                     <div className="col-span-12 md:col-span-4 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-4xl font-bold mb-2 font-audiowide">Premium Natural Wood Charcoal</h3>
-                                            <p className="text-md mb-4">High-quality, sustainable wood charcoal products for grilling enthusiasts, restaurants, and industrial applications.</p>
+                                            <h3 className={`text-2xl font-bold mb-2 ${audiowide.className}`}>Premium Natural Wood Charcoal</h3>
+                                            <p className="text-[20px] mb-4">High-quality, sustainable wood charcoal products for grilling enthusiasts, restaurants, and industrial applications.</p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-md py-1 px-3"
+                                            className="bg-black text-white hover:bg-gray-800 self-start text-[20px] py-1 px-3"
                                             onClick={() => window.open("https://charcoal.jonex.ca/", "_blank")}
                                         >
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
@@ -242,18 +242,18 @@ export function HeroAndNextSectionComponent() {
                                     </div>
                                     <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-4xl font-bold mb-2 font-audiowide">Learn More About Our Work</h3>
-                                            <p className="text-md mb-4">
-                                                Discover how our expertise in web development and digital solutions can transform your business.
+                                            <h3 className={`text-2xl font-bold mb-2 ${audiowide.className}`}>Learn More About Our Work</h3>
+                                            <p className="text-[20px] mb-4">
+                                                {/*Discover how our expertise in web development and digital solutions can transform your business.*/}
                                                 We specialize in creating tailored, innovative websites and applications that drive growth and
                                                 enhance user experience.
                                             </p>
-                                            <p className="text-md mb-4">
+                                            <p className="text-[20px] mb-4">
                                                 Ready to start your next project or have questions? We'd love to hear from you!
                                             </p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-md py-1 px-3"
+                                            className="bg-black text-white hover:bg-gray-800 self-start text-[20px] py-1 px-3"
                                             onClick={() => navigateToSection("Contact")}
                                         >
                                             Contact Us <ArrowRight className="ml-1 h-3 w-3" />
@@ -289,7 +289,7 @@ export function HeroAndNextSectionComponent() {
                             variant="ghost"
                             className={`text-xl font-medium transition-colors duration-200 ${
                                 currentSection === section ? 'text-black' : 'text-gray-500 hover:text-black'
-                            } font-audiowide`}
+                            } font-audiowide ${audiowide.className}`}
                             onClick={() => navigateToSection(section)}
                         >
                             {section}
