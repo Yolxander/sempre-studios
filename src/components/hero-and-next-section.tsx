@@ -45,9 +45,9 @@ export function HeroAndNextSectionComponent() {
                                     <Button
                                         variant="outline"
                                         size="sm"
-                                        className="rounded-full px-4 py-2 text-sm font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105"
+                                        className="rounded-full px-4 py-2 text-md font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105"
                                     >
-                                        New project
+                                        Say Hi
                                     </Button>
                                 </div>
                             </header>
@@ -56,8 +56,8 @@ export function HeroAndNextSectionComponent() {
                             <section className="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
                                 <div className="space-y-4 mb-12">
                                     <h1 className="text-6xl font-bold tracking-tight pr-[50px] font-audiowide" >Digital agency</h1>
-                                    <h1 className="text-6xl font-bold tracking-tight pl-[80px] font-audiowide">We change web</h1>
-                                    <h1 className="text-6xl font-bold tracking-tight pr-[90px] font-audiowide">Try to start</h1>
+                                    <h1 className="text-6xl font-bold tracking-tight pl-[200px] font-audiowide">We change web</h1>
+                                    <h1 className="text-6xl font-bold tracking-tight font-audiowide">Try to start</h1>
                                 </div>
 
                                 <Button
@@ -68,10 +68,10 @@ export function HeroAndNextSectionComponent() {
 
                                 <div className="flex flex-col items-center">
                                     <div
-                                        className="rounded-full border border-gray-300 p-2 mb-5 cursor-pointer hover:bg-gray-100 transition-colors duration-300"
+                                        className="rounded-full border border-black-300 p-2 mb-5 cursor-pointer hover:bg-gray-100 transition-colors duration-300"
                                         onClick={() => navigateToSection("About")}
                                     >
-                                        <ChevronDown size={24} className="text-gray-400" />
+                                        <ChevronDown size={24} className="text-black-400" />
                                     </div>
 
                                     <svg
@@ -112,13 +112,13 @@ export function HeroAndNextSectionComponent() {
                         >
                             <h2 className="text-4xl font-bold mb-8 font-audiowide">About Us</h2>
                             <div className="max-w-2xl mb-12">
-                                <p className="text-xl mb-6">
+                                <p className="text-md mb-6">
                                     We are a cutting-edge digital agency dedicated to transforming the web landscape. With our innovative approach and expert team, we bring your digital visions to life.
                                 </p>
-                                <p className="text-xl mb-6">
+                                <p className="text-md mb-6">
                                     Our mission is to create impactful digital experiences that drive growth and success for our clients. We combine creativity with technology to deliver solutions that stand out in the digital world.
                                 </p>
-                                <p className="text-xl">
+                                <p className="text-md">
                                     From web design and development to digital marketing and branding, we offer comprehensive services to elevate your online presence. Let's embark on a journey to redefine your digital identity.
                                 </p>
                             </div>
@@ -181,9 +181,6 @@ export function HeroAndNextSectionComponent() {
                         </motion.section>
                     )}
 
-                </AnimatePresence>
-
-                <AnimatePresence mode="wait">
                     {currentSection === "Projects" && (
                         <motion.section
                             key="projects"
@@ -196,17 +193,17 @@ export function HeroAndNextSectionComponent() {
                             ref={sectionRefs.current[3]}
                         >
                             <div className="max-w-6xl w-full px-8">
-                                <div className="text-center mb-8">
+                                <div className="text-center mb-6">
                                     <h2 className="text-4xl font-bold font-audiowide">Our Projects</h2>
                                 </div>
                                 <div className="grid grid-cols-12 gap-4 h-[calc(100vh-240px)]">
                                     <div className="col-span-12 md:col-span-8 border border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-xl font-bold mb-2 font-audiowide">NORTH SIMCOE PROPERTY MANAGEMENT</h3>
-                                            <p className="text-sm mb-4">Top property management company in Simcoe County, offering comprehensive services for property owners and tenants alike.</p>
+                                            <h3 className="text-4xl font-bold mb-2 font-audiowide">NORTH SIMCOE PROPERTY MANAGEMENT</h3>
+                                            <p className="text-md mb-4">Top property management company in Simcoe County, offering comprehensive services for property owners and tenants alike.</p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-sm py-1 px-3"
+                                            className="bg-black text-white hover:bg-gray-800 self-start text-md py-1 px-3"
                                             onClick={() => window.open("https://northsimcoepm.com/", "_blank")}
                                         >
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
@@ -214,11 +211,11 @@ export function HeroAndNextSectionComponent() {
                                     </div>
                                     <div className="col-span-12 md:col-span-4 border border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-xl font-bold mb-2 font-audiowide">RMD Property Management</h3>
-                                            <p className="text-sm mb-4">Expert care for your paradise in Costa Rica, providing top-notch property management services for international property owners.</p>
+                                            <h3 className="text-4xl font-bold mb-2 font-audiowide">RMD Property Management</h3>
+                                            <p className="text-md mb-4">Expert care for your paradise in Costa Rica, providing top-notch property management services for international property owners.</p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-sm py-1 px-3"
+                                            className="bg-black text-white hover:bg-gray-800 self-start text-md py-1 px-3"
                                             onClick={() => window.open("https://costa-rica-site.webflow.io/", "_blank")}
                                         >
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
@@ -226,11 +223,11 @@ export function HeroAndNextSectionComponent() {
                                     </div>
                                     <div className="col-span-12 md:col-span-4 border border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-xl font-bold mb-2 font-audiowide">Premium Natural Wood Charcoal</h3>
-                                            <p className="text-sm mb-4">High-quality, sustainable wood charcoal products for grilling enthusiasts, restaurants, and industrial applications.</p>
+                                            <h3 className="text-4xl font-bold mb-2 font-audiowide">Premium Natural Wood Charcoal</h3>
+                                            <p className="text-md mb-4">High-quality, sustainable wood charcoal products for grilling enthusiasts, restaurants, and industrial applications.</p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-sm py-1 px-3"
+                                            className="bg-black text-white hover:bg-gray-800 self-start text-md py-1 px-3"
                                             onClick={() => window.open("https://charcoal.jonex.ca/", "_blank")}
                                         >
                                             Visit <ArrowRight className="ml-1 h-3 w-3" />
@@ -238,22 +235,20 @@ export function HeroAndNextSectionComponent() {
                                     </div>
                                     <div className="col-span-12 md:col-span-8 border border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3 className="text-xl font-bold mb-2 font-audiowide">Learn More About Our Work</h3>
-                                            <p className="text-sm mb-4">
+                                            <h3 className="text-4xl font-bold mb-2 font-audiowide">Learn More About Our Work</h3>
+                                            <p className="text-md mb-4">
                                                 Discover how our expertise in web development and digital solutions can transform your business.
                                                 We specialize in creating tailored, innovative websites and applications that drive growth and
-                                                enhance user experience. Whether you're a startup or an established company, we're here to help
-                                                you achieve your digital goals.
+                                                enhance user experience.
                                             </p>
-                                            <p className="text-sm mb-4">
+                                            <p className="text-md mb-4">
                                                 Ready to start your next project or have questions? We'd love to hear from you!
-                                                Contact us at <a href="mailto:info@ourcompany.com" className="text-blue-600 hover:underline">info@ourcompany.com</a> or
-                                                call us at <a href="tel:+11234567890" className="text-blue-600 hover:underline">+1 (123) 456-7890</a>.
+                                                Contact us at <a href="mailto:info@ourcompany.com" className="text-blue-600 hover:underline">info@ourcompany.com</a>
                                                 Let's create something amazing together!
                                             </p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-sm py-1 px-3"
+                                            className="bg-black text-white hover:bg-gray-800 self-start text-md py-1 px-3"
                                             onClick={() => navigateToSection("Contact")}
                                         >
                                             Contact Us <ArrowRight className="ml-1 h-3 w-3" />
@@ -269,7 +264,9 @@ export function HeroAndNextSectionComponent() {
                             </div>
                         </motion.section>
                     )}
+
                 </AnimatePresence>
+
             </div>
 
             {/* Vertical Navbar */}
@@ -278,7 +275,7 @@ export function HeroAndNextSectionComponent() {
                     <Button
                         key={section}
                         variant="ghost"
-                        className={`text-sm font-medium transition-colors duration-200 ${
+                        className={`text-xl font-medium transition-colors duration-200 ${
                             currentSection === section ? 'text-black' : 'text-gray-500 hover:text-black'
                         } font-audiowide`}
                         onClick={() => navigateToSection(section)}
