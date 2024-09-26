@@ -27,7 +27,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-    title: "Sempre Studions",
+    title: "Sempre Studios",
     description: "fast and effective web services",
 };
 
