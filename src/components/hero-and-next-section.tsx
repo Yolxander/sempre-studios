@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef } from "react"
+import React, {useState, useRef, RefObject} from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ChevronDown, ChevronUp, ArrowRight, X, Sun, Moon } from "lucide-react"
