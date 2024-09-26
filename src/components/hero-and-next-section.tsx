@@ -181,42 +181,53 @@ export function HeroAndNextSectionComponent() {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="flex-grow flex flex-col items-center justify-center text-center px-4 relative min-h-screen"
+                            className="relative flex-grow flex flex-col items-center justify-center text-center px-4 min-h-screen"
                         >
+                            {/* Hamburger Menu for screens under 1000px, moved to the top right */}
+                            <div className="block lg:hidden absolute top-4 right-4">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
+                                        audiowide.className
+                                    } ${
+                                        isDarkMode
+                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                            : "text-black"
+                                    }`}
+                                    onClick={toggleMenu}
+                                >
+                                    <Menu />
+                                </Button>
+                            </div>
                             <h2 className={`text-4xl font-bold mb-8 ${audiowide.className}`}>
                                 About Us
                             </h2>
                             <div className="max-w-2xl mb-12">
                                 <p className="text-[20px] mb-6">
-                                    We are a cutting-edge digital agency dedicated to transforming the
-                                    web landscape. With our innovative approach and expert team, we
-                                    bring your digital visions to life.
+                                    We are a cutting-edge digital agency dedicated to transforming the web landscape.
+                                    With our innovative approach and expert team, we bring your digital visions to life.
                                 </p>
                                 <p className="text-[20px] mb-6">
-                                    Our mission is to create impactful digital experiences that drive
-                                    growth and success for our clients. We combine creativity with
-                                    technology to deliver solutions that stand out in the digital
-                                    world.
+                                    Our mission is to create impactful digital experiences that drive growth and success for
+                                    our clients. We combine creativity with technology to deliver solutions that stand out in
+                                    the digital world.
                                 </p>
                                 <p className="text-[20px]">
-                                    From web design and development to digital marketing and branding,
-                                    we offer comprehensive services to elevate your online presence.
+                                    From web design and development to digital marketing and branding, we offer comprehensive
+                                    services to elevate your online presence.
                                 </p>
                             </div>
                             <Button
                                 className={`rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                    isDarkMode
-                                        ? "bg-white text-black hover:bg-gray-100"
-                                        : "bg-black text-white hover:bg-gray-800"
+                                    isDarkMode ? "bg-white text-black hover:bg-gray-100" : "bg-black text-white hover:bg-gray-800"
                                 }`}
                             >
                                 Learn More
                             </Button>
                             <div
                                 className={`rounded-full border ${
-                                    isDarkMode
-                                        ? "border-gray-400 hover:bg-gray-700"
-                                        : "border-gray-300 hover:bg-gray-100"
+                                    isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-gray-300 hover:bg-gray-100"
                                 } p-2 cursor-pointer transition-colors duration-300`}
                                 onClick={() => navigateToSection("Services")}
                             >
@@ -228,6 +239,7 @@ export function HeroAndNextSectionComponent() {
                                 />
                             </div>
                         </motion.section>
+
                     )}
 
                     {currentSection === "Services" && (
@@ -237,8 +249,25 @@ export function HeroAndNextSectionComponent() {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="flex-grow flex flex-col items-center justify-center px-4 relative min-h-screen"
+                            className="relative flex-grow flex flex-col items-center justify-center px-4 relative min-h-screen"
                         >
+                            {/* Hamburger Menu for screens under 1000px, moved to the top right */}
+                            <div className="block lg:hidden absolute top-4 right-4">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
+                                        audiowide.className
+                                    } ${
+                                        isDarkMode
+                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                            : "text-black"
+                                    }`}
+                                    onClick={toggleMenu}
+                                >
+                                    <Menu />
+                                </Button>
+                            </div>
                             <div className="max-w-[80%] w-full">
                                 <div className="text-center mb-12">
                                     <h2
@@ -338,10 +367,27 @@ export function HeroAndNextSectionComponent() {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="flex-grow flex flex-col items-center justify-center px-4 relative min-h-screen snap-start"
+                            className="relative flex-grow flex flex-col items-center justify-center px-4 relative min-h-screen snap-start"
                             id="Projects"
                             ref={sectionRefs.current[3]}
                         >
+                            {/* Hamburger Menu for screens under 1000px, moved to the top right */}
+                            <div className="block lg:hidden absolute top-4 right-4">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
+                                        audiowide.className
+                                    } ${
+                                        isDarkMode
+                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                            : "text-black"
+                                    }`}
+                                    onClick={toggleMenu}
+                                >
+                                    <Menu />
+                                </Button>
+                            </div>
                             <div className="max-w-[85%] w-full px-8">
                                 <div className="text-center mb-6">
                                     <h2
@@ -472,12 +518,29 @@ export function HeroAndNextSectionComponent() {
                 {isModalOpen && (
                     <AnimatePresence>
                         <motion.div
-                            className="fixed inset-0               z-50 flex items-center justify-center bg-black bg-opacity-50"
+                            className="relative fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
                             variants={modalVariants}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
                         >
+                            {/* Hamburger Menu for screens under 1000px, moved to the top right */}
+                            <div className="block lg:hidden absolute top-4 right-4">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
+                                        audiowide.className
+                                    } ${
+                                        isDarkMode
+                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                            : "text-black"
+                                    }`}
+                                    onClick={toggleMenu}
+                                >
+                                    <Menu />
+                                </Button>
+                            </div>
                             <div
                                 className={`bg-white rounded-lg p-6 w-[90%] max-w-lg ${
                                     isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
@@ -665,10 +728,10 @@ export function HeroAndNextSectionComponent() {
             </motion.section>
 
             {/* Dark Mode Toggle Button */}
-            <div className="fixed bottom-6 left-6">
+            <div className="fixed bottom-8 left-5">
                 <Button
                     variant="ghost"
-                    className="p-2 rounded-full text-xl hover:bg-gray-200 transition-colors"
+                    className="p-2 rounded-full text-xl hover:bg-gray-200 transition-colors "
                     onClick={toggleDarkMode}
                 >
                     {isDarkMode ? <Sun size={28} /> : <Moon size={28} />}
