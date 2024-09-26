@@ -3,8 +3,15 @@
 import React, { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react"
-import {Audiowide} from "@next/font/google";
+import { ChevronDown, ChevronUp, ArrowRight, X } from "lucide-react"
+import { Audiowide } from "@next/font/google";
+
+// Modal animation variants
+const modalVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3 } }
+}
 
 const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -22,11 +29,15 @@ const sections = ["Home", "About", "Services", "Projects"]
 
 export function HeroAndNextSectionComponent() {
     const [currentSection, setCurrentSection] = useState("Home")
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const sectionRefs = useRef(sections.map(() => React.createRef()))
 
     const navigateToSection = (section: string) => {
         setCurrentSection(section)
     }
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     return (
         <div className="h-[95vh] flex bg-gradient-to-br from-gray-100 to-gray-50 rounded-3xl m-4 overflow-hidden border-2 border-black">
@@ -44,17 +55,19 @@ export function HeroAndNextSectionComponent() {
                             {/* Header Section */}
                             <header className="w-full px-6 py-4">
                                 <div className="max-w-8xl mx-auto flex justify-between items-center relative">
-                  <div className="text-xl font-semibold">
-                      <div className={`logo ${audiowide.className}`}>
-                          <div className="icon">S</div>
-                      </div></div>
-                                    <div className="absolute left-20 right-20 top-1/2 -translate-y-1/2 h-0.5 bg-gray-200" aria-hidden="true"></div>
+                                    <div className="text-xl font-semibold">
+                                        <div className={`logo ${audiowide.className}`}>
+                                            <div className="icon">S</div>
+                                        </div>
+                                    </div>
+                                    <div className="absolute left-10 right-10 top-1/2 -translate-y-1/2 h-0.5 bg-gray-200" aria-hidden="true"></div>
                                     <Button
                                         variant="outline"
                                         size="sm"
                                         className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className}`}
+                                        onClick={openModal}
                                     >
-                                        Say Hi
+                                        Let's Talk
                                     </Button>
                                 </div>
                             </header>
@@ -62,7 +75,7 @@ export function HeroAndNextSectionComponent() {
                             {/* Hero Content Section */}
                             <section className="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
                                 <div className={`space-y-4 mb-12 ${audiowide.className}`}>
-                                    <h1 className="text-6xl font-bold tracking-tight pr-[50px]" >Sempre Studios</h1>
+                                    <h1 className="text-6xl font-bold tracking-tight pr-[50px]">Sempre Studios</h1>
                                     <h1 className="text-6xl font-bold tracking-tight pl-[200px]">We change web</h1>
                                     <h1 className="text-6xl font-bold tracking-tight">Try to start</h1>
                                 </div>
@@ -70,7 +83,7 @@ export function HeroAndNextSectionComponent() {
                                 <Button
                                     className="bg-black text-white hover:bg-gray-800 rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105"
                                 >
-                                    Let's start
+                                    Start
                                 </Button>
 
                                 <div className="flex flex-col items-center">
@@ -270,18 +283,87 @@ export function HeroAndNextSectionComponent() {
                         </motion.section>
                     )}
 
+
                 </AnimatePresence>
 
+                {/* Modal for contact form */}
+                {isModalOpen && (
+                    <AnimatePresence>
+                        <motion.div
+                            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+                            variants={modalVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                        >
+                            <div className="bg-white rounded-lg p-6 w-[90%] max-w-lg">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h2 className={`text-3xl font-bold ${audiowide.className}`}>Contact Us</h2>
+                                    <button onClick={closeModal}>
+                                        <X size={24} className="text-gray-500 hover:text-gray-700 transition-colors" />
+                                    </button>
+                                </div>
+
+                                {/* Contact Form */}
+                                <form className="space-y-4">
+                                    <div>
+                                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                                            Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm p-6"
+                                            placeholder="Your Name"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                                            Email
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm"
+                                            placeholder="you@example.com"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                                            Message
+                                        </label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            rows={4}
+                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm"
+                                            placeholder="Your Message"
+                                        />
+                                    </div>
+                                    <Button
+                                        className="bg-black text-white hover:bg-gray-800 rounded-full px-6 py-3 text-lg font-semibold w-full transition-transform duration-300 ease-in-out hover:scale-105"
+                                        type="submit"
+                                    >
+                                        Send Message
+                                    </Button>
+                                </form>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+
+                )}
             </div>
 
+            {/* Vertical Navbar */}
             <motion.section
                 key="projects"
                 variants={sectionVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                >
-                {/* Vertical Navbar */}
+            >
                 <nav className="fixed right-6 top-1/2 transform -translate-y-1/2 flex flex-col items-end space-y-4">
                     {sections.map((section) => (
                         <Button
