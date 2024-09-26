@@ -55,7 +55,7 @@ export function HeroAndNextSectionComponent() {
 
     return (
         <div
-            className={`h-[95vh] flex rounded-3xl m-4 overflow-hidden border-2 transition-colors duration-500 ${
+            className={`md:h-[95vh]  md:m-4 md:rounded-3xl h-[100vh] m-0  flex  overflow-hidden border-2 transition-colors duration-500 ${
                 isDarkMode
                     ? "bg-gray-900 border-gray-800 text-white"
                     : "bg-gradient-to-br from-gray-100 to-gray-50 border-black text-black"
@@ -275,7 +275,7 @@ export function HeroAndNextSectionComponent() {
                                         Services
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto max-h-[83vh]">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto h-fit	">
                                     {[
                                         {
                                             title: "Web Design",
