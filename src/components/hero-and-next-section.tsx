@@ -97,7 +97,7 @@ export function HeroAndNextSectionComponent() {
                                         }`}
                                         onClick={openModal}
                                     >
-                                        Let's Talk
+                                        Say Hi
                                     </Button>
                                 </div>
                             </header>
@@ -201,9 +201,7 @@ export function HeroAndNextSectionComponent() {
                                 <p className="text-[20px]">
                                     From web design and development to digital
                                     marketing and branding, we offer comprehensive
-                                    services to elevate your online presence. Let's
-                                    embark on a journey to redefine your digital
-                                    identity.
+                                    services to elevate your online presence.
                                 </p>
                             </div>
                             <Button
