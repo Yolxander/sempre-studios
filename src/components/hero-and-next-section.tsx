@@ -446,7 +446,7 @@ export function HeroAndNextSectionComponent() {
                                             </p>
                                             <p className="text-[20px] mb-4">
                                                 Ready to start your next project or have
-                                                questions? We'd love to hear from you!
+                                                questions? We would love to hear from you!
                                             </p>
                                         </div>
                                         <Button
