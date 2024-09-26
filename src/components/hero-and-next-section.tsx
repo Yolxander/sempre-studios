@@ -270,14 +270,12 @@ export function HeroAndNextSectionComponent() {
                                 </Button>
                             </div>
                             <div className="max-w-[80%] w-full">
-                                <div className="text-center mb-12">
-                                    <h2
-                                        className={`text-xl font-bold font-audiowide ${audiowide.className}`}
-                                    >
+                                <div className="text-center md:mb-12 md:mt-0 mt-6 ">
+                                    <h2 className={`text-xl font-bold font-audiowide ${audiowide.className}`}>
                                         Services
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto max-h-[83vh]">
                                     {[
                                         {
                                             title: "Web Design",
@@ -344,7 +342,7 @@ export function HeroAndNextSectionComponent() {
                                     isDarkMode
                                         ? "border-gray-400 hover:bg-gray-700"
                                         : "border-gray-300 hover:bg-gray-100"
-                                } p-2 cursor-pointer transition-colors duration-300 mt-16`}
+                                } p-2 cursor-pointer transition-colors duration-300 md:mt-16 md:mb-0 mt-2 mb-12 h-10`}
                                 onClick={() => navigateToSection("Projects")}
                             >
                                 <ChevronDown
