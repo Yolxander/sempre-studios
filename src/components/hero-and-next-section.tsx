@@ -314,7 +314,7 @@ export function HeroAndNextSectionComponent() {
                                             type="text"
                                             id="name"
                                             name="name"
-                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm p-6"
+                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm p-2"
                                             placeholder="Your Name"
                                         />
                                     </div>
@@ -326,7 +326,7 @@ export function HeroAndNextSectionComponent() {
                                             type="email"
                                             id="email"
                                             name="email"
-                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm"
+                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm p-2"
                                             placeholder="you@example.com"
                                         />
                                     </div>
@@ -338,7 +338,7 @@ export function HeroAndNextSectionComponent() {
                                             id="message"
                                             name="message"
                                             rows={4}
-                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm"
+                                            className="mt-1 block w-full border border-black rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm p-2"
                                             placeholder="Your Message"
                                         />
                                     </div>
@@ -352,7 +352,6 @@ export function HeroAndNextSectionComponent() {
                             </div>
                         </motion.div>
                     </AnimatePresence>
-
                 )}
             </div>
 
