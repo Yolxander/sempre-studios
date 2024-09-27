@@ -135,14 +135,14 @@ export function HeroAndNextSectionComponent() {
 
                             {/* Hero Content Section */}
                             <section className="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
-                                <div className={`space-y-4 mb-12 ${audiowide.className}`}>
-                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px]">
+                                <div className="space-y-4 mb-12">
+                                    <h1 className={`text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px] ${audiowide.className}`}>
                                         Sempre Studios
                                     </h1>
-                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight md:pl-[200px]">
-                                        We change web
+                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight md:pl-[200px] font-light">
+                                        We create impact
                                     </h1>
-                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight">Try to start</h1>
+                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight font-light">Unlock your business potential</h1>
                                 </div>
 
                                 <Button
@@ -277,7 +277,7 @@ export function HeroAndNextSectionComponent() {
                                         Services
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto md:max-h-[83vh] h-[92vh] pb-10  md:pb-0">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto md:max-h-[73vh] h-[92vh] pb-10  md:pb-0">
                                     {[
                                         {
                                             title: "Web Design",
@@ -344,7 +344,7 @@ export function HeroAndNextSectionComponent() {
                                     isDarkMode
                                         ? "border-gray-400 hover:bg-gray-700"
                                         : "border-gray-300 hover:bg-gray-100"
-                                } p-2 cursor-pointer transition-colors duration-300 md:mt-16 md:mb-0 mt-2 mb-12 h-10 hidden`}
+                                } p-2 cursor-pointer transition-colors duration-300 md:mb-0 mt-2 mb-12 h-10 hidden`}
                                 onClick={() => navigateToSection("Projects")}
                             >
                                 <ChevronDown
