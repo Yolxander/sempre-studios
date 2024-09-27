@@ -73,7 +73,7 @@ export function HeroAndNextSectionComponent() {
                             className="flex flex-col min-h-screen"
                         >
                             {/* Header Section */}
-                            <header className="w-full px-6 py-4">
+                            <header className="w-full md:px-6 px-3 py-4">
                                 <div className="max-w-8xl mx-auto flex justify-between items-center relative">
                                     <div className="text-xl font-semibold">
                                         <div className={`logo ${audiowide.className}`}>
@@ -134,13 +134,13 @@ export function HeroAndNextSectionComponent() {
                             {/* Hero Content Section */}
                             <section className="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
                                 <div className={`space-y-4 mb-12 ${audiowide.className}`}>
-                                    <h1 className="text-xl font-bold tracking-tight pr-[50px]">
+                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px]">
                                         Sempre Studios
                                     </h1>
-                                    <h1 className="text-xl font-bold tracking-tight pl-[200px]">
+                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight md:pl-[200px]">
                                         We change web
                                     </h1>
-                                    <h1 className="text-xl font-bold tracking-tight">Try to start</h1>
+                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight">Try to start</h1>
                                 </div>
 
                                 <Button
@@ -201,20 +201,20 @@ export function HeroAndNextSectionComponent() {
                                     <Menu />
                                 </Button>
                             </div>
-                            <h2 className={`text-xl font-bold mb-8 ${audiowide.className}`}>
+                            <h2 className={`text-xl font-bold mb-8  md:text-[30px] ${audiowide.className}`}>
                                 About Us
                             </h2>
                             <div className="max-w-2xl mb-12">
-                                <p className="text-[16px] mb-6">
+                                <p className="text-[16px] md:text-[20px] mb-6">
                                     We are a cutting-edge digital agency dedicated to transforming the web landscape.
                                     With our innovative approach and expert team, we bring your digital visions to life.
                                 </p>
-                                <p className="text-[16px] mb-6">
+                                <p className="text-[16px] md:text-[20px] mb-6">
                                     Our mission is to create impactful digital experiences that drive growth and success for
                                     our clients. We combine creativity with technology to deliver solutions that stand out in
                                     the digital world.
                                 </p>
-                                <p className="text-[16px]">
+                                <p className="text-[16px] md:text-[20px]">
                                     From web design and development to digital marketing and branding, we offer comprehensive
                                     services to elevate your online presence.
                                 </p>
@@ -271,11 +271,11 @@ export function HeroAndNextSectionComponent() {
                             </div>
                             <div className="max-w-[80%] w-full">
                                 <div className="text-center md:mb-12 md:mt-0 mt-6 ">
-                                    <h2 className={`text-xl font-bold font-audiowide ${audiowide.className}`}>
+                                    <h2 className={`text-xl font-bold font-audiowide  md:text-[30px] ${audiowide.className}`}>
                                         Services
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto h-fit	">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto max-h-[83vh]">
                                     {[
                                         {
                                             title: "Web Design",
@@ -316,11 +316,11 @@ export function HeroAndNextSectionComponent() {
                                         >
                                             <div className="mb-4">
                                                 <h4
-                                                    className={`text-[20px] font-semibold mb-2 font-audiowide ${audiowide.className}`}
+                                                    className={`text-[20px] md:text-[26px] font-semibold mb-2 font-audiowide ${audiowide.className}`}
                                                 >
                                                     {service.title}
                                                 </h4>
-                                                <p className="text-white-200 text-[16px] mb-4">
+                                                <p className="text-white-200 text-[16px] md:text-[20px] mb-4">
                                                     {service.description}
                                                 </p>
                                                 <Button
@@ -338,11 +338,26 @@ export function HeroAndNextSectionComponent() {
                                 </div>
                             </div>
                             <div
-                                className={`rounded-full border ${
+                                className={`rounded-full border md:flex ${
                                     isDarkMode
                                         ? "border-gray-400 hover:bg-gray-700"
                                         : "border-gray-300 hover:bg-gray-100"
-                                } p-2 cursor-pointer transition-colors duration-300 md:mt-16 md:mb-0 mt-2 mb-12 h-10`}
+                                } p-2 cursor-pointer transition-colors duration-300 md:mt-16 md:mb-0 mt-2 mb-12 h-10 hidden`}
+                                onClick={() => navigateToSection("Projects")}
+                            >
+                                <ChevronDown
+                                    size={24}
+                                    className={`${
+                                        isDarkMode ? "text-gray-400" : "text-gray-400"
+                                    }`}
+                                />
+                            </div>
+                            <div
+                                className={`rounded-full border fixed bottom-[-6px] right-4 md:hidden ${
+                                    isDarkMode
+                                        ? "border-gray-400 hover:bg-gray-700"
+                                        : "border-gray-300 hover:bg-gray-100"
+                                } p-2 cursor-pointer transition-colors duration-300 md:mt-16 md:mb-0 mt-2 mb-10 h-10`}
                                 onClick={() => navigateToSection("Projects")}
                             >
                                 <ChevronDown
@@ -387,7 +402,7 @@ export function HeroAndNextSectionComponent() {
                             <div className="lg:max-w-[85%] w-full lg:px-8 lg:overflow-y-auto  max-w-[100%] px-1 overflow-y-auto">
                                 <div className="text-center mb-6">
                                     <h2
-                                        className={`text-xl font-bold ${audiowide.className}`}
+                                        className={`text-xl font-bold md:text-[30px] ${audiowide.className}`}
                                     >
                                         Our Projects
                                     </h2>
@@ -635,14 +650,14 @@ export function HeroAndNextSectionComponent() {
                 {isMenuOpen && (
                     <AnimatePresence>
                         <motion.div
-                            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+                            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 "
                             variants={modalVariants}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
                         >
                             <div
-                                className={`bg-white rounded-lg p-6 w-[90%] max-w-lg ${
+                                className={`bg-white rounded-lg p-6 w-[90%] max-w-lg  ${
                                     isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
                                 }`}
                             >
@@ -718,10 +733,10 @@ export function HeroAndNextSectionComponent() {
             </motion.section>
 
             {/* Dark Mode Toggle Button */}
-            <div className="fixed bottom-8 left-5">
+            <div className="fixed md:bottom-7 bottom-7 md:left-6 left-3 ">
                 <Button
                     variant="ghost"
-                    className="p-2 rounded-full text-xl hover:bg-gray-200 transition-colors "
+                    className="p-4 rounded-full text-xl hover:bg-gray-200 transition-colors "
                     onClick={toggleDarkMode}
                 >
                     {isDarkMode ? <Sun size={28} /> : <Moon size={28} />}
