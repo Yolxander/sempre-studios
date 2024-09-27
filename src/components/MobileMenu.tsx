@@ -2,7 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { X } from "lucide-react"; // Import X icon from lucide-react
+import { X } from "lucide-react";
+import {Audiowide} from "@next/font/google"; // Import X icon from lucide-react
 
 interface MobileMenuProps {
     sections: string[];
@@ -12,6 +13,11 @@ interface MobileMenuProps {
     toggleMenu: () => void;
     navigateToSection: (section: string) => void;
 }
+const audiowide = Audiowide({
+    weight: "400",
+    subsets: ["latin"],
+});
+
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
                                                           sections,
@@ -48,9 +54,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                     {sections.map((section) => (
                         <li key={section} className="py-2">
                             <button
-                                className={`text-3xl transition-transform hover:scale-105 ${
-                                    currentSection === section ? "font-bold" : "font-normal"
-                                }`}
+                                className={`text-3xl transition-transform hover:scale-105 ${audiowide.className}`}
                                 onClick={() => {
                                     navigateToSection(section);
                                     toggleMenu(); // Close the menu after navigation
