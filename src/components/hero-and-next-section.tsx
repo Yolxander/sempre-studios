@@ -76,7 +76,7 @@ export function HeroAndNextSectionComponent() {
                 background: isDarkMode
                     ? ""
                     : `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
-            #EEE7E7 0%, #E6E4E5 20%, #FEFEFE 40%, #CCCCCC 60%, #999999 80%, #EEEEEE 100%)`,
+            #FEFEFE 0%, #E6E4E5 30%, #EEE7E7 50%, #CCCCCC 80%, #999999 100%)`,
             }}
             onMouseMove={handleMouseMove}
         >
