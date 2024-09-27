@@ -21,7 +21,6 @@ const audiowide = Audiowide({
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
                                                           sections,
-                                                          currentSection,
                                                           isDarkMode,
                                                           isMenuOpen,
                                                           toggleMenu,
