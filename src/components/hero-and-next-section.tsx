@@ -74,7 +74,7 @@ export function HeroAndNextSectionComponent() {
             }`}
             style={{
                 background: isDarkMode
-                    ? "none"
+                    ? ""
                     : `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
             #EEE7E7 0%, #E6E4E5 20%, #FEFEFE 40%, #CCCCCC 60%, #999999 80%, #EEEEEE 100%)`,
             }}
