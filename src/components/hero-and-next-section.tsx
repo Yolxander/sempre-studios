@@ -644,35 +644,14 @@ export function HeroAndNextSectionComponent() {
             </div>
 
             {/* Vertical Navbar for large screens */}
-            <motion.section
-                key="projects"
-                variants={sectionVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="hidden lg:block"
-            >
-                <nav className="fixed right-6 top-1/2 transform -translate-y-1/2 flex flex-col items-end space-y-4">
-                    {sections.map((section) => (
-                        <Button
-                            key={section}
-                            variant="ghost"
-                            className={`text-xl font-medium transition-colors duration-200 ${
-                                currentSection === section
-                                    ? `${isDarkMode ? "text-white" : "text-black"}`
-                                    : `${
-                                        isDarkMode
-                                            ? "text-gray-500 hover:text-white"
-                                            : "text-gray-500 hover:text-black"
-                                    }`
-                            } font-audiowide ${audiowide.className}`}
-                            onClick={() => navigateToSection(section)}
-                        >
-                            {section}
-                        </Button>
-                    ))}
-                </nav>
-            </motion.section>
+            <MobileMenu
+                sections={sections}
+                currentSection={currentSection}
+                isDarkMode={isDarkMode}
+                isMenuOpen={isMenuOpen}
+                toggleMenu={toggleMenu} // Pass the toggle function
+                navigateToSection={navigateToSection} // Pass the navigation function
+            />
 
             {/* Dark Mode Toggle Button */}
             <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />

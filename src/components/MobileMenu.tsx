@@ -1,23 +1,8 @@
 "use client";
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
-import { Audiowide } from "@next/font/google";
-
-// Modal animation variants
-const modalVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3 } },
-};
-
-// Initialize Audiowide font
-const audiowide = Audiowide({
-    weight: "400",
-    subsets: ["latin"],
-});
+import { motion } from "framer-motion";
+import { X } from "lucide-react"; // Import X icon from lucide-react
 
 interface MobileMenuProps {
     sections: string[];
@@ -37,55 +22,46 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                                                           navigateToSection,
                                                       }) => {
     return (
-        <AnimatePresence>
-            {isMenuOpen && (
-                <motion.div
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-                    variants={modalVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                >
-                    <div
-                        className={`bg-white rounded-lg p-6 w-[90%] max-w-lg ${
-                            isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
-                        }`}
-                    >
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className={`text-3xl font-bold ${audiowide.className}`}>Menu</h2>
-                            <button onClick={toggleMenu}>
-                                <X
-                                    size={24}
-                                    className={`${
-                                        isDarkMode ? "text-gray-400" : "text-gray-500"
-                                    } hover:text-gray-700 transition-colors`}
-                                />
-                            </button>
-                        </div>
+        <motion.div
+            className={`fixed inset-0 z-50 ${
+                isMenuOpen ? "block" : "hidden"
+            } bg-black bg-opacity-80`} // Covers the entire screen
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isMenuOpen ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+        >
+            {/* Close button at the top-right corner */}
+            <button
+                onClick={toggleMenu}
+                className="absolute top-4 right-4 p-2 rounded-full text-xl hover:bg-opacity-50 transition-colors"
+            >
+                <X size={32} className={`${isDarkMode ? "text-white" : "text-black"}`} />
+            </button>
 
-                        <nav className="space-y-4 text-center">
-                            {sections.map((section) => (
-                                <Button
-                                    key={section}
-                                    variant="ghost"
-                                    className={`text-xl font-medium transition-colors duration-200 ${
-                                        currentSection === section
-                                            ? `${isDarkMode ? "text-white" : "text-black"}`
-                                            : `${
-                                                isDarkMode
-                                                    ? "text-gray-500 hover:text-white"
-                                                    : "text-gray-500 hover:text-black"
-                                            }`
-                                    } font-audiowide ${audiowide.className}`}
-                                    onClick={() => navigateToSection(section)}
-                                >
-                                    {section}
-                                </Button>
-                            ))}
-                        </nav>
-                    </div>
-                </motion.div>
-            )}
-        </AnimatePresence>
+            {/* Menu content */}
+            <div
+                className={`flex flex-col justify-center items-end h-full pr-10 space-y-6 ${
+                    isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+                }`}
+            >
+                <ul className="text-right space-y-4">
+                    {sections.map((section) => (
+                        <li key={section} className="py-2">
+                            <button
+                                className={`text-3xl transition-transform hover:scale-105 ${
+                                    currentSection === section ? "font-bold" : "font-normal"
+                                }`}
+                                onClick={() => {
+                                    navigateToSection(section);
+                                    toggleMenu(); // Close the menu after navigation
+                                }}
+                            >
+                                {section}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </motion.div>
     );
 };
