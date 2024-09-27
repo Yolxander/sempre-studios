@@ -269,13 +269,13 @@ export function HeroAndNextSectionComponent() {
                                     <Menu />
                                 </Button>
                             </div>
-                            <div className="max-w-[80%] w-full">
-                                <div className="text-center md:mb-12 md:mt-0 mt-6 ">
+                            <div className="max-w-[80%] w-full ">
+                                <div className="text-center md:mb-12 mb-6 md:mt-0 mt-6 ">
                                     <h2 className={`text-xl font-bold font-audiowide  md:text-[30px] ${audiowide.className}`}>
                                         Services
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto max-h-[83vh]">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto md:max-h-[83vh] h-[92vh] pb-10  md:pb-0">
                                     {[
                                         {
                                             title: "Web Design",
@@ -392,7 +392,7 @@ export function HeroAndNextSectionComponent() {
                                         Our Projects
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-12 gap-4 h-[calc(100vh-200px)] overflow-y-auto md:overflow-y-hidden md:px-o px-3">
+                                <div className="grid grid-cols-12 gap-4 h-[90vh] overflow-y-auto md:overflow-y-hidden md:px-o px-3 md:h-[calc(100vh-200px)] pb-10 md:pb-0">
                                     <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between ">
                                         <div>
                                             <h3
@@ -718,7 +718,7 @@ export function HeroAndNextSectionComponent() {
             </motion.section>
 
             {/* Dark Mode Toggle Button */}
-            <div className="fixed md:bottom-7 bottom-7 md:left-6 left-3 ">
+            <div className="fixed md:bottom-7 bottom-7 md:left-6 left-1 ">
                 <Button
                     variant="ghost"
                     className="p-4 rounded-full text-xl hover:bg-gray-200 transition-colors "
