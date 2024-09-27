@@ -24,9 +24,7 @@ export function HeroAndNextSectionComponent() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode state
     const [isMenuOpen, setIsMenuOpen] = useState(false); // Hamburger menu state
-    const sectionRefs = useRef<RefObject<HTMLElement>[]>(
-        sections.map(() => React.createRef<HTMLElement>())
-    );
+
 
     const navigateToSection = (section: string) => {
         setCurrentSection(section);
