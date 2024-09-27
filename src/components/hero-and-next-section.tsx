@@ -385,7 +385,7 @@ export function HeroAndNextSectionComponent() {
                                 </Button>
                             </div>
                             <div className="lg:max-w-[85%] w-full lg:px-8 max-w-[100%] px-1">
-                                <div className="text-center mb-6">
+                                <div className="text-center mb-5">
                                     <h2
                                         className={`text-xl font-bold md:text-[30px] ${audiowide.className}`}
                                     >
