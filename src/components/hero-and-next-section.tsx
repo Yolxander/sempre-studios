@@ -3,8 +3,10 @@
 import React, { useState, useRef, RefObject } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp, ArrowRight, X, Sun, Moon, Menu } from "lucide-react";
+import { ChevronDown, ChevronUp, ArrowRight, X, Menu } from "lucide-react";
 import { Audiowide } from "@next/font/google";
+import { MobileMenu } from "@/components/MobileMenu";
+import { DarkModeToggle } from "@/components/DarkModeToggle";
 
 // Modal animation variants
 const modalVariants = {
@@ -631,59 +633,14 @@ export function HeroAndNextSectionComponent() {
                     </AnimatePresence>
                 )}
 
-                {/* Menu Modal for Mobile Hamburger */}
-                {isMenuOpen && (
-                    <AnimatePresence>
-                        <motion.div
-                            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 "
-                            variants={modalVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                        >
-                            <div
-                                className={`bg-white rounded-lg p-6 w-[90%] max-w-lg  ${
-                                    isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
-                                }`}
-                            >
-                                <div className="flex justify-between items-center mb-4">
-                                    <h2 className={`text-3xl font-bold ${audiowide.className}`}>
-                                        Menu
-                                    </h2>
-                                    <button onClick={toggleMenu}>
-                                        <X
-                                            size={24}
-                                            className={`${
-                                                isDarkMode ? "text-gray-400" : "text-gray-500"
-                                            } hover:text-gray-700 transition-colors`}
-                                        />
-                                    </button>
-                                </div>
-
-                                <nav className="space-y-4 text-center">
-                                    {sections.map((section) => (
-                                        <Button
-                                            key={section}
-                                            variant="ghost"
-                                            className={`text-xl font-medium transition-colors duration-200 ${
-                                                currentSection === section
-                                                    ? `${isDarkMode ? "text-white" : "text-black"}`
-                                                    : `${
-                                                        isDarkMode
-                                                            ? "text-gray-500 hover:text-white"
-                                                            : "text-gray-500 hover:text-black"
-                                                    }`
-                                            } font-audiowide ${audiowide.className}`}
-                                            onClick={() => navigateToSection(section)}
-                                        >
-                                            {section}
-                                        </Button>
-                                    ))}
-                                </nav>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-                )}
+                <MobileMenu
+                    sections={sections}
+                    currentSection={currentSection}
+                    isDarkMode={isDarkMode}
+                    isMenuOpen={isMenuOpen}
+                    toggleMenu={toggleMenu}
+                    navigateToSection={navigateToSection}
+                />
             </div>
 
             {/* Vertical Navbar for large screens */}
@@ -718,15 +675,7 @@ export function HeroAndNextSectionComponent() {
             </motion.section>
 
             {/* Dark Mode Toggle Button */}
-            <div className="fixed md:bottom-7 bottom-7 md:left-6 left-1 ">
-                <Button
-                    variant="ghost"
-                    className="p-4 rounded-full text-xl hover:bg-gray-200 transition-colors "
-                    onClick={toggleDarkMode}
-                >
-                    {isDarkMode ? <Sun size={28} /> : <Moon size={28} />}
-                </Button>
-            </div>
+            <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
 
             <div
                 className={`rounded-full border fixed bottom-[-6px] right-4 md:hidden ${
