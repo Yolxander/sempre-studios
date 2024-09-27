@@ -387,7 +387,7 @@ export function HeroAndNextSectionComponent() {
                                 </Button>
                             </div>
                             <div className="lg:max-w-[85%] w-full lg:px-8 max-w-[100%] px-1">
-                                <div className="text-center mb-5">
+                                <div className="text-center mb-5 md:mb-3">
                                     <h2
                                         className={`text-xl font-bold md:text-[30px] ${audiowide.className}`}
                                     >
@@ -402,7 +402,7 @@ export function HeroAndNextSectionComponent() {
                                             >
                                                 NORTH SIMCOE PROPERTY MANAGEMENT
                                             </h3>
-                                            <p className="text-[16px] mb-4">
+                                            <p className="text-[16px] md:text-[20px] mb-4">
                                                 Top property management company in Simcoe County, offering comprehensive
                                                 services for property owners and tenants alike.
                                             </p>
@@ -427,7 +427,7 @@ export function HeroAndNextSectionComponent() {
                                             >
                                                 RMD Property Management
                                             </h3>
-                                            <p className="text-[16px] mb-4">
+                                            <p className="text-[16px] md:text-[20px] mb-4">
                                                 Expert care for your paradise in Costa Rica, providing top-notch property
                                                 management services for international property owners.
                                             </p>
@@ -452,7 +452,7 @@ export function HeroAndNextSectionComponent() {
                                             >
                                                 Premium Natural Wood Charcoal
                                             </h3>
-                                            <p className="text-[16px] mb-4">
+                                            <p className="text-[16px] md:text-[20px] mb-4">
                                                 High-quality, sustainable wood charcoal products for grilling enthusiasts,
                                                 restaurants, and industrial applications.
                                             </p>
@@ -477,7 +477,7 @@ export function HeroAndNextSectionComponent() {
                                             >
                                                 Learn More About Our Work
                                             </h3>
-                                            <p className="text-[16px] mb-4">
+                                            <p className="text-[16px] md:text-[20px] mb-4">
                                                 We specialize in creating tailored, innovative websites and applications that
                                                 drive growth and enhance user experience.
                                             </p>
