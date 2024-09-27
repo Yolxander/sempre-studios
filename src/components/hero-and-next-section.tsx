@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, RefObject } from "react";
+import React, { useState, useRef, RefObject, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, ArrowRight, X, Menu } from "lucide-react";
@@ -65,18 +65,32 @@ export function HeroAndNextSectionComponent() {
         setGradientPosition({ x, y });
     };
 
+    // Custom cursor logic
+    useEffect(() => {
+        const cursor = document.querySelector(".cursor");
+
+        const updateCursorPosition = (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        };
+
+        document.addEventListener("mousemove", updateCursorPosition);
+
+        return () => {
+            document.removeEventListener("mousemove", updateCursorPosition);
+        };
+    }, []);
+
     return (
         <div
             className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-2 transition-colors duration-500 overflow-y-hidden relative ${
-                isDarkMode
-                    ? "bg-gray-900 border-gray-800 text-white"
-                    : "border-black border-[2px] text-black"
+                isDarkMode ? "bg-gray-900 border-gray-800 text-white" : "border-black border-[2px] text-black"
             }`}
             style={{
                 background: isDarkMode
                     ? ""
                     : `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
-            #FEFEFE 0%, #E6E4E5 30%, #EEE7E7 50%, #CCCCCC 80%, #999999 100%)`,
+          #FEFEFE 0%, #E6E4E5 30%, #EEE7E7 50%, #CCCCCC 80%, #999999 100%)`,
             }}
             onMouseMove={handleMouseMove}
         >
@@ -98,9 +112,7 @@ export function HeroAndNextSectionComponent() {
                                         <div className={`logo ${audiowide.className}`}>
                                             <div
                                                 className={`icon ${audiowide.className} ${
-                                                    isDarkMode
-                                                        ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                                        : "text-black"
+                                                    isDarkMode ? "bg-gray-800 text-white border-white hover:bg-gray-700" : "text-black"
                                                 }`}
                                             >
                                                 S
@@ -120,11 +132,7 @@ export function HeroAndNextSectionComponent() {
                                             size="sm"
                                             className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
                                                 audiowide.className
-                                            } ${
-                                                isDarkMode
-                                                    ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                                    : "text-black"
-                                            }`}
+                                            } ${isDarkMode ? "bg-gray-800 text-white border-white hover:bg-gray-700" : "text-black"}`}
                                             onClick={toggleMenu}
                                         >
                                             <Menu />
@@ -137,11 +145,7 @@ export function HeroAndNextSectionComponent() {
                                             size="sm"
                                             className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
                                                 audiowide.className
-                                            } ${
-                                                isDarkMode
-                                                    ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                                    : "text-black"
-                                            }`}
+                                            } ${isDarkMode ? "bg-gray-800 text-white border-white hover:bg-gray-700" : "text-black"}`}
                                             onClick={openModal}
                                         >
                                             Say Hi
@@ -156,17 +160,17 @@ export function HeroAndNextSectionComponent() {
                                     <h1 className={`text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px] ${audiowide.className}`}>
                                         Sempre Studios
                                     </h1>
-                                    <h1 className= {`text-[50px] md:text-[50px] font-bold tracking-tight md:pl-[200px] font-light ${audiowide.className}`}>
+                                    <h1 className={`text-[50px] md:text-[50px] font-bold tracking-tight md:pl-[200px] font-light ${audiowide.className}`}>
                                         We create impact
                                     </h1>
-                                    <h1 className={`text-[50px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}>Unlock your business potential</h1>
+                                    <h1 className={`text-[50px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}>
+                                        Unlock your business potential
+                                    </h1>
                                 </div>
 
                                 <Button
                                     className={`rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                        isDarkMode
-                                            ? "bg-white text-black hover:bg-gray-100"
-                                            : "bg-black text-white hover:bg-gray-800"
+                                        isDarkMode ? "bg-white text-black hover:bg-gray-100" : "bg-black text-white hover:bg-gray-800"
                                     }`}
                                 >
                                     Start
@@ -175,18 +179,11 @@ export function HeroAndNextSectionComponent() {
                                 <div className="flex flex-col items-center">
                                     <div
                                         className={`hidden md:block rounded-full border ${
-                                            isDarkMode
-                                                ? "border-gray-400 hover:bg-gray-700"
-                                                : "border-black-300 hover:bg-gray-100"
+                                            isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-black-300 hover:bg-gray-100"
                                         } p-2 mb-5 cursor-pointer transition-colors duration-300`}
                                         onClick={() => navigateToSection("About")}
                                     >
-                                        <ChevronDown
-                                            size={24}
-                                            className={`${
-                                                isDarkMode ? "text-gray-400" : "text-black-400"
-                                            }`}
-                                        />
+                                        <ChevronDown size={24} className={`${isDarkMode ? "text-gray-400" : "text-black-400"}`} />
                                     </div>
                                 </div>
                             </section>
