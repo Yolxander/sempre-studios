@@ -14,7 +14,7 @@ export const DarkModeToggle: React.FC<DarkModeToggleProps> = ({
                                                                   toggleDarkMode,
                                                               }) => {
     return (
-        <div className="fixed md:bottom-7 bottom-7 md:left-6 left-1">
+        <div className="fixed md:bottom-11 bottom-7 md:left-6 left-1">
             <Button
                 variant="ghost"
                 className="p-4 rounded-full text-xl hover:bg-gray-200 transition-colors"
