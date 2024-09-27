@@ -55,7 +55,7 @@ export function HeroAndNextSectionComponent() {
 
     return (
         <div
-            className={`md:h-[95vh]  md:m-4 md:rounded-3xl h-[100vh] m-0  flex  overflow-hidden border-2 transition-colors duration-500 ${
+            className={`md:h-[95vh]  md:m-4 md:rounded-3xl h-[100vh] m-0  flex  overflow-hidden border-2 transition-colors duration-500  overflow-y-hidden ${
                 isDarkMode
                     ? "bg-gray-900 border-gray-800 text-white"
                     : "bg-gradient-to-br from-gray-100 to-gray-50 border-black text-black"
