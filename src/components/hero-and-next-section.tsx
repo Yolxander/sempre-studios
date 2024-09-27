@@ -155,7 +155,7 @@ export function HeroAndNextSectionComponent() {
 
                                 <div className="flex flex-col items-center">
                                     <div
-                                        className={`rounded-full border ${
+                                        className={`hidden md:block rounded-full border ${
                                             isDarkMode
                                                 ? "border-gray-400 hover:bg-gray-700"
                                                 : "border-black-300 hover:bg-gray-100"
@@ -227,7 +227,7 @@ export function HeroAndNextSectionComponent() {
                                 Learn More
                             </Button>
                             <div
-                                className={`rounded-full border ${
+                                className={`hidden md:block rounded-full border ${
                                     isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-gray-300 hover:bg-gray-100"
                                 } p-2 cursor-pointer transition-colors duration-300`}
                                 onClick={() => navigateToSection("Services")}
@@ -338,7 +338,7 @@ export function HeroAndNextSectionComponent() {
                                 </div>
                             </div>
                             <div
-                                className={`rounded-full border md:flex ${
+                                className={`hidden md:block rounded-full border md:flex ${
                                     isDarkMode
                                         ? "border-gray-400 hover:bg-gray-700"
                                         : "border-gray-300 hover:bg-gray-100"
@@ -384,7 +384,7 @@ export function HeroAndNextSectionComponent() {
                                     <Menu />
                                 </Button>
                             </div>
-                            <div className="lg:max-w-[85%] w-full lg:px-8 lg:overflow-y-auto  max-w-[100%] px-1 overflow-y-auto">
+                            <div className="lg:max-w-[85%] w-full lg:px-8 max-w-[100%] px-1">
                                 <div className="text-center mb-6">
                                     <h2
                                         className={`text-xl font-bold md:text-[30px] ${audiowide.className}`}
@@ -392,8 +392,8 @@ export function HeroAndNextSectionComponent() {
                                         Our Projects
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-12 gap-4 h-[calc(100vh-200px)]">
-                                    <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
+                                <div className="grid grid-cols-12 gap-4 h-[calc(100vh-200px)] overflow-y-auto md:overflow-y-hidden md:px-o px-3">
+                                    <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between ">
                                         <div>
                                             <h3
                                                 className={`text-xl font-bold mb-2 ${audiowide.className}`}
@@ -494,7 +494,7 @@ export function HeroAndNextSectionComponent() {
                                 </div>
                             </div>
                             <div
-                                className="rounded-full border border-gray-300 p-2 cursor-pointer hover:bg-gray-100 transition-colors duration-300 my-9"
+                                className="hidden md:block rounded-full border border-gray-300 p-2 cursor-pointer hover:bg-gray-100 transition-colors duration-300 my-9"
                                 onClick={() => navigateToSection("Home")}
                             >
                                 <ChevronUp size={24} className="text-gray-400" />
