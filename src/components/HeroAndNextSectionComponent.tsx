@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useRef, RefObject } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, ChevronUp, Sun, Moon } from 'lucide-react';
+import { ChevronDown, Sun, Moon } from 'lucide-react';
 import { Audiowide } from '@next/font/google';
 import { MobileMenu } from '@/components/MobileMenu'; // Importing the new Mobile Menu component
-import { HamburgerButton } from '@/components/HamburgerButton'; // Importing Hamburger Button component
 import { Header } from '@/components/Header';
 import { SideNavBar } from '@/components/SideNavBar';
 import { Modal } from '@/components/Modal'; // Assuming you already created the Modal component
