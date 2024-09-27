@@ -37,6 +37,7 @@ export function HeroAndNextSectionComponent() {
     const sectionRefs = useRef<RefObject<HTMLElement>[]>(
         sections.map(() => React.createRef<HTMLElement>())
     );
+    const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
 
     const navigateToSection = (section: string) => {
         setCurrentSection(section);
@@ -55,13 +56,29 @@ export function HeroAndNextSectionComponent() {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    // Handle mouse movement for dynamic background
+    const handleMouseMove = (event) => {
+        const { clientX, clientY, currentTarget } = event;
+        const rect = currentTarget.getBoundingClientRect();
+        const x = ((clientX - rect.left) / rect.width) * 100;
+        const y = ((clientY - rect.top) / rect.height) * 100;
+        setGradientPosition({ x, y });
+    };
+
     return (
         <div
-            className={`md:h-[95vh]  md:m-4 md:rounded-3xl h-[100vh] m-0  flex  overflow-hidden border-2 transition-colors duration-500  overflow-y-hidden ${
+            className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-2 transition-colors duration-500 overflow-y-hidden relative ${
                 isDarkMode
                     ? "bg-gray-900 border-gray-800 text-white"
-                    : "bg-gradient-to-br from-gray-100 to-gray-50 border-black text-black"
+                    : "border-black border-[2px] text-black"
             }`}
+            style={{
+                background: isDarkMode
+                    ? "none"
+                    : `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
+            #EEE7E7 0%, #E6E4E5 20%, #FEFEFE 40%, #CCCCCC 60%, #999999 80%, #EEEEEE 100%)`,
+            }}
+            onMouseMove={handleMouseMove}
         >
             <div className="flex-grow">
                 <AnimatePresence mode="wait">
@@ -139,10 +156,10 @@ export function HeroAndNextSectionComponent() {
                                     <h1 className={`text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px] ${audiowide.className}`}>
                                         Sempre Studios
                                     </h1>
-                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight md:pl-[200px] font-light">
+                                    <h1 className= {`text-[50px] md:text-[50px] font-bold tracking-tight md:pl-[200px] font-light ${audiowide.className}`}>
                                         We create impact
                                     </h1>
-                                    <h1 className="text-[50px] md:text-[80px] font-bold tracking-tight font-light">Unlock your business potential</h1>
+                                    <h1 className={`text-[50px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}>Unlock your business potential</h1>
                                 </div>
 
                                 <Button
