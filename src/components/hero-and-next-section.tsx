@@ -352,21 +352,6 @@ export function HeroAndNextSectionComponent() {
                                     }`}
                                 />
                             </div>
-                            <div
-                                className={`rounded-full border fixed bottom-[-6px] right-4 md:hidden ${
-                                    isDarkMode
-                                        ? "border-gray-400 hover:bg-gray-700"
-                                        : "border-gray-300 hover:bg-gray-100"
-                                } p-2 cursor-pointer transition-colors duration-300 md:mt-16 md:mb-0 mt-2 mb-10 h-10`}
-                                onClick={() => navigateToSection("Projects")}
-                            >
-                                <ChevronDown
-                                    size={24}
-                                    className={`${
-                                        isDarkMode ? "text-gray-400" : "text-gray-400"
-                                    }`}
-                                />
-                            </div>
                         </motion.section>
 
                     )}
@@ -742,6 +727,24 @@ export function HeroAndNextSectionComponent() {
                     {isDarkMode ? <Sun size={28} /> : <Moon size={28} />}
                 </Button>
             </div>
+
+            <div
+                className={`rounded-full border fixed bottom-[-6px] right-4 md:hidden ${
+                    isDarkMode
+                        ? "border-gray-400 hover:bg-gray-700"
+                        : "border-gray-300 hover:bg-gray-100"
+                } p-2 cursor-pointer transition-colors duration-300 md:mt-16 md:mb-0 mt-2 mb-8 h-10`}
+                onClick={() => navigateToSection("Projects")}
+            >
+                <ChevronDown
+                    size={24}
+                    className={`${
+                        isDarkMode ? "text-gray-400" : "text-gray-400"
+                    }`}
+                />
+            </div>
         </div>
+
+
     );
 }
