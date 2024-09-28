@@ -66,7 +66,7 @@ export function HeroAndNextSectionComponent() {
     };
 
     useEffect(() => {
-        const cursor = document.querySelector(".cursor");
+        const cursor = document.querySelector(".cursor") as HTMLElement | null;
 
         const updateCursorPosition = (e: MouseEvent) => {
             if (cursor) {
@@ -81,6 +81,7 @@ export function HeroAndNextSectionComponent() {
             document.removeEventListener("mousemove", updateCursorPosition);
         };
     }, []);
+
 
 
 
