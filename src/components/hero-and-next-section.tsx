@@ -57,7 +57,7 @@ export function HeroAndNextSectionComponent() {
     };
 
     // Handle mouse movement for dynamic background
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const { clientX, clientY, currentTarget } = event;
         const rect = currentTarget.getBoundingClientRect();
         const x = ((clientX - rect.left) / rect.width) * 100;
