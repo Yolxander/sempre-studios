@@ -65,13 +65,14 @@ export function HeroAndNextSectionComponent() {
         setGradientPosition({ x, y });
     };
 
-    // Custom cursor logic
     useEffect(() => {
         const cursor = document.querySelector(".cursor");
 
-        const updateCursorPosition = (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
+        const updateCursorPosition = (e: MouseEvent) => {
+            if (cursor) {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            }
         };
 
         document.addEventListener("mousemove", updateCursorPosition);
@@ -80,6 +81,7 @@ export function HeroAndNextSectionComponent() {
             document.removeEventListener("mousemove", updateCursorPosition);
         };
     }, []);
+
 
     return (
         <div
