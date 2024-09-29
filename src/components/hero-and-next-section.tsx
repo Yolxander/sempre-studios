@@ -94,8 +94,9 @@ export function HeroAndNextSectionComponent() {
                 background: isDarkMode
                     ? ""
                     : `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
-                      #dce1f6 0%, #e6e4e5 30%, #eee7e7 50%, #cccccc 80%, #999999 100%)`,
+          #DCE1F6 0%, #F6F7FC 50%, #DCE1F6 100%)`,
             }}
+
             onMouseMove={handleMouseMove}
         >
             <div className="flex-grow">
