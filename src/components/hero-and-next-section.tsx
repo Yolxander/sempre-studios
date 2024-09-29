@@ -15,6 +15,7 @@ const modalVariants = {
     exit: { opacity: 0, scale: 0.95, transition: { duration: 0.3 } },
 };
 
+// Section animation variants
 const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -27,7 +28,7 @@ const audiowide = Audiowide({
     subsets: ["latin"],
 });
 
-const sections = ["Home", "About", "Services", "Projects"];
+const sections = ["Home", "About", "Services", "Projects", "Contact"];
 
 export function HeroAndNextSectionComponent() {
     const [currentSection, setCurrentSection] = useState("Home");
@@ -82,24 +83,24 @@ export function HeroAndNextSectionComponent() {
         };
     }, []);
 
-
-
-
     return (
         <div
             className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-2 transition-colors duration-500 overflow-y-hidden relative ${
-                isDarkMode ? "bg-gray-900 border-gray-800 text-white" : "border-black border-[2px] text-black"
+                isDarkMode
+                    ? "bg-gray-900 border-gray-800 text-white"
+                    : "border-black text-[#083d77]"
             }`}
             style={{
                 background: isDarkMode
                     ? ""
                     : `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
-          #FEFEFE 0%, #E6E4E5 30%, #EEE7E7 50%, #CCCCCC 80%, #999999 100%)`,
+                      #dce1f6 0%, #e6e4e5 30%, #eee7e7 50%, #cccccc 80%, #999999 100%)`,
             }}
             onMouseMove={handleMouseMove}
         >
             <div className="flex-grow">
                 <AnimatePresence mode="wait">
+                    {/* Home Section */}
                     {currentSection === "Home" && (
                         <motion.div
                             key="hero"
@@ -116,7 +117,9 @@ export function HeroAndNextSectionComponent() {
                                         <div className={`logo ${audiowide.className}`}>
                                             <div
                                                 className={`icon ${audiowide.className} ${
-                                                    isDarkMode ? "bg-gray-800 text-white border-white hover:bg-gray-700" : "text-black"
+                                                    isDarkMode
+                                                        ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                                        : "text-[#083d77]"
                                                 }`}
                                             >
                                                 S
@@ -134,9 +137,11 @@ export function HeroAndNextSectionComponent() {
                                         <Button
                                             variant="outline"
                                             size="sm"
-                                            className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                                audiowide.className
-                                            } ${isDarkMode ? "bg-gray-800 text-white border-white hover:bg-gray-700" : "text-black"}`}
+                                            className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
+                                                isDarkMode
+                                                    ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                                    : "bg-white text-[#083d77] border-black"
+                                            }`}
                                             onClick={toggleMenu}
                                         >
                                             <Menu />
@@ -147,9 +152,11 @@ export function HeroAndNextSectionComponent() {
                                         <Button
                                             variant="outline"
                                             size="sm"
-                                            className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                                audiowide.className
-                                            } ${isDarkMode ? "bg-gray-800 text-white border-white hover:bg-gray-700" : "text-black"}`}
+                                            className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
+                                                isDarkMode
+                                                    ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                                    : "bg-white text-[#083d77] border-black"
+                                            }`}
                                             onClick={openModal}
                                         >
                                             Say Hi
@@ -161,20 +168,28 @@ export function HeroAndNextSectionComponent() {
                             {/* Hero Content Section */}
                             <section className="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
                                 <div className="space-y-4 mb-12">
-                                    <h1 className={`text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px] ${audiowide.className}`}>
+                                    <h1
+                                        className={`text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px] ${audiowide.className}`}
+                                    >
                                         Sempre Studios
                                     </h1>
-                                    <h1 className={`text-[50px] md:text-[50px] font-bold tracking-tight md:pl-[200px] font-light ${audiowide.className}`}>
+                                    <h1
+                                        className={`text-[50px] md:text-[50px] font-bold tracking-tight md:pl-[200px] font-light ${audiowide.className}`}
+                                    >
                                         We create impact
                                     </h1>
-                                    <h1 className={`text-[50px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}>
+                                    <h1
+                                        className={`text-[50px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}
+                                    >
                                         Unlock your business potential
                                     </h1>
                                 </div>
 
                                 <Button
                                     className={`rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                        isDarkMode ? "bg-white text-black hover:bg-gray-100" : "bg-black text-white hover:bg-gray-800"
+                                        isDarkMode
+                                            ? "bg-white text-black hover:bg-gray-100"
+                                            : "bg-[#083d77] text-white hover:bg-gray-800"
                                     }`}
                                 >
                                     Start
@@ -183,18 +198,23 @@ export function HeroAndNextSectionComponent() {
                                 <div className="flex flex-col items-center">
                                     <div
                                         className={`hidden md:block rounded-full border ${
-                                            isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-black-300 hover:bg-gray-100"
+                                            isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-[#083d77] hover:bg-gray-100"
                                         } p-2 mb-5 cursor-pointer transition-colors duration-300`}
                                         onClick={() => navigateToSection("About")}
                                     >
-                                        <ChevronDown size={24} className={`${isDarkMode ? "text-gray-400" : "text-black-400"}`} />
+                                        <ChevronDown
+                                            size={24}
+                                            className={`${
+                                                isDarkMode ? "text-gray-400" : "text-[#083d77]"
+                                            }`}
+                                        />
                                     </div>
                                 </div>
                             </section>
                         </motion.div>
                     )}
 
-
+                    {/* About Section */}
                     {currentSection === "About" && (
                         <motion.section
                             key="about"
@@ -209,19 +229,17 @@ export function HeroAndNextSectionComponent() {
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                        audiowide.className
-                                    } ${
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
                                         isDarkMode
                                             ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                            : "text-black"
+                                            : "bg-white text-[#083d77] border-black"
                                     }`}
                                     onClick={toggleMenu}
                                 >
                                     <Menu />
                                 </Button>
                             </div>
-                            <h2 className={`text-xl font-bold mb-8  md:text-[30px] ${audiowide.className}`}>
+                            <h2 className={`text-xl font-bold mb-8 md:text-[30px] ${audiowide.className}`}>
                                 About Us
                             </h2>
                             <div className="max-w-2xl mb-12">
@@ -241,7 +259,9 @@ export function HeroAndNextSectionComponent() {
                             </div>
                             <Button
                                 className={`rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                    isDarkMode ? "bg-white text-black hover:bg-gray-100" : "bg-black text-white hover:bg-gray-800"
+                                    isDarkMode
+                                        ? "bg-white text-black hover:bg-gray-100"
+                                        : "bg-[#083d77] text-white hover:bg-gray-800"
                                 }`}
                             >
                                 Learn More
@@ -254,15 +274,13 @@ export function HeroAndNextSectionComponent() {
                             >
                                 <ChevronDown
                                     size={24}
-                                    className={`${
-                                        isDarkMode ? "text-gray-400" : "text-gray-400"
-                                    }`}
+                                    className={`${isDarkMode ? "text-gray-400" : "text-gray-400"}`}
                                 />
                             </div>
                         </motion.section>
                     )}
 
-
+                    {/* Services Section */}
                     {currentSection === "Services" && (
                         <motion.section
                             key="services"
@@ -270,32 +288,30 @@ export function HeroAndNextSectionComponent() {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="relative flex-grow flex flex-col items-center justify-center px-4 relative min-h-screen"
+                            className="relative flex-grow flex flex-col items-center justify-center px-4 min-h-screen"
                         >
                             {/* Hamburger Menu for screens under 1000px, moved to the top right */}
                             <div className="block lg:hidden absolute top-4 right-4">
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                        audiowide.className
-                                    } ${
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
                                         isDarkMode
                                             ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                            : "text-black"
+                                            : "bg-white text-[#083d77] border-black"
                                     }`}
                                     onClick={toggleMenu}
                                 >
                                     <Menu />
                                 </Button>
                             </div>
-                            <div className="max-w-[80%] w-full ">
-                                <div className="text-center md:mb-12 mb-6 md:mt-0 mt-6 ">
-                                    <h2 className={`text-xl font-bold font-audiowide  md:text-[30px] ${audiowide.className}`}>
+                            <div className="max-w-[80%] w-full">
+                                <div className="text-center md:mb-12 mb-6 mt-6">
+                                    <h2 className={`text-xl font-bold md:text-[30px] ${audiowide.className}`}>
                                         Services
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto md:max-h-[73vh] h-[92vh] pb-10  md:pb-0">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto md:max-h-[73vh] h-[92vh] pb-10 md:pb-0">
                                     {[
                                         {
                                             title: "Web Design",
@@ -336,21 +352,20 @@ export function HeroAndNextSectionComponent() {
                                         >
                                             <div className="mb-4">
                                                 <h4
-                                                    className={`text-[20px] md:text-[26px] font-semibold mb-2 font-audiowide ${audiowide.className}`}
+                                                    className={`text-[20px] md:text-[26px] font-semibold mb-2 ${audiowide.className}`}
                                                 >
                                                     {service.title}
                                                 </h4>
-                                                <p className="text-white-200 text-[16px] md:text-[20px] mb-4">
+                                                <p className={`text-${isDarkMode ? "white" : "black"} text-[16px] md:text-[20px] mb-4`}>
                                                     {service.description}
                                                 </p>
                                                 <Button
                                                     variant="link"
                                                     className={`p-0 h-auto font-semibold ${
-                                                        isDarkMode ? "text-white" : "text-black"
+                                                        isDarkMode ? "text-white" : "text-[#083d77]"
                                                     }`}
                                                 >
-                                                    Read more{" "}
-                                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                                    Read more <ArrowRight className="ml-2 h-4 w-4" />
                                                 </Button>
                                             </div>
                                         </div>
@@ -362,20 +377,15 @@ export function HeroAndNextSectionComponent() {
                                     isDarkMode
                                         ? "border-gray-400 hover:bg-gray-700"
                                         : "border-gray-300 hover:bg-gray-100"
-                                } p-2 cursor-pointer transition-colors duration-300 md:mb-0 mt-2 mb-12 h-10 hidden`}
+                                } p-2 cursor-pointer transition-colors duration-300 mt-2 mb-12`}
                                 onClick={() => navigateToSection("Projects")}
                             >
-                                <ChevronDown
-                                    size={24}
-                                    className={`${
-                                        isDarkMode ? "text-gray-400" : "text-gray-400"
-                                    }`}
-                                />
+                                <ChevronDown size={24} className={`${isDarkMode ? "text-gray-400" : "text-gray-400"}`} />
                             </div>
                         </motion.section>
-
                     )}
 
+                    {/* Projects Section */}
                     {currentSection === "Projects" && (
                         <motion.section
                             key="projects"
@@ -383,7 +393,7 @@ export function HeroAndNextSectionComponent() {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="relative flex-grow flex flex-col items-center justify-center px-4 relative min-h-screen snap-start"
+                            className="relative flex-grow flex flex-col items-center justify-center px-4 min-h-screen snap-start"
                             id="Projects"
                             ref={sectionRefs.current[3]}
                         >
@@ -392,12 +402,10 @@ export function HeroAndNextSectionComponent() {
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                        audiowide.className
-                                    } ${
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
                                         isDarkMode
                                             ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                            : "text-black"
+                                            : "bg-white text-[#083d77] border-black"
                                     }`}
                                     onClick={toggleMenu}
                                 >
@@ -406,18 +414,14 @@ export function HeroAndNextSectionComponent() {
                             </div>
                             <div className="lg:max-w-[85%] w-full lg:px-8 max-w-[100%] px-1">
                                 <div className="text-center mb-5 md:mb-3">
-                                    <h2
-                                        className={`text-xl font-bold md:text-[30px] ${audiowide.className}`}
-                                    >
+                                    <h2 className={`text-xl font-bold md:text-[30px] ${audiowide.className}`}>
                                         Our Projects
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-12 gap-4 h-[90vh] overflow-y-auto md:overflow-y-hidden md:px-o px-3 md:h-[calc(100vh-200px)] pb-10 md:pb-0">
-                                    <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between ">
+                                <div className="grid grid-cols-12 gap-4 h-[90vh] overflow-y-auto md:overflow-y-hidden md:px-0 px-3 md:h-[calc(100vh-200px)] pb-10 md:pb-0">
+                                    <div className="col-span-12 md:col-span-8 border-[0.5px] border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3
-                                                className={`text-xl font-bold mb-2 ${audiowide.className}`}
-                                            >
+                                            <h3 className={`text-xl font-bold mb-2 ${audiowide.className}`}>
                                                 NORTH SIMCOE PROPERTY MANAGEMENT
                                             </h3>
                                             <p className="text-[16px] md:text-[20px] mb-4">
@@ -426,23 +430,17 @@ export function HeroAndNextSectionComponent() {
                                             </p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-[16px] py-1 px-3"
+                                            className="bg-[#083d77] text-white hover:bg-gray-800 self-start text-[16px] py-1 px-3"
                                             onClick={() =>
-                                                window.open(
-                                                    "https://northsimcoepm.com/",
-                                                    "_blank"
-                                                )
+                                                window.open("https://northsimcoepm.com/", "_blank")
                                             }
                                         >
-                                            Visit{" "}
-                                            <ArrowRight className="ml-1 h-3 w-3" />
+                                            Visit <ArrowRight className="ml-1 h-3 w-3" />
                                         </Button>
                                     </div>
-                                    <div className="col-span-12 md:col-span-4 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
+                                    <div className="col-span-12 md:col-span-4 border-[0.5px] border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3
-                                                className={`text-xl font-bold mb-2 ${audiowide.className}`}
-                                            >
+                                            <h3 className={`text-xl font-bold mb-2 ${audiowide.className}`}>
                                                 RMD Property Management
                                             </h3>
                                             <p className="text-[16px] md:text-[20px] mb-4">
@@ -451,23 +449,17 @@ export function HeroAndNextSectionComponent() {
                                             </p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-[16px] py-1 px-3"
+                                            className="bg-[#083d77] text-white hover:bg-gray-800 self-start text-[16px] py-1 px-3"
                                             onClick={() =>
-                                                window.open(
-                                                    "https://costa-rica-site.webflow.io/",
-                                                    "_blank"
-                                                )
+                                                window.open("https://costa-rica-site.webflow.io/", "_blank")
                                             }
                                         >
-                                            Visit{" "}
-                                            <ArrowRight className="ml-1 h-3 w-3" />
+                                            Visit <ArrowRight className="ml-1 h-3 w-3" />
                                         </Button>
                                     </div>
-                                    <div className="col-span-12 md:col-span-4 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
+                                    <div className="col-span-12 md:col-span-4 border-[0.5px] border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3
-                                                className={`text-xl font-bold mb-2 ${audiowide.className}`}
-                                            >
+                                            <h3 className={`text-xl font-bold mb-2 ${audiowide.className}`}>
                                                 Premium Natural Wood Charcoal
                                             </h3>
                                             <p className="text-[16px] md:text-[20px] mb-4">
@@ -476,23 +468,17 @@ export function HeroAndNextSectionComponent() {
                                             </p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-[16px] py-1 px-3"
+                                            className="bg-[#083d77] text-white hover:bg-gray-800 self-start text-[16px] py-1 px-3"
                                             onClick={() =>
-                                                window.open(
-                                                    "https://charcoal.jonex.ca/",
-                                                    "_blank"
-                                                )
+                                                window.open("https://charcoal.jonex.ca/", "_blank")
                                             }
                                         >
-                                            Visit{" "}
-                                            <ArrowRight className="ml-1 h-3 w-3" />
+                                            Visit <ArrowRight className="ml-1 h-3 w-3" />
                                         </Button>
                                     </div>
-                                    <div className="col-span-12 md:col-span-8 border-[0.5px]  border-black rounded-2xl p-6 flex flex-col justify-between">
+                                    <div className="col-span-12 md:col-span-8 border-[0.5px] border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
-                                            <h3
-                                                className={`text-xl font-bold mb-2 ${audiowide.className}`}
-                                            >
+                                            <h3 className={`text-xl font-bold mb-2 ${audiowide.className}`}>
                                                 Learn More About Our Work
                                             </h3>
                                             <p className="text-[16px] md:text-[20px] mb-4">
@@ -504,11 +490,10 @@ export function HeroAndNextSectionComponent() {
                                             </p>
                                         </div>
                                         <Button
-                                            className="bg-black text-white hover:bg-gray-800 self-start text-[16px] py-1 px-3"
+                                            className="bg-[#083d77] text-white hover:bg-gray-800 self-start text-[16px] py-1 px-3"
                                             onClick={() => navigateToSection("Contact")}
                                         >
-                                            Contact Us{" "}
-                                            <ArrowRight className="ml-1 h-3 w-3" />
+                                            Contact Us <ArrowRight className="ml-1 h-3 w-3" />
                                         </Button>
                                     </div>
                                 </div>
@@ -520,7 +505,62 @@ export function HeroAndNextSectionComponent() {
                                 <ChevronUp size={24} className="text-gray-400" />
                             </div>
                         </motion.section>
+                    )}
 
+                    {/* Contact Section */}
+                    {currentSection === "Contact" && (
+                        <motion.section
+                            key="contact"
+                            variants={sectionVariants}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
+                            className="relative flex-grow flex flex-col items-center justify-center px-4 min-h-screen"
+                        >
+                            {/* Hamburger Menu for screens under 1000px, moved to the top right */}
+                            <div className="block lg:hidden absolute top-4 right-4">
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
+                                        isDarkMode
+                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                            : "bg-white text-[#083d77] border-black"
+                                    }`}
+                                    onClick={toggleMenu}
+                                >
+                                    <Menu />
+                                </Button>
+                            </div>
+                            <h2 className={`text-xl font-bold mb-8 md:text-[30px] ${audiowide.className}`}>
+                                Contact Us
+                            </h2>
+                            <div className="max-w-2xl mb-12">
+                                <p className="text-[16px] md:text-[20px] mb-6">
+                                    Have questions or ready to start your next project? We'd love to hear from you!
+                                </p>
+                                <p className="text-[16px] md:text-[20px]">
+                                    Reach out to us through the form below or connect with us via email or phone.
+                                </p>
+                            </div>
+                            <Button
+                                className={`rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105 ${
+                                    isDarkMode
+                                        ? "bg-white text-black hover:bg-gray-100"
+                                        : "bg-[#083d77] text-white hover:bg-gray-800"
+                                }`}
+                            >
+                                Get in Touch
+                            </Button>
+                            <div
+                                className={`hidden md:block rounded-full border ${
+                                    isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-gray-300 hover:bg-gray-100"
+                                } p-2 cursor-pointer transition-colors duration-300`}
+                                onClick={() => navigateToSection("Home")}
+                            >
+                                <ChevronUp size={24} className={`${isDarkMode ? "text-gray-400" : "text-gray-400"}`} />
+                            </div>
+                        </motion.section>
                     )}
                 </AnimatePresence>
 
@@ -534,21 +574,14 @@ export function HeroAndNextSectionComponent() {
                             animate="visible"
                             exit="exit"
                         >
-                            {/* Hamburger Menu for screens under 1000px, moved to the top right */}
-                            <div className="block lg:hidden absolute top-4 right-4">
+                            {/* Close Button */}
+                            <div className="absolute top-4 right-4">
                                 <Button
-                                    variant="outline"
-                                    size="sm"
-                                    className={`rounded-full px-4 py-2 text-[20px] font-medium bg-white hover:bg-gray-50 relative transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                        audiowide.className
-                                    } ${
-                                        isDarkMode
-                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                            : "text-black"
-                                    }`}
-                                    onClick={toggleMenu}
+                                    variant="ghost"
+                                    onClick={closeModal}
+                                    className={`text-${isDarkMode ? "white" : "black"}`}
                                 >
-                                    <Menu />
+                                    <X size={24} />
                                 </Button>
                             </div>
                             <div
@@ -557,9 +590,7 @@ export function HeroAndNextSectionComponent() {
                                 }`}
                             >
                                 <div className="flex justify-between items-center mb-4">
-                                    <h2 className={`text-3xl font-bold ${audiowide.className}`}>
-                                        Contact Us
-                                    </h2>
+                                    <h2 className={`text-3xl font-bold ${audiowide.className}`}>Contact Us</h2>
                                     <button onClick={closeModal}>
                                         <X
                                             size={24}
@@ -588,8 +619,8 @@ export function HeroAndNextSectionComponent() {
                                             className={`mt-1 block w-full border ${
                                                 isDarkMode
                                                     ? "border-gray-600 bg-gray-700 text-white"
-                                                    : "border-black text-black"
-                                            } rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm p-2`}
+                                                    : "border-gray-300 text-black"
+                                            } rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
                                             placeholder="Your Name"
                                         />
                                     </div>
@@ -609,8 +640,8 @@ export function HeroAndNextSectionComponent() {
                                             className={`mt-1 block w-full border ${
                                                 isDarkMode
                                                     ? "border-gray-600 bg-gray-700 text-white"
-                                                    : "border-black text-black"
-                                            } rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm p-2`}
+                                                    : "border-gray-300 text-black"
+                                            } rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
                                             placeholder="you@example.com"
                                         />
                                     </div>
@@ -630,16 +661,16 @@ export function HeroAndNextSectionComponent() {
                                             className={`mt-1 block w-full border ${
                                                 isDarkMode
                                                     ? "border-gray-600 bg-gray-700 text-white"
-                                                    : "border-black text-black"
-                                            } rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm p-2`}
+                                                    : "border-gray-300 text-black"
+                                            } rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
                                             placeholder="Your Message"
                                         />
                                     </div>
                                     <Button
                                         className={`rounded-full px-6 py-3 text-lg font-semibold w-full transition-transform duration-300 ease-in-out hover:scale-105 ${
                                             isDarkMode
-                                                ? "bg-white text-black hover:bg-gray-200"
-                                                : "bg-black text-white hover:bg-gray-800"
+                                                ? "bg-gray-200 text-black hover:bg-gray-300"
+                                                : "bg-[#083d77] text-white hover:bg-gray-800"
                                         }`}
                                         type="submit"
                                     >
@@ -651,6 +682,7 @@ export function HeroAndNextSectionComponent() {
                     </AnimatePresence>
                 )}
 
+                {/* Mobile Menu */}
                 <MobileMenu
                     sections={sections}
                     currentSection={currentSection}
@@ -662,37 +694,8 @@ export function HeroAndNextSectionComponent() {
             </div>
 
             {/* Vertical Navbar for large screens */}
-            <MobileMenu
-                sections={sections}
-                currentSection={currentSection}
-                isDarkMode={isDarkMode}
-                isMenuOpen={isMenuOpen}
-                toggleMenu={toggleMenu} // Pass the toggle function
-                navigateToSection={navigateToSection} // Pass the navigation function
-            />
-
-            {/* Dark Mode Toggle Button */}
-            <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-
-            <div
-                className={`rounded-full border fixed bottom-[-6px] right-4 md:hidden ${
-                    isDarkMode
-                        ? "border-gray-400 hover:bg-gray-700"
-                        : "border-gray-300 hover:bg-gray-100"
-                } p-2 cursor-pointer transition-colors duration-300 md:mt-16 md:mb-0 mt-2 mb-8 h-10`}
-                onClick={() => navigateToSection("Projects")}
-            >
-                <ChevronDown
-                    size={24}
-                    className={`${
-                        isDarkMode ? "text-gray-400" : "text-gray-400"
-                    }`}
-                />
-            </div>
-
-            {/* Vertical Navbar for large screens */}
-            <motion.section
-                key="projects"
+            <motion.nav
+                key="vertical-navbar"
                 variants={sectionVariants}
                 initial="hidden"
                 animate="visible"
@@ -706,22 +709,23 @@ export function HeroAndNextSectionComponent() {
                             variant="ghost"
                             className={`text-xl font-medium transition-colors duration-200 ${
                                 currentSection === section
-                                    ? `${isDarkMode ? "text-white" : "text-black"}`
-                                    : `${
-                                        isDarkMode
-                                            ? "text-gray-500 hover:text-white"
-                                            : "text-gray-500 hover:text-black"
-                                    }`
-                            } font-audiowide ${audiowide.className}`}
+                                    ? isDarkMode
+                                        ? "text-white"
+                                        : "text-[#083d77]"
+                                    : isDarkMode
+                                        ? "text-gray-500 hover:text-white"
+                                        : "text-gray-500 hover:text-[#083d77]"
+                            } ${audiowide.className}`}
                             onClick={() => navigateToSection(section)}
                         >
                             {section}
                         </Button>
                     ))}
                 </nav>
-            </motion.section>
+            </motion.nav>
+
+            {/* Dark Mode Toggle Button */}
+            <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         </div>
-
-
     );
 }
