@@ -39,6 +39,7 @@ export function HeroAndNextSectionComponent() {
         sections.map(() => React.createRef<HTMLElement>())
     );
     const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
+    const [autoScrollTimer, setAutoScrollTimer] = useState<NodeJS.Timeout | null>(null);
 
     const navigateToSection = (section: string) => {
         setCurrentSection(section);
@@ -66,6 +67,46 @@ export function HeroAndNextSectionComponent() {
         setGradientPosition({ x, y });
     };
 
+    // Auto-scroll to the next section based on a timer
+    const autoScrollToNextSection = () => {
+        const currentIndex = sections.indexOf(currentSection);
+        if (currentIndex < sections.length - 1) {
+            const nextSection = sections[currentIndex + 1];
+            setCurrentSection(nextSection);
+            sectionRefs.current[currentIndex + 1]?.current?.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+    // Handle the "Start" button click for scrolling to About section after 5 seconds
+    const handleStartClick = () => {
+        setTimeout(() => {
+            navigateToSection("About");
+            sectionRefs.current[1]?.current?.scrollIntoView({ behavior: "smooth" });
+        }, 1000); // Delay of 5 seconds
+    };
+
+    useEffect(() => {
+        // Clear the previous auto-scroll timer if it exists
+        if (autoScrollTimer) {
+            clearTimeout(autoScrollTimer);
+        }
+
+        // Set the auto-scroll timer based on the current section
+        if (currentSection === "About" || currentSection === "Services" || currentSection === "Projects") {
+            const scrollDuration = currentSection === "About" ? 15000 : 30000; // Adjust duration for content-heavy sections
+            const timer = setTimeout(() => {
+                autoScrollToNextSection();
+            }, scrollDuration); // Delay between sections (10 seconds for About, longer for others)
+            setAutoScrollTimer(timer);
+        }
+
+        return () => {
+            if (autoScrollTimer) {
+                clearTimeout(autoScrollTimer); // Cleanup on unmount or section change
+            }
+        };
+    }, [currentSection]);
+
     useEffect(() => {
         const cursor = document.querySelector(".cursor") as HTMLElement | null;
 
@@ -83,9 +124,6 @@ export function HeroAndNextSectionComponent() {
         };
     }, []);
 
-
-
-
     return (
         <div
             className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-[5px] transition-colors duration-500 overflow-y-hidden relative ${
@@ -99,7 +137,6 @@ export function HeroAndNextSectionComponent() {
                     : `radial-gradient(circle at ${gradientPosition.x}% ${gradientPosition.y}%, 
           #DCE1F6 0%, #F6F7FC 50%, #DCE1F6 100%)`,
             }}
-
             onMouseMove={handleMouseMove}
         >
             <div className="flex-grow">
@@ -190,6 +227,7 @@ export function HeroAndNextSectionComponent() {
                                             ? "bg-white text-black hover:bg-gray-100"
                                             : "bg-[#083d77] text-white hover:bg-gray-800"
                                     }`}
+                                    onClick={handleStartClick} // Start button triggers scrolling to About after 5 seconds
                                 >
                                     Start
                                 </Button>
@@ -310,7 +348,7 @@ export function HeroAndNextSectionComponent() {
                                         Services
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:overflow-hidden overflow-y-auto md:max-h-[73vh] h-[92vh] pb-10 md:pb-0">
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-2 md:overflow-hidden overflow-y-auto md:max-h-[73vh] h-[92vh] pb-10 md:pb-0">
                                     {[
                                         {
                                             title: "Web Design",
@@ -347,9 +385,9 @@ export function HeroAndNextSectionComponent() {
                                             key={index}
                                             className={`border-t ${
                                                 isDarkMode ? "border-gray-700" : "border-gray-200"
-                                            } pt-6 relative`}
+                                            } md:pt-6 pt-2 relative`}
                                         >
-                                            <div className="mb-4">
+                                            <div className="md:mb-4">
                                                 <h4
                                                     className={`text-[20px] md:text-[26px] font-semibold mb-2 ${audiowide.className}`}
                                                 >
@@ -411,13 +449,13 @@ export function HeroAndNextSectionComponent() {
                                     <Menu />
                                 </Button>
                             </div>
-                            <div className="lg:max-w-[85%] w-full lg:px-8 max-w-[100%] px-1">
-                                <div className="text-center mb-5 md:mb-3">
+                            <div className="lg:max-w-[85%] w-full lg:px-8 max-w-[100%] md:px-1 px-4">
+                                <div className="text-center mb-2 md:mb-3">
                                     <h2 className={`text-xl font-bold md:text-[30px] ${audiowide.className}`}>
                                         Our Projects
                                     </h2>
                                 </div>
-                                <div className="grid grid-cols-12 gap-4 h-[90vh] overflow-y-auto md:overflow-y-hidden md:px-0 px-3 md:h-[calc(100vh-200px)] pb-10 md:pb-0">
+                                <div className="grid grid-cols-12 gap-4 h-[90vh] overflow-y-auto md:overflow-y-hidden md:px-0 px-3 md:h-[calc(100vh-200px)] pt-2 pb-10 md:pb-0">
                                     <div className="col-span-12 md:col-span-8 border-[0.5px] border-black rounded-2xl p-6 flex flex-col justify-between">
                                         <div>
                                             <h3 className={`text-xl font-bold mb-2 ${audiowide.className}`}>
