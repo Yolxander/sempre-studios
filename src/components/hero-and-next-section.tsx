@@ -39,7 +39,7 @@ export function HeroAndNextSectionComponent() {
         sections.map(() => React.createRef<HTMLElement>())
     );
     const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
-    const [autoScrollTimer, setAutoScrollTimer] = useState<NodeJS.Timeout | null>(null);
+    const [scrolling, setScrolling] = useState(false);
 
     const navigateToSection = (section: string) => {
         setCurrentSection(section);
@@ -67,8 +67,8 @@ export function HeroAndNextSectionComponent() {
         setGradientPosition({ x, y });
     };
 
-    // Auto-scroll to the next section based on a timer
-    const autoScrollToNextSection = () => {
+    // Scroll to the next section
+    const scrollToNextSection = () => {
         const currentIndex = sections.indexOf(currentSection);
         if (currentIndex < sections.length - 1) {
             const nextSection = sections[currentIndex + 1];
@@ -77,35 +77,39 @@ export function HeroAndNextSectionComponent() {
         }
     };
 
-    // Handle the "Start" button click for scrolling to About section after 5 seconds
-    const handleStartClick = () => {
-        setTimeout(() => {
-            navigateToSection("About");
-            sectionRefs.current[1]?.current?.scrollIntoView({ behavior: "smooth" });
-        }, 1000); // Delay of 5 seconds
+    // Scroll to the previous section
+    const scrollToPreviousSection = () => {
+        const currentIndex = sections.indexOf(currentSection);
+        if (currentIndex > 0) {
+            const previousSection = sections[currentIndex - 1];
+            setCurrentSection(previousSection);
+            sectionRefs.current[currentIndex - 1]?.current?.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
-    useEffect(() => {
-        // Clear the previous auto-scroll timer if it exists
-        if (autoScrollTimer) {
-            clearTimeout(autoScrollTimer);
+    // Handle scroll event
+    const handleScroll = (event: WheelEvent) => {
+        if (!scrolling) {
+            setScrolling(true);
+            if (event.deltaY > 0) {
+                scrollToNextSection();
+            } else {
+                scrollToPreviousSection();
+            }
+            setTimeout(() => setScrolling(false), 1000); // Prevents triggering multiple scrolls too quickly
         }
+    };
 
-        // Set the auto-scroll timer based on the current section
-        if (currentSection === "About" || currentSection === "Services" || currentSection === "Projects") {
-            const scrollDuration = currentSection === "About" ? 15000 : 30000; // Adjust duration for content-heavy sections
-            const timer = setTimeout(() => {
-                autoScrollToNextSection();
-            }, scrollDuration); // Delay between sections (10 seconds for About, longer for others)
-            setAutoScrollTimer(timer);
-        }
+    // Add scroll event listener
+    useEffect(() => {
+        const handleWheelEvent = (event: WheelEvent) => handleScroll(event);
+
+        window.addEventListener("wheel", handleWheelEvent);
 
         return () => {
-            if (autoScrollTimer) {
-                clearTimeout(autoScrollTimer); // Cleanup on unmount or section change
-            }
+            window.removeEventListener("wheel", handleWheelEvent);
         };
-    }, [currentSection]);
+    }, [currentSection, scrolling]);
 
     useEffect(() => {
         const cursor = document.querySelector(".cursor") as HTMLElement | null;
@@ -150,6 +154,7 @@ export function HeroAndNextSectionComponent() {
                             animate="visible"
                             exit="exit"
                             className="flex flex-col min-h-screen"
+                            ref={sectionRefs.current[0]}
                         >
                             {/* Header Section */}
                             <header className="w-full md:px-6 px-3 py-4">
@@ -227,7 +232,7 @@ export function HeroAndNextSectionComponent() {
                                             ? "bg-white text-black hover:bg-gray-100"
                                             : "bg-[#083d77] text-white hover:bg-gray-800"
                                     }`}
-                                    onClick={handleStartClick} // Start button triggers scrolling to About after 5 seconds
+                                    onClick={() => navigateToSection("About")}
                                 >
                                     Start
                                 </Button>
@@ -260,6 +265,7 @@ export function HeroAndNextSectionComponent() {
                             animate="visible"
                             exit="exit"
                             className="relative flex-grow flex flex-col items-center justify-center text-center px-4 min-h-screen"
+                            ref={sectionRefs.current[1]}
                         >
                             {/* Hamburger Menu for screens under 1000px, moved to the top right */}
                             <div className="block lg:hidden absolute top-4 right-4">
@@ -300,20 +306,10 @@ export function HeroAndNextSectionComponent() {
                                         ? "bg-white text-black hover:bg-gray-100"
                                         : "bg-[#083d77] text-white hover:bg-gray-800"
                                 }`}
+                                onClick={() => navigateToSection("Services")}
                             >
                                 Learn More
                             </Button>
-                            <div
-                                className={`hidden md:block rounded-full border ${
-                                    isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-gray-300 hover:bg-gray-100"
-                                } p-2 cursor-pointer transition-colors duration-300`}
-                                onClick={() => navigateToSection("Services")}
-                            >
-                                <ChevronDown
-                                    size={24}
-                                    className={`${isDarkMode ? "text-gray-400" : "text-gray-400"}`}
-                                />
-                            </div>
                         </motion.section>
                     )}
 
