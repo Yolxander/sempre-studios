@@ -83,12 +83,15 @@ export function HeroAndNextSectionComponent() {
         };
     }, []);
 
+
+
+
     return (
         <div
-            className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-2 transition-colors duration-500 overflow-y-hidden relative ${
+            className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-[5px] transition-colors duration-500 overflow-y-hidden relative ${
                 isDarkMode
                     ? "bg-gray-900 border-gray-800 text-white"
-                    : "border-black text-[#083d77]"
+                    : "border-[#083d77] text-[#083d77]"
             }`}
             style={{
                 background: isDarkMode
@@ -173,11 +176,6 @@ export function HeroAndNextSectionComponent() {
                                         className={`text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px] ${audiowide.className}`}
                                     >
                                         Sempre Studios
-                                    </h1>
-                                    <h1
-                                        className={`text-[50px] md:text-[50px] font-bold tracking-tight md:pl-[200px] font-light ${audiowide.className}`}
-                                    >
-                                        We create impact
                                     </h1>
                                     <h1
                                         className={`text-[50px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}
@@ -537,10 +535,10 @@ export function HeroAndNextSectionComponent() {
                                 Contact Us
                             </h2>
                             <div className="max-w-2xl mb-12">
-                                <p className="text-[16px] md:text-[20px] mb-6">
+                                <p className="text-[16px] md:text-[20px] mb-6 text-center">
                                     Have questions or ready to start your next project? We'd love to hear from you!
                                 </p>
-                                <p className="text-[16px] md:text-[20px]">
+                                <p className="text-[16px] md:text-[20px] text-center">
                                     Reach out to us through the form below or connect with us via email or phone.
                                 </p>
                             </div>
