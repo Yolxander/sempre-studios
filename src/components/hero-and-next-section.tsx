@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState, useRef, RefObject, useEffect, useCallback} from "react";
+import React, { useState, useRef, RefObject, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, ArrowRight, X, Menu } from "lucide-react";
@@ -40,6 +40,7 @@ export function HeroAndNextSectionComponent() {
     );
     const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
     const [scrolling, setScrolling] = useState(false);
+    const [touchStart, setTouchStart] = useState<number | null>(null); // Track initial touch position
 
     const navigateToSection = (section: string) => {
         setCurrentSection(section);
@@ -103,18 +104,41 @@ export function HeroAndNextSectionComponent() {
                 } else {
                     scrollToPreviousSection();
                 }
-                setTimeout(() => setScrolling(false), 1000);
+                setTimeout(() => setScrolling(false), 1000); // Prevents multiple triggers
             }
         };
 
-        window.addEventListener("wheel", handleScroll);
+        const handleTouchStart = (event: TouchEvent) => {
+            setTouchStart(event.touches[0].clientY);
+        };
+
+        const handleTouchMove = (event: TouchEvent) => {
+            if (!touchStart) return;
+
+            const touchEnd = event.touches[0].clientY;
+            const difference = touchStart - touchEnd;
+
+            if (!scrolling && Math.abs(difference) > 50) { // Threshold for swipe
+                setScrolling(true);
+                if (difference > 0) {
+                    scrollToNextSection();
+                } else {
+                    scrollToPreviousSection();
+                }
+                setTimeout(() => setScrolling(false), 1000); // Prevent multiple scroll triggers
+            }
+        };
+
+        window.addEventListener("wheel", handleScroll); // Desktop scroll
+        window.addEventListener("touchstart", handleTouchStart); // Mobile touchstart
+        window.addEventListener("touchmove", handleTouchMove); // Mobile touchmove
 
         return () => {
             window.removeEventListener("wheel", handleScroll);
+            window.removeEventListener("touchstart", handleTouchStart);
+            window.removeEventListener("touchmove", handleTouchMove);
         };
-    }, [scrolling, scrollToNextSection, scrollToPreviousSection]);
-
-
+    }, [scrolling, touchStart, scrollToNextSection, scrollToPreviousSection]);
 
     useEffect(() => {
         const cursor = document.querySelector(".cursor") as HTMLElement | null;
