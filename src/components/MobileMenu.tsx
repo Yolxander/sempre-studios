@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
-import {Audiowide} from "@next/font/google"; // Import X icon from lucide-react
+import { Audiowide } from "@next/font/google"; // Import Audiowide font
 
 interface MobileMenuProps {
     sections: string[];
@@ -13,11 +13,11 @@ interface MobileMenuProps {
     toggleMenu: () => void;
     navigateToSection: (section: string) => void;
 }
+
 const audiowide = Audiowide({
     weight: "400",
     subsets: ["latin"],
 });
-
 
 export const MobileMenu: React.FC<MobileMenuProps> = ({
                                                           sections,
@@ -30,30 +30,45 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         <motion.div
             className={`fixed inset-0 z-50 ${
                 isMenuOpen ? "block" : "hidden"
-            } bg-black bg-opacity-80`} // Covers the entire screen
+            } transition-opacity duration-300 ${
+                isDarkMode ? "bg-gray-900" : "bg-white"
+            } bg-opacity-90`} // Dark mode support with smooth transitions
             initial={{ opacity: 0 }}
             animate={{ opacity: isMenuOpen ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0 }}
         >
-            {/* Close button at the top-right corner */}
+            {/* Close button */}
             <button
                 onClick={toggleMenu}
-                className="absolute top-4 right-4 p-2 rounded-full text-xl hover:bg-opacity-50 transition-colors"
+                className={`absolute top-4 right-4 p-2 rounded-full text-xl transition-colors ${
+                    isDarkMode ? "text-white hover:bg-gray-800" : "text-[#083d77] hover:bg-gray-100"
+                }`}
             >
-                <X size={32} className={`${isDarkMode ? "text-white" : "text-black"}`} />
+                <X size={32} className={`${isDarkMode ? "text-white" : "text-[#083d77]"}`} />
             </button>
 
             {/* Menu content */}
             <div
-                className={`flex flex-col justify-center items-end h-full pr-10 space-y-6 ${
-                    isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+                className={`flex flex-col justify-center items-center h-full space-y-6 ${
+                    isDarkMode ? "text-white" : "text-[#083d77]"
                 }`}
+                style={{
+                    background: isDarkMode
+                        ? ""
+                        : "radial-gradient(circle at center, #DCE1F6 0%, #F6F7FC 50%, #DCE1F6 100%)", // Add radial gradient for light mode
+                }}
             >
-                <ul className="text-right space-y-4">
+                <ul className="text-center space-y-6">
                     {sections.map((section) => (
                         <li key={section} className="py-2">
                             <button
-                                className={`text-3xl transition-transform hover:scale-105 ${audiowide.className}`}
+                                className={`text-3xl font-bold transition-transform hover:scale-105 ${
+                                    audiowide.className
+                                } ${
+                                    isDarkMode
+                                        ? "text-white hover:text-gray-400"
+                                        : "text-[#083d77] hover:text-gray-600"
+                                }`}
                                 onClick={() => {
                                     navigateToSection(section);
                                     toggleMenu(); // Close the menu after navigation

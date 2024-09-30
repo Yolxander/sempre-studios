@@ -173,12 +173,12 @@ export function HeroAndNextSectionComponent() {
                             <section className="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
                                 <div className="space-y-4 mb-12">
                                     <h1
-                                        className={`text-[50px] md:text-[80px] font-bold tracking-tight md:pr-[50px] ${audiowide.className}`}
+                                        className={`text-[40px] md:text-[80px] font-bold tracking-tight md:pr-[50px] ${audiowide.className}`}
                                     >
                                         Sempre Studios
                                     </h1>
                                     <h1
-                                        className={`text-[50px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}
+                                        className={`text-[30px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}
                                     >
                                         Unlock your business potential
                                     </h1>
