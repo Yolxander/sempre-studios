@@ -102,14 +102,25 @@ export function HeroAndNextSectionComponent() {
 
     // Add scroll event listener
     useEffect(() => {
-        const handleWheelEvent = (event: WheelEvent) => handleScroll(event);
+        const handleScroll = (event: WheelEvent) => {
+            if (!scrolling) {
+                setScrolling(true);
+                if (event.deltaY > 0) {
+                    scrollToNextSection();
+                } else {
+                    scrollToPreviousSection();
+                }
+                setTimeout(() => setScrolling(false), 1000);
+            }
+        };
 
-        window.addEventListener("wheel", handleWheelEvent);
+        window.addEventListener("wheel", handleScroll);
 
         return () => {
-            window.removeEventListener("wheel", handleWheelEvent);
+            window.removeEventListener("wheel", handleScroll);
         };
-    }, [currentSection, scrolling]);
+    }, [scrolling, currentSection]); // Add scrolling and currentSection as dependencies
+
 
     useEffect(() => {
         const cursor = document.querySelector(".cursor") as HTMLElement | null;
@@ -222,7 +233,7 @@ export function HeroAndNextSectionComponent() {
                                     <h1
                                         className={`text-[30px] md:text-[50px] font-bold tracking-tight font-light ${audiowide.className}`}
                                     >
-                                        Unlock your business potential
+                                        Unlock your digital potential
                                     </h1>
                                 </div>
 
@@ -570,7 +581,7 @@ export function HeroAndNextSectionComponent() {
                             </h2>
                             <div className="max-w-2xl mb-12">
                                 <p className="text-[16px] md:text-[20px] mb-6 text-center">
-                                    Have questions or ready to start your next project? We'd love to hear from you!
+                                    Have questions or ready to start your next project? We would love to hear from you!
                                 </p>
                                 <p className="text-[16px] md:text-[20px] text-center">
                                     Reach out to us through the form below or connect with us via email or phone.
