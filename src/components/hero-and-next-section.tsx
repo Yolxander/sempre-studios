@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, RefObject, useEffect } from "react";
+import React, {useState, useRef, RefObject, useEffect, useCallback} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, ArrowRight, X, Menu } from "lucide-react";
@@ -35,8 +35,8 @@ export function HeroAndNextSectionComponent() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode state
     const [isMenuOpen, setIsMenuOpen] = useState(false); // Hamburger menu state
-    const sectionRefs = useRef<RefObject<HTMLElement>[]>(
-        sections.map(() => React.createRef<HTMLElement>())
+    const sectionRefs = useRef<RefObject<HTMLDivElement>[]>(
+        sections.map(() => React.createRef<HTMLDivElement>())
     );
     const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
     const [scrolling, setScrolling] = useState(false);
@@ -68,37 +68,30 @@ export function HeroAndNextSectionComponent() {
     };
 
     // Scroll to the next section
-    const scrollToNextSection = () => {
+    const scrollToNextSection = useCallback(() => {
         const currentIndex = sections.indexOf(currentSection);
         if (currentIndex < sections.length - 1) {
             const nextSection = sections[currentIndex + 1];
             setCurrentSection(nextSection);
-            sectionRefs.current[currentIndex + 1]?.current?.scrollIntoView({ behavior: "smooth" });
+            const nextSectionRef = sectionRefs.current[currentIndex + 1]?.current as HTMLDivElement | null;
+            if (nextSectionRef) {
+                nextSectionRef.scrollIntoView({ behavior: "smooth" });
+            }
         }
-    };
+    }, [currentSection, sections, sectionRefs]);
 
-    // Scroll to the previous section
-    const scrollToPreviousSection = () => {
+    const scrollToPreviousSection = useCallback(() => {
         const currentIndex = sections.indexOf(currentSection);
         if (currentIndex > 0) {
             const previousSection = sections[currentIndex - 1];
             setCurrentSection(previousSection);
-            sectionRefs.current[currentIndex - 1]?.current?.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
-    // Handle scroll event
-    const handleScroll = (event: WheelEvent) => {
-        if (!scrolling) {
-            setScrolling(true);
-            if (event.deltaY > 0) {
-                scrollToNextSection();
-            } else {
-                scrollToPreviousSection();
+            const prevSectionRef = sectionRefs.current[currentIndex - 1]?.current as HTMLDivElement | null;
+            if (prevSectionRef) {
+                prevSectionRef.scrollIntoView({ behavior: "smooth" });
             }
-            setTimeout(() => setScrolling(false), 1000); // Prevents triggering multiple scrolls too quickly
         }
-    };
+    }, [currentSection, sections, sectionRefs]);
+
 
     // Add scroll event listener
     useEffect(() => {
@@ -119,7 +112,8 @@ export function HeroAndNextSectionComponent() {
         return () => {
             window.removeEventListener("wheel", handleScroll);
         };
-    }, [scrolling, currentSection]); // Add scrolling and currentSection as dependencies
+    }, [scrolling, scrollToNextSection, scrollToPreviousSection]);
+
 
 
     useEffect(() => {
@@ -321,6 +315,16 @@ export function HeroAndNextSectionComponent() {
                             >
                                 Learn More
                             </Button>
+                            <div
+                                className={`hidden md:block rounded-full border md:flex ${
+                                    isDarkMode
+                                        ? "border-gray-400 hover:bg-gray-700"
+                                        : "border-gray-300 hover:bg-gray-100"
+                                } p-2 cursor-pointer transition-colors duration-300 mt-2 mb-12`}
+                                onClick={() => navigateToSection("Services")}
+                            >
+                                <ChevronDown size={24} className={`${isDarkMode ? "text-gray-400" : "text-gray-400"}`} />
+                            </div>
                         </motion.section>
                     )}
 
@@ -543,10 +547,14 @@ export function HeroAndNextSectionComponent() {
                                 </div>
                             </div>
                             <div
-                                className="hidden md:block rounded-full border border-gray-300 p-2 cursor-pointer hover:bg-gray-100 transition-colors duration-300 my-9"
-                                onClick={() => navigateToSection("Home")}
+                                className={`hidden md:block rounded-full border md:flex ${
+                                    isDarkMode
+                                        ? "border-gray-400 hover:bg-gray-700"
+                                        : "border-gray-300 hover:bg-gray-100"
+                                } p-2 cursor-pointer transition-colors duration-300 mt-2 mb-12`}
+                                onClick={() => navigateToSection("Contact")}
                             >
-                                <ChevronUp size={24} className="text-gray-400" />
+                                <ChevronDown size={24} className={`${isDarkMode ? "text-gray-400" : "text-gray-400"}`} />
                             </div>
                         </motion.section>
                     )}
