@@ -117,7 +117,11 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                             <div className="block lg:hidden relative w-full">
                                 <Button
                                     variant="outline"
-                                    className={`rounded-full w-full px-4 py-2 font-medium ${audiowide.className}`}
+                                    className={`rounded-full w-[95%] px-4 py-2 font-medium flex-row justify-around mr-6 ${audiowide.className} ${
+                                        isDarkMode
+                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                            : "bg-transparent text-[#083d77] border-black"
+                                    }`}
                                     onClick={toggleDropdown}
                                 >
                                     {services[selectedService].title} ⬇
