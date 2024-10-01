@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp, ArrowRight, X, Menu } from "lucide-react";
 import { Audiowide } from "@next/font/google";
 import { MobileMenu } from "@/components/MobileMenu";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
+import Link from "next/link";
 
 // Modal animation variants
 const modalVariants = {
@@ -418,27 +419,29 @@ export function HeroAndNextSectionComponent() {
                                     ].map((service, index) => (
                                         <div
                                             key={index}
-                                            className={`border-t ${
-                                                isDarkMode ? "border-gray-700" : "border-gray-200"
-                                            } md:pt-6 pt-2 relative`}
+                                            className={`border-t ${isDarkMode ? "border-gray-700" : "border-gray-200"} md:pt-6 pt-2 relative`}
                                         >
                                             <div className="md:mb-4">
                                                 <h4
                                                     className={`text-[20px] md:text-[26px] font-semibold mb-2 ${audiowide.className}`}
                                                 >
-                                                    {service.title}
+                                                    <Link href={`/services/${service.title.replace(/\s+/g, '-').toLowerCase()}`}>
+                                                        {service.title}
+                                                    </Link>
                                                 </h4>
                                                 <p className={`text-${isDarkMode ? "white" : "black"} text-[16px] md:text-[20px] mb-4`}>
                                                     {service.description}
                                                 </p>
-                                                <Button
-                                                    variant="link"
-                                                    className={`p-0 h-auto font-semibold ${
-                                                        isDarkMode ? "text-white" : "text-[#083d77]"
-                                                    }`}
-                                                >
-                                                    Read more <ArrowRight className="ml-2 h-4 w-4" />
-                                                </Button>
+                                                <Link href={`/services/${service.title.replace(/\s+/g, '-').toLowerCase()}`}>
+                                                    <Button
+                                                        variant="link"
+                                                        className={`p-0 h-auto font-semibold ${
+                                                            isDarkMode ? "text-white" : "text-[#083d77]"
+                                                        }`}
+                                                    >
+                                                        Read more <ArrowRight className="ml-2 h-4 w-4" />
+                                                    </Button>
+                                                </Link>
                                             </div>
                                         </div>
                                     ))}
