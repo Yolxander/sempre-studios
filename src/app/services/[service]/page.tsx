@@ -84,6 +84,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                         <div className="max-w-8xl mx-auto flex justify-between items-center relative">
                             <div className="text-xl font-semibold">
                                 <div className={`logo ${audiowide.className}`}>
+                                    <Link href="/">
                                     <div
                                         className={`icon ${audiowide.className} ${
                                             isDarkMode
@@ -93,6 +94,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                     >
                                         S
                                     </div>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="hidden lg:block">
@@ -165,7 +167,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                             animate="visible"
                             exit="exit"
                             variants={sectionVariants}
-                            className="flex-grow flex flex-col items-center md:justify-center justify-start text-center px-4 relative md:mr-[100px]"
+                            className="flex-grow flex flex-col items-center md:justify-center justify-start text-center px-4 relative md:mr-[100px] md:overflow-y-hidden overflow-y-auto"
                         >
                             <div className="space-y-4 mb-2">
                                 <h1 className={`text-[30px] md:text-[35px] font-bold tracking-tight md ${audiowide.className}`}>
