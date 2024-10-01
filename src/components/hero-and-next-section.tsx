@@ -80,7 +80,7 @@ export function HeroAndNextSectionComponent() {
                 nextSectionRef.scrollIntoView({ behavior: "smooth" });
             }
         }
-    }, [currentSection, sections, sectionRefs]);
+    }, [currentSection, sectionRefs]);
 
     const scrollToPreviousSection = useCallback(() => {
         const currentIndex = sections.indexOf(currentSection);
@@ -92,7 +92,7 @@ export function HeroAndNextSectionComponent() {
                 prevSectionRef.scrollIntoView({ behavior: "smooth" });
             }
         }
-    }, [currentSection, sections, sectionRefs]);
+    }, [currentSection, sectionRefs]);
 
     // Add scroll event listener
     useEffect(() => {
@@ -183,7 +183,7 @@ export function HeroAndNextSectionComponent() {
             window.removeEventListener("hashchange", handleHashChange);
             window.removeEventListener("load", scrollToHash);
         };
-    }, [sections]);
+    }, [sectionRefs]);
 
     return (
         <div

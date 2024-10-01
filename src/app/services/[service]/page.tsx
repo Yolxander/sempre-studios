@@ -22,6 +22,9 @@ const sectionVariants = {
     exit: { opacity: 0, y: -50, transition: { duration: 0.5 } },
 };
 
+// Define the services type
+type ServiceKey = keyof typeof services;
+
 // Define all services
 const services = {
     "landing-page-creation": {
@@ -203,8 +206,12 @@ const services = {
 };
 
 export default function ServiceDetail({ params }: { params: { service: string } }) {
-    const [selectedService, setSelectedService] = useState(params.service || "landing-page-creation");
+    // Ensure the selected service is typed correctly using `ServiceKey`
+    const [selectedService, setSelectedService] = useState<ServiceKey>(
+        (params.service as ServiceKey) || "landing-page-creation"
+    );
     const serviceDetail = services[selectedService];
+
     if (!serviceDetail) {
         notFound();
     }
@@ -267,17 +274,19 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                 </div>
                             </div>
                             <div className="hidden lg:block">
-                                <Button
-                                    variant="outline"
-                                    size="sm"
-                                    className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
-                                        isDarkMode
-                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                            : "bg-white text-[#083d77] border-black"
-                                    }`}
-                                >
-                                    <Link href="/">Go Back</Link>
-                                </Button>
+                                <Link href="/">
+                                    <Button
+                                        variant="outline"
+                                        size="sm"
+                                        className={`pointer rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
+                                            isDarkMode
+                                                ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                                : "bg-white text-[#083d77] border-black"
+                                        }`}
+                                    >
+                                        Go Back
+                                    </Button>
+                                </Link>
                             </div>
 
                             {/* Dark Mode Toggle */}
@@ -388,9 +397,9 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                         ? "text-gray-500 hover:text-white"
                                         : "text-gray-500 hover:text-[#083d77]"
                             } ${audiowide.className}`}
-                            onClick={() => setSelectedService(service)}
+                            onClick={() => setSelectedService(service as ServiceKey)}
                         >
-                            {services[service].title}
+                            {services[service as ServiceKey].title}
                         </Button>
                     ))}
                 </nav>
