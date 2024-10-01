@@ -112,10 +112,10 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                             </div>
 
                             {/* Services Dropdown (Mobile/Tablet) */}
-                            <div className="lg:hidden relative">
+                            <div className="block lg:hidden relative w-full">
                                 <Button
                                     variant="outline"
-                                    className={`rounded-full px-4 py-2 font-medium ${audiowide.className}`}
+                                    className={`rounded-full w-full px-4 py-2 font-medium ${audiowide.className}`}
                                     onClick={toggleDropdown}
                                 >
                                     {services[selectedService].title} ⬇
@@ -126,7 +126,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                         initial={{ opacity: 0, y: -10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -10 }}
-                                        className="absolute mt-2 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg z-10"
+                                        className="absolute w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg z-10 mt-2"
                                     >
                                         {Object.keys(services).map((service) => (
                                             <Button
@@ -165,7 +165,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                             animate="visible"
                             exit="exit"
                             variants={sectionVariants}
-                            className="flex-grow flex flex-col items-center justify-center text-center px-4 relative mr-[100px]"
+                            className="flex-grow flex flex-col items-center md:justify-center justify-start text-center px-4 relative md:mr-[100px]"
                         >
                             <div className="space-y-4 mb-2">
                                 <h1 className={`text-[30px] md:text-[35px] font-bold tracking-tight md ${audiowide.className}`}>
