@@ -142,7 +142,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                                             : "text-gray-500 hover:text-[#083d77]"
                                                 }`}
                                                 onClick={() => {
-                                                    setSelectedService(service as ServiceKey);
+                                                    setSelectedService(service as ServiceKey); // Fixed type error
                                                     setIsDropdownOpen(false);
                                                 }}
                                             >
@@ -165,7 +165,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                             animate="visible"
                             exit="exit"
                             variants={sectionVariants}
-                            className="flex-grow flex flex-col items-center md:justify-center justify-start text-center px-4 relative md:mr-[100px]"
+                            className="flex-grow flex flex-col items-center justify-center text-center px-4 relative md:mr-[100px]"
                         >
                             <div className="space-y-4 mb-2">
                                 <h1 className={`text-[30px] md:text-[35px] font-bold tracking-tight md ${audiowide.className}`}>
@@ -260,9 +260,9 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                         ? "text-gray-500 hover:text-white"
                                         : "text-gray-500 hover:text-[#083d77]"
                             } ${audiowide.className}`}
-                            onClick={() => setSelectedService(service)}
+                            onClick={() => setSelectedService(service as ServiceKey)} // Fixed type error
                         >
-                            {services[service].title}
+                            {services[service as ServiceKey].title}
                         </Button>
                     ))}
                 </nav>
