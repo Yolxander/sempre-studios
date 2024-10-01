@@ -94,7 +94,6 @@ export function HeroAndNextSectionComponent() {
         }
     }, [currentSection, sections, sectionRefs]);
 
-
     // Add scroll event listener
     useEffect(() => {
         const handleScroll = (event: WheelEvent) => {
@@ -141,29 +140,55 @@ export function HeroAndNextSectionComponent() {
         };
     }, [scrolling, touchStart, scrollToNextSection, scrollToPreviousSection]);
 
+    // Handle URL hash navigation with fallback scroll
     useEffect(() => {
-        const cursor = document.querySelector(".cursor") as HTMLElement | null;
-
-        const updateCursorPosition = (e: MouseEvent) => {
-            if (cursor) {
-                cursor.style.left = `${e.clientX}px`;
-                cursor.style.top = `${e.clientY}px`;
+        const handleHashChange = () => {
+            const hash = window.location.hash.replace("#", "");
+            if (hash && sections.includes(hash)) {
+                const sectionIndex = sections.indexOf(hash);
+                const targetSectionRef = sectionRefs.current[sectionIndex]?.current;
+                if (targetSectionRef) {
+                    console.log(`Scrolling to section: ${hash}`);
+                    targetSectionRef.scrollIntoView({ behavior: "smooth", block: "start" });
+                } else {
+                    console.log(`Section ref not found for: ${hash}`);
+                }
             }
         };
 
-        document.addEventListener("mousemove", updateCursorPosition);
+        const scrollToHash = () => {
+            const hash = window.location.hash.replace("#", "");
+            const sectionIndex = sections.indexOf(hash);
+            const targetSection = sectionRefs.current[sectionIndex]?.current;
+            if (targetSection) {
+                console.log(`Hash found: ${hash}, scrolling to section.`);
+                targetSection.scrollIntoView({ behavior: "smooth" });
+            } else {
+                console.log(`Hash ref not found for ${hash}, fallback`);
+                // Fallback method - scrolling with positioning
+                const yOffset = -80; // Adjust offset for sticky headers, if any
+                const element = document.getElementById(hash); // Now using the id directly
+                if (element) {
+                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                }
+            }
+        };
+
+        handleHashChange();
+        window.addEventListener("hashchange", handleHashChange);
+        window.addEventListener("load", scrollToHash); // Trigger on load
 
         return () => {
-            document.removeEventListener("mousemove", updateCursorPosition);
+            window.removeEventListener("hashchange", handleHashChange);
+            window.removeEventListener("load", scrollToHash);
         };
-    }, []);
+    }, [sections]);
 
     return (
         <div
             className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-[5px] transition-colors duration-500 overflow-y-hidden relative ${
-                isDarkMode
-                    ? "bg-gray-900 border-gray-800 text-white"
-                    : "border-[#083d77] text-[#083d77]"
+                isDarkMode ? "bg-gray-900 border-gray-800 text-white" : "border-[#083d77] text-[#083d77]"
             }`}
             style={{
                 background: isDarkMode
@@ -178,6 +203,7 @@ export function HeroAndNextSectionComponent() {
                     {/* Home Section */}
                     {currentSection === "Home" && (
                         <motion.div
+                            id="home"
                             key="hero"
                             variants={sectionVariants}
                             initial="hidden"
@@ -289,6 +315,7 @@ export function HeroAndNextSectionComponent() {
                     {/* About Section */}
                     {currentSection === "About" && (
                         <motion.section
+                            id="about"
                             key="about"
                             variants={sectionVariants}
                             initial="hidden"
@@ -356,12 +383,14 @@ export function HeroAndNextSectionComponent() {
                     {/* Services Section */}
                     {currentSection === "Services" && (
                         <motion.section
+                            id="services" // Assign the id here
                             key="services"
                             variants={sectionVariants}
                             initial="hidden"
                             animate="visible"
                             exit="exit"
                             className="relative flex-grow flex flex-col items-center justify-center px-4 min-h-screen"
+                            ref={sectionRefs.current[2]} // Associate the ref here
                         >
                             {/* Hamburger Menu for screens under 1000px, moved to the top right */}
                             <div className="block lg:hidden absolute top-4 right-4">
@@ -387,35 +416,46 @@ export function HeroAndNextSectionComponent() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-2 md:overflow-hidden overflow-y-auto md:max-h-[73vh] h-[92vh] pb-10 md:pb-0">
                                     {[
                                         {
+                                            title: "Landing Page Creation",
+                                            description:
+                                                "We design customized landing pages that give businesses an online presence quickly and affordably, helping you stand out and convert visitors into leads.",
+                                        },
+                                        {
                                             title: "Web Design",
                                             description:
-                                                "We create visually stunning and user-friendly websites that captivate your audience.",
+                                                "We create visually stunning and user-friendly websites that captivate your audience, tailored to reflect your brand and boost engagement.",
                                         },
                                         {
                                             title: "Web Development",
                                             description:
-                                                "Our expert developers build robust and scalable web applications tailored to your needs.",
+                                                "Our expert developers build robust and scalable web applications tailored to your specific needs, ensuring speed, security, and scalability.",
                                         },
                                         {
                                             title: "Branding",
                                             description:
-                                                "We craft unique brand identities that resonate with your target audience and set you apart.",
+                                                "We craft unique brand identities, including logos and brand strategies, that resonate with your target audience and differentiate your business.",
                                         },
                                         {
                                             title: "Website Maintenance",
                                             description:
-                                                "We ensure your website stays up-to-date, secure, and performs optimally at all times.",
+                                                "Our maintenance services ensure your website stays updated, secure, and optimized for performance, allowing you to focus on your business.",
                                         },
                                         {
-                                            title: "Content Creating",
+                                            title: "Content Creation",
                                             description:
-                                                "Our creative team produces engaging and valuable content that tells your story effectively.",
+                                                "Our creative team produces high-quality content, from blogs to videos, to help your business tell its story, engage customers, and grow your brand.",
+                                        },
+                                        {
+                                            title: "Hosting and Domain Services",
+                                            description:
+                                                "We offer reliable hosting and domain services to ensure your website stays online, secure, and accessible to your customers 24/7.",
                                         },
                                         {
                                             title: "Lead Generation",
                                             description:
-                                                "We implement strategies to generate quality leads through email and booking systems.",
+                                                "We implement powerful lead generation strategies, including email marketing and booking systems, to capture qualified leads and grow your business.",
                                         },
+
                                     ].map((service, index) => (
                                         <div
                                             key={index}
