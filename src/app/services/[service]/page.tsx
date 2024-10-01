@@ -60,7 +60,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
 
     return (
         <div
-            className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-[5px] transition-colors duration-500 overflow-y-hidden relative ${
+            className={`md:h-[95vh] md:m-4 md:rounded-3xl h-[100vh] m-0 flex overflow-hidden border-[5px] transition-colors duration-500 relative ${
                 isDarkMode ? "bg-gray-900 border-gray-800 text-white" : "border-[#083d77] text-[#083d77]"
             }`}
             style={{
@@ -171,7 +171,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                             animate="visible"
                             exit="exit"
                             variants={sectionVariants}
-                            className="flex-grow flex flex-col items-center md:justify-center justify-start text-center px-4 relative md:mr-[100px] md:overflow-y-hidden overflow-y-auto"
+                            className="flex-grow flex flex-col items-center md:justify-center justify-start text-center px-4 relative md:mr-[100px] md:overflow-y-hidden overflow-y-auto fit-content mb-6"
                         >
                             <div className="space-y-4 mb-2">
                                 <h1 className={`text-[30px] md:text-[35px] font-bold tracking-tight md ${audiowide.className}`}>
