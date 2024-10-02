@@ -666,10 +666,10 @@ export function HeroAndNextSectionComponent() {
 
                             <div className="max-w-2xl mb-8 text-center">
                                 <p className="text-[16px] md:text-[20px] mb-4">
-                                    Have questions or ready to start your next project? We'd love to hear from you!
+                                    Have questions or ready to start your next project? We would love to hear from you!
                                 </p>
                                 <p className="text-[16px] md:text-[20px]">
-                                    Fill out the form below, and we'll get back to you shortly.
+                                    Fill out the form below, and we will get back to you shortly.
                                 </p>
                             </div>
 
