@@ -633,6 +633,7 @@ export function HeroAndNextSectionComponent() {
                             </div>
                         </motion.section>
                     )}
+
                     {/* Contact Section */}
                     {/* Contact Section */}
                     {currentSection === "Contact" && (
@@ -672,73 +673,74 @@ export function HeroAndNextSectionComponent() {
                                 </p>
                             </div>
 
-                            {/* Contact Form */}
-                            <form
-                                className="w-full max-w-lg space-y-4"
-                                onSubmit={handleSubmit}
-                            >
-                                <div>
-                                    <label
-                                        htmlFor="name"
-                                        className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
-                                    >
-                                        Name
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
-                                        placeholder="Your Name"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="email"
-                                        className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
-                                    >
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
-                                        placeholder="you@example.com"
-                                        required
-                                    />
-                                </div>
-                                <div>
-                                    <label
-                                        htmlFor="message"
-                                        className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
-                                    >
-                                        Message
-                                    </label>
-                                    <textarea
-                                        id="message"
-                                        rows={4}
-                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
-                                        placeholder="Your Message"
-                                        required
-                                    />
-                                </div>
-                                <Button
-                                    className={`rounded-full px-6 py-3 text-lg font-semibold w-full transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                        isDarkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-[#083d77] text-white hover:bg-gray-800"
-                                    }`}
-                                    type="submit"
+                            {/* Conditional Rendering: Show form if not submitted, show thank-you message if submitted */}
+                            {!submitted ? (
+                                <form
+                                    className="w-full max-w-lg space-y-4"
+                                    onSubmit={handleSubmit}
                                 >
-                                    Send Message
-                                </Button>
-                            </form>
-
-                            {/* Thank You Message */}
-                            {submitted && (
-                                <div className="mt-6 p-4 bg-green-500 text-white text-center rounded-md shadow-md">
-                                    Thank you for contacting us! We will get back to you soon.
+                                    <div>
+                                        <label
+                                            htmlFor="name"
+                                            className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
+                                        >
+                                            Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                            placeholder="Your Name"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            htmlFor="email"
+                                            className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
+                                        >
+                                            Email
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                            placeholder="you@example.com"
+                                            required
+                                        />
+                                    </div>
+                                    <div>
+                                        <label
+                                            htmlFor="message"
+                                            className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
+                                        >
+                                            Message
+                                        </label>
+                                        <textarea
+                                            id="message"
+                                            rows={4}
+                                            className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                            placeholder="Your Message"
+                                            required
+                                        />
+                                    </div>
+                                    <Button
+                                        className={`rounded-full px-6 py-3 text-lg font-semibold w-full transition-transform duration-300 ease-in-out hover:scale-105 ${
+                                            isDarkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-[#083d77] text-white hover:bg-gray-800"
+                                        }`}
+                                        type="submit"
+                                    >
+                                        Send Message
+                                    </Button>
+                                </form>
+                            ) : (
+                                <div className={`mt-6 p-6 rounded-md text-center shadow-md transition-all ease-in-out duration-300 ${isDarkMode ? "bg-gray-800 text-white" : "bg-[#083d77] text-white"}`}>
+                                    <h3 className={`text-xl font-semibold mb-4 ${audiowide.className}`}>Thank You!</h3>
+                                    <p className="text-lg">
+                                        Your message has been sent successfully. We will get back to you shortly.
+                                    </p>
                                 </div>
                             )}
-
                         </motion.section>
                     )}
 
@@ -913,7 +915,9 @@ export function HeroAndNextSectionComponent() {
             <div className="fixed md:bottom-12 bottom-7 md:right-12 right-4">
                 <a
                     href="#"
-                    className="text-sm md:text-base underline text-[#083d77] dark:text-white"
+                    className={`text-sm md:text-base text-[#083d77] dark:text-white ${
+                        isDarkMode ? "text-white" : "text-[#083d77]"
+                    }`}
                     onClick={(e) => {
                         e.preventDefault(); // Prevent the default link behavior
                         navigator.clipboard.writeText("hello@semprestudios.com"); // Copy email to clipboard
