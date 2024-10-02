@@ -283,7 +283,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                 {React.createElement(services[service as ServiceKey].icon, {
                                     className: `w-6 h-6 transition-colors duration-200 ${
                                         isDarkMode
-                                            ? "text-gray-500 hover:text-[#083d77]"
+                                            ? "text-red hover:text-[#083d77]"
                                             : "text-gray-500 hover:text-[#083d77]"
                                     }`
                                 })}
