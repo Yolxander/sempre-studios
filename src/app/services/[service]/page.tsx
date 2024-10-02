@@ -1,4 +1,3 @@
-// src/app/services/[service]/page.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -9,6 +8,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
 import { services } from "@/data/services"; // Import services
+import { FaArrowRight } from "react-icons/fa"; // Import arrow icon
 
 // Initialize Audiowide font
 const audiowide = Audiowide({
@@ -85,15 +85,15 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                             <div className="text-xl font-semibold">
                                 <div className={`logo ${audiowide.className}`}>
                                     <Link href="/">
-                                    <div
-                                        className={`icon ${audiowide.className} ${
-                                            isDarkMode
-                                                ? "bg-gray-800 text-white border-white"
-                                                : "text-[#083d77]"
-                                        }`}
-                                    >
-                                        S
-                                    </div>
+                                        <div
+                                            className={`icon ${audiowide.className} ${
+                                                isDarkMode
+                                                    ? "bg-gray-800 text-white border-white"
+                                                    : "text-[#083d77]"
+                                            }`}
+                                        >
+                                            S
+                                        </div>
                                     </Link>
                                 </div>
                             </div>
@@ -242,6 +242,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
 
                 <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
             </div>
+
             {/* Services Vertical Navbar */}
             <motion.nav
                 key="vertical-navbar"
@@ -253,7 +254,18 @@ export default function ServiceDetail({ params }: { params: { service: string } 
             >
                 <nav className="fixed inset-y-0 right-8 flex flex-col justify-center items-end space-y-4">
                     {Object.keys(services).map((service) => (
-                        <div key={service} className="relative group">
+                        <div key={service} className="relative group flex items-center">
+                            {selectedService === service && (
+                                <motion.div
+                                    className="mr-2"
+                                    initial={{ x: -10 }}
+                                    animate={{ x: [0, 5, 0] }}
+                                    transition={{ duration: 1, repeat: Infinity }}
+                                >
+                                    <FaArrowRight className={`text-md ${isDarkMode ? "text-white" : "text-[#083d77]"}`} />
+                                </motion.div>
+                            )}
+
                             <Button
                                 variant="ghost"
                                 className={`text-md font-medium transition-colors duration-200 ${
@@ -270,7 +282,6 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                 {/* Icon for each service */}
                                 {React.createElement(services[service as ServiceKey].icon, { className: "w-6 h-6" })}
                             </Button>
-
 
                             {/* Tooltip */}
                             <div
@@ -297,7 +308,6 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                     </Button>
                 </nav>
             </motion.nav>
-
         </div>
     );
 }
