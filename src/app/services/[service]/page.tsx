@@ -108,7 +108,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                                 : "bg-white text-[#083d77] border-black"
                                         }`}
                                     >
-                                        Go Back
+                                        Get Service
                                     </Button>
                                 </Link>
                             </div>
@@ -252,7 +252,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                 className="hidden lg:block"
             >
                 <nav className="fixed inset-y-0 right-8 flex flex-col justify-center items-end space-y-4">
-                    {Object.keys(services).map((service, index) => (
+                    {Object.keys(services).map((service) => (
                         <div key={service} className="relative group">
                             <Button
                                 variant="ghost"
