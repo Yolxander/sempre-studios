@@ -32,6 +32,7 @@ const audiowide = Audiowide({
 const sections = ["Home", "About", "Services", "Projects", "Contact"];
 
 export function HeroAndNextSectionComponent() {
+    const [copied, setCopied] = useState(false);
     const [currentSection, setCurrentSection] = useState("Home");
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode state
@@ -635,6 +636,7 @@ export function HeroAndNextSectionComponent() {
                             animate="visible"
                             exit="exit"
                             className="relative flex-grow flex flex-col items-center justify-center px-4 min-h-screen"
+                            ref={sectionRefs.current[4]}
                         >
                             {/* Hamburger Menu for screens under 1000px, moved to the top right */}
                             <div className="block lg:hidden absolute top-4 right-4">
@@ -642,18 +644,16 @@ export function HeroAndNextSectionComponent() {
                                     variant="outline"
                                     size="sm"
                                     className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
-                                        isDarkMode
-                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
-                                            : "bg-white text-[#083d77] border-black"
+                                        isDarkMode ? "bg-gray-800 text-white border-white hover:bg-gray-700" : "bg-white text-[#083d77] border-black"
                                     }`}
                                     onClick={toggleMenu}
                                 >
                                     <Menu />
                                 </Button>
                             </div>
-                            <h2 className={`text-xl font-bold mb-8 md:text-[30px] ${audiowide.className}`}>
-                                Contact Us
-                            </h2>
+
+                            <h2 className={`text-xl font-bold mb-8 md:text-[30px] ${audiowide.className}`}>Contact Us</h2>
+
                             <div className="max-w-2xl mb-12">
                                 <p className="text-[16px] md:text-[20px] mb-6 text-center">
                                     Have questions or ready to start your next project? We would love to hear from you!
@@ -662,25 +662,55 @@ export function HeroAndNextSectionComponent() {
                                     Reach out to us through the form below or connect with us via email or phone.
                                 </p>
                             </div>
-                            <Button
-                                className={`rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                    isDarkMode
-                                        ? "bg-white text-black hover:bg-gray-100"
-                                        : "bg-[#083d77] text-white hover:bg-gray-800"
-                                }`}
-                            >
-                                Get in Touch
-                            </Button>
-                            <div
-                                className={`hidden md:block rounded-full border ${
-                                    isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-gray-300 hover:bg-gray-100"
-                                } p-2 cursor-pointer transition-colors duration-300`}
-                                onClick={() => navigateToSection("Home")}
-                            >
-                                <ChevronUp size={24} className={`${isDarkMode ? "text-gray-400" : "text-gray-400"}`} />
-                            </div>
+
+                            {/* Contact Form */}
+                            <form className="w-full max-w-lg space-y-4">
+                                <div>
+                                    <label htmlFor="name" className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                                        Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-700 text-white" : "border-gray-300 text-black"} rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                        placeholder="Your Name"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="email" className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                                        Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-700 text-white" : "border-gray-300 text-black"} rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                        placeholder="you@example.com"
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="message" className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                                        Message
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        rows={4}
+                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-700 text-white" : "border-gray-300 text-black"} rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                        placeholder="Your Message"
+                                    />
+                                </div>
+                                <Button
+                                    className={`rounded-full px-6 py-3 text-lg font-semibold w-full transition-transform duration-300 ease-in-out hover:scale-105 ${
+                                        isDarkMode ? "bg-gray-200 text-black hover:bg-gray-300" : "bg-[#083d77] text-white hover:bg-gray-800"
+                                    }`}
+                                    type="submit"
+                                >
+                                    Send Message
+                                </Button>
+                            </form>
+
                         </motion.section>
                     )}
+
                 </AnimatePresence>
 
                 {/* Modal for contact form */}
@@ -845,6 +875,29 @@ export function HeroAndNextSectionComponent() {
 
             {/* Dark Mode Toggle Button */}
             <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+            {/* Email Link */}
+            <div className="fixed md:bottom-12 bottom-7 md:right-12 right-4">
+                <a
+                    href="#"
+                    className="text-sm md:text-base underline text-[#083d77] dark:text-white"
+                    onClick={(e) => {
+                        e.preventDefault(); // Prevent the default link behavior
+                        navigator.clipboard.writeText("hello@semprestudios.com"); // Copy email to clipboard
+                        setCopied(true); // Show "Copied to clipboard" message
+                        setTimeout(() => setCopied(false), 2000); // Hide message after 2 seconds
+                    }}
+                >
+                    hello@semprestudios.com
+                </a>
+
+                {copied && (
+                    <div className="absolute bottom-full right-0 mb-2 text-xs md:text-sm bg-gray-800 text-white px-3 py-1 rounded-md">
+                        Copied to clipboard!
+                    </div>
+                )}
+            </div>
+
+
         </div>
     );
 }
