@@ -56,7 +56,7 @@ export function HeroAndNextSectionComponent() {
         setTimeout(() => setSubmitted(false), 4000); // Hide the message after 4 seconds
     }
 
-    const openModal = () => setIsModalOpen(true);
+    // const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
     // Toggle between light and dark mode
@@ -259,6 +259,7 @@ export function HeroAndNextSectionComponent() {
                                     </div>
                                     {/* Say Hi Button for screens above 1000px */}
                                     <div className="hidden lg:block">
+                                        <Link href={'https://calendly.com/hello-semprestudios/30min'}>
                                         <Button
                                             variant="outline"
                                             size="sm"
@@ -267,10 +268,10 @@ export function HeroAndNextSectionComponent() {
                                                     ? "bg-gray-800 text-white border-white hover:bg-gray-700"
                                                     : "bg-white text-[#083d77] border-black"
                                             }`}
-                                            onClick={openModal}
                                         >
                                             Say Hi
                                         </Button>
+                                        </Link>
                                     </div>
                                 </div>
                             </header>
@@ -302,19 +303,19 @@ export function HeroAndNextSectionComponent() {
                                 </Button>
 
                                 <div className="flex flex-col items-center">
-                                    <div
-                                        className={`hidden md:block rounded-full border ${
-                                            isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-[#083d77] hover:bg-gray-100"
-                                        } p-2 mb-5 cursor-pointer transition-colors duration-300`}
-                                        onClick={() => navigateToSection("About")}
-                                    >
-                                        <ChevronDown
-                                            size={24}
-                                            className={`${
-                                                isDarkMode ? "text-gray-400" : "text-[#083d77]"
-                                            }`}
-                                        />
-                                    </div>
+                                    {/*<div*/}
+                                    {/*    className={`hidden md:block rounded-full border ${*/}
+                                    {/*        isDarkMode ? "border-gray-400 hover:bg-gray-700" : "border-[#083d77] hover:bg-gray-100"*/}
+                                    {/*    } p-2 mb-5 cursor-pointer transition-colors duration-300`}*/}
+                                    {/*    onClick={() => navigateToSection("About")}*/}
+                                    {/*>*/}
+                                    {/*    <ChevronDown*/}
+                                    {/*        size={24}*/}
+                                    {/*        className={`${*/}
+                                    {/*            isDarkMode ? "text-gray-400" : "text-[#083d77]"*/}
+                                    {/*        }`}*/}
+                                    {/*    />*/}
+                                    {/*</div>*/}
                                 </div>
                             </section>
                         </motion.div>
@@ -365,16 +366,17 @@ export function HeroAndNextSectionComponent() {
                                     services to elevate your online presence.
                                 </p>
                             </div>
+                            <Link href={'https://calendly.com/hello-semprestudios/30min'}>
                             <Button
                                 className={`rounded-full px-8 py-6 text-lg font-semibold mb-16 transition-transform duration-300 ease-in-out hover:scale-105 ${
                                     isDarkMode
                                         ? "bg-white text-black hover:bg-gray-100"
                                         : "bg-[#083d77] text-white hover:bg-gray-800"
                                 }`}
-                                onClick={() => navigateToSection("Services")}
                             >
                                 Learn More
                             </Button>
+                            </Link>
                             <div
                                 className={`hidden md:block rounded-full border md:flex ${
                                     isDarkMode
@@ -878,7 +880,6 @@ export function HeroAndNextSectionComponent() {
                 />
             </div>
 
-            {/* Vertical Navbar for large screens */}
             <motion.nav
                 key="vertical-navbar"
                 variants={sectionVariants}
@@ -909,9 +910,9 @@ export function HeroAndNextSectionComponent() {
                 </nav>
             </motion.nav>
 
-            {/* Dark Mode Toggle Button */}
+
             <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-            {/* Email Link */}
+
             <div className="fixed md:bottom-12 bottom-7 md:right-12 right-4">
                 <a
                     href="#"
