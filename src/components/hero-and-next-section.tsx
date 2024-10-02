@@ -43,11 +43,18 @@ export function HeroAndNextSectionComponent() {
     const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
     const [scrolling, setScrolling] = useState(false);
     const [touchStart, setTouchStart] = useState<number | null>(null); // Track initial touch position
+    const [submitted, setSubmitted] = useState(false);
 
     const navigateToSection = (section: string) => {
         setCurrentSection(section);
         setIsMenuOpen(false); // Close menu when section is selected
     };
+
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 4000); // Hide the message after 4 seconds
+    }
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
@@ -626,7 +633,7 @@ export function HeroAndNextSectionComponent() {
                             </div>
                         </motion.section>
                     )}
-
+                    {/* Contact Section */}
                     {/* Contact Section */}
                     {currentSection === "Contact" && (
                         <motion.section
@@ -643,8 +650,10 @@ export function HeroAndNextSectionComponent() {
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className={`rounded-full px-4 py-2 text-[20px] font-medium relative transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
-                                        isDarkMode ? "bg-gray-800 text-white border-white hover:bg-gray-700" : "bg-white text-[#083d77] border-black"
+                                    className={`rounded-full px-4 py-2 text-[20px] font-medium transition-transform duration-300 ease-in-out hover:scale-105 ${audiowide.className} ${
+                                        isDarkMode
+                                            ? "bg-gray-800 text-white border-white hover:bg-gray-700"
+                                            : "bg-white text-[#083d77] border-black"
                                     }`}
                                     onClick={toggleMenu}
                                 >
@@ -652,55 +661,70 @@ export function HeroAndNextSectionComponent() {
                                 </Button>
                             </div>
 
-                            <h2 className={`text-xl font-bold mb-8 md:text-[30px] ${audiowide.className}`}>Contact Us</h2>
+                            <h2 className={`text-xl font-bold mb-4 md:text-[30px] ${audiowide.className}`}>Contact Us</h2>
 
-                            <div className="max-w-2xl mb-12">
-                                <p className="text-[16px] md:text-[20px] mb-6 text-center">
-                                    Have questions or ready to start your next project? We would love to hear from you!
+                            <div className="max-w-2xl mb-8 text-center">
+                                <p className="text-[16px] md:text-[20px] mb-4">
+                                    Have questions or ready to start your next project? We'd love to hear from you!
                                 </p>
-                                <p className="text-[16px] md:text-[20px] text-center">
-                                    Reach out to us through the form below or connect with us via email or phone.
+                                <p className="text-[16px] md:text-[20px]">
+                                    Fill out the form below, and we'll get back to you shortly.
                                 </p>
                             </div>
 
                             {/* Contact Form */}
-                            <form className="w-full max-w-lg space-y-4">
+                            <form
+                                className="w-full max-w-lg space-y-4"
+                                onSubmit={handleSubmit}
+                            >
                                 <div>
-                                    <label htmlFor="name" className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                                    <label
+                                        htmlFor="name"
+                                        className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
+                                    >
                                         Name
                                     </label>
                                     <input
                                         type="text"
                                         id="name"
-                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-700 text-white" : "border-gray-300 text-black"} rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
                                         placeholder="Your Name"
+                                        required
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                                    <label
+                                        htmlFor="email"
+                                        className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
+                                    >
                                         Email
                                     </label>
                                     <input
                                         type="email"
                                         id="email"
-                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-700 text-white" : "border-gray-300 text-black"} rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
                                         placeholder="you@example.com"
+                                        required
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="message" className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+                                    <label
+                                        htmlFor="message"
+                                        className={`block text-sm font-medium ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
+                                    >
                                         Message
                                     </label>
                                     <textarea
                                         id="message"
                                         rows={4}
-                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-700 text-white" : "border-gray-300 text-black"} rounded-md shadow-sm focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
+                                        className={`mt-1 block w-full border ${isDarkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-300 text-black"} rounded-md focus:ring-[#083d77] focus:border-[#083d77] sm:text-sm p-2`}
                                         placeholder="Your Message"
+                                        required
                                     />
                                 </div>
                                 <Button
                                     className={`rounded-full px-6 py-3 text-lg font-semibold w-full transition-transform duration-300 ease-in-out hover:scale-105 ${
-                                        isDarkMode ? "bg-gray-200 text-black hover:bg-gray-300" : "bg-[#083d77] text-white hover:bg-gray-800"
+                                        isDarkMode ? "bg-gray-800 text-white hover:bg-gray-700" : "bg-[#083d77] text-white hover:bg-gray-800"
                                     }`}
                                     type="submit"
                                 >
@@ -708,8 +732,18 @@ export function HeroAndNextSectionComponent() {
                                 </Button>
                             </form>
 
+                            {/* Thank You Message */}
+                            {submitted && (
+                                <div className="mt-6 p-4 bg-green-500 text-white text-center rounded-md shadow-md">
+                                    Thank you for contacting us! We will get back to you soon.
+                                </div>
+                            )}
+
                         </motion.section>
                     )}
+
+
+
 
                 </AnimatePresence>
 
