@@ -280,7 +280,13 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                                 onClick={() => setSelectedService(service as ServiceKey)}
                             >
                                 {/* Icon for each service */}
-                                {React.createElement(services[service as ServiceKey].icon, { className: "w-6 h-6" })}
+                                {React.createElement(services[service as ServiceKey].icon, {
+                                    className: `w-6 h-6 transition-colors duration-200 ${
+                                        isDarkMode
+                                            ? "text-gray-500 hover:text-[#083d77]"
+                                            : "text-gray-500 hover:text-[#083d77]"
+                                    }`
+                                })}
                             </Button>
 
                             {/* Tooltip */}
