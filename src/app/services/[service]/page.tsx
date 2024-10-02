@@ -242,7 +242,6 @@ export default function ServiceDetail({ params }: { params: { service: string } 
 
                 <DarkModeToggle isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
             </div>
-
             {/* Services Vertical Navbar */}
             <motion.nav
                 key="vertical-navbar"
@@ -252,27 +251,53 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                 exit="exit"
                 className="hidden lg:block"
             >
-                <nav className="fixed inset-y-0 right-6 flex flex-col justify-center items-end space-y-4">
-                    {Object.keys(services).map((service) => (
-                        <Button
-                            key={service}
-                            variant="ghost"
-                            className={`text-md font-medium transition-colors duration-200 ${
-                                selectedService === service
-                                    ? isDarkMode
-                                        ? "text-white"
-                                        : "text-[#083d77]"
-                                    : isDarkMode
-                                        ? "text-gray-500 hover:text-white"
-                                        : "text-gray-500 hover:text-[#083d77]"
-                            } ${audiowide.className}`}
-                            onClick={() => setSelectedService(service as ServiceKey)} // Fixed type error
-                        >
-                            {services[service as ServiceKey].title}
-                        </Button>
+                <nav className="fixed inset-y-0 right-8 flex flex-col justify-center items-end space-y-4">
+                    {Object.keys(services).map((service, index) => (
+                        <div key={service} className="relative group">
+                            <Button
+                                variant="ghost"
+                                className={`text-md font-medium transition-colors duration-200 ${
+                                    selectedService === service
+                                        ? isDarkMode
+                                            ? "text-white"
+                                            : "text-[#083d77]"
+                                        : isDarkMode
+                                            ? "text-gray-500 hover:text-white"
+                                            : "text-gray-500 hover:text-[#083d77]"
+                                } ${audiowide.className}`}
+                                onClick={() => setSelectedService(service as ServiceKey)}
+                            >
+                                {/* Icon for each service */}
+                                {React.createElement(services[service as ServiceKey].icon, { className: "w-6 h-6" })}
+                            </Button>
+
+
+                            {/* Tooltip */}
+                            <div
+                                className="absolute right-10 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-800 text-white text-sm px-4 py-2 rounded-md shadow-lg"
+                            >
+                                Go to {services[service as ServiceKey].title}
+                            </div>
+                        </div>
                     ))}
+
+                    {/* Next Service Button */}
+                    <Button
+                        variant="ghost"
+                        className={`text-md font-medium transition-colors duration-200 fixed md:bottom-12 bottom-7 md:right-6 right-1 ${
+                            isDarkMode ? "text-white" : "text-[#083d77]"
+                        } ${audiowide.className}`}
+                        onClick={() => {
+                            const currentIndex = Object.keys(services).indexOf(selectedService);
+                            const nextService = Object.keys(services)[(currentIndex + 1) % Object.keys(services).length];
+                            setSelectedService(nextService as ServiceKey);
+                        }}
+                    >
+                        Next Service
+                    </Button>
                 </nav>
             </motion.nav>
+
         </div>
     );
 }

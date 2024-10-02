@@ -1,8 +1,11 @@
+import { FaLaptopCode, FaPaintBrush, FaServer, FaPencilAlt, FaCog, FaFileAlt, FaCloud, FaBullseye } from "react-icons/fa";
+
 export const services = {
     "landing-page-creation": {
         title: "Landing Page Creation",
         description: "Customized landing pages that bring your business online quickly and affordably.",
         details: "At Sempre Studios, we specialize in creating customized landing pages for businesses. Our service includes building professional, responsive pages designed to increase visibility and conversions for businesses without a current web presence.",
+        icon: FaLaptopCode, // Icon for Landing Page Creation
         pricing: {
             basic: {
                 description: "Basic one-page landing site with essential business info and contact form.",
@@ -25,6 +28,7 @@ export const services = {
         title: "Web Design",
         description: "We create visually stunning and user-friendly websites that captivate your audience.",
         details: "Our web design services include everything from basic landing pages to full-blown e-commerce sites. We focus on creating responsive, engaging designs that convert visitors into customers.",
+        icon: FaPaintBrush, // Icon for Web Design
         pricing: {
             basic: {
                 description: "Single-page design with basic functionality.",
@@ -47,6 +51,7 @@ export const services = {
         title: "Web Development",
         description: "Our expert developers build robust and scalable web applications tailored to your needs.",
         details: "We develop custom web applications, ensuring they are fast, scalable, and reliable.",
+        icon: FaServer, // Icon for Web Development
         pricing: {
             basic: {
                 description: "Basic functionality with minimal customization.",
@@ -69,6 +74,7 @@ export const services = {
         title: "Branding",
         description: "We craft unique brand identities that resonate with your target audience.",
         details: "Our branding services focus on creating logos, typography, and brand strategies.",
+        icon: FaPencilAlt, // Icon for Branding
         pricing: {
             basic: {
                 description: "Logo design and color palette creation.",
@@ -91,6 +97,7 @@ export const services = {
         title: "Website Maintenance",
         description: "Keep your website secure, fast, and up-to-date with our maintenance plans.",
         details: "We offer ongoing maintenance services, including security updates, backups, and performance optimizations.",
+        icon: FaCog, // Icon for Website Maintenance
         pricing: {
             basic: {
                 description: "Monthly backups and security updates.",
@@ -113,6 +120,7 @@ export const services = {
         title: "Content Creation",
         description: "Engaging content creation that reflects your brand and connects with your audience.",
         details: "We provide content creation services ranging from website copy, blog articles, social media posts, and more. Our team ensures your brand’s voice is consistent and resonates with your target audience.",
+        icon: FaFileAlt, // Icon for Content Creation
         pricing: {
             basic: {
                 description: "Written content such as blog posts or articles.",
@@ -135,6 +143,7 @@ export const services = {
         title: "Hosting and Domain Services",
         description: "Reliable hosting and domain services to keep your website online 24/7.",
         details: "Our hosting and domain management services ensure your website remains operational, secure, and fast. We handle all technical aspects, including uptime monitoring, SSL certificates, and backups.",
+        icon: FaCloud, // Icon for Hosting and Domain Services
         pricing: {
             basic: {
                 description: "Domain registration and basic hosting for small websites.",
@@ -157,6 +166,7 @@ export const services = {
         title: "Lead Generation",
         description: "We help you generate qualified leads through digital strategies and campaigns.",
         details: "Our lead generation services include email marketing, landing page optimization, and funnel design to help your business capture and convert leads effectively.",
+        icon: FaBullseye, // Icon for Lead Generation
         pricing: {
             basic: {
                 description: "Single email marketing campaign or basic lead magnet setup.",
