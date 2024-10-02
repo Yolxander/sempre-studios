@@ -31,17 +31,17 @@ export const metadata: Metadata = {
     description: "fast and effective web services",
 };
 
+
 export default function RootLayout({
                                        children,
-                                   }: Readonly<{
-    children: React.ReactNode;
-}>) {
+                                   }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
         <body
             className={`${geistSans.variable} ${geistMono.variable} ${robotoCondensed.className} antialiased`}
         >
         <header className={`${audiowide.className} text-4xl`}>
+            {/* Your header content */}
         </header>
         <main>
             {/* Main content will use Roboto Condensed font */}
