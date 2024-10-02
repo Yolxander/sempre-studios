@@ -171,7 +171,7 @@ export default function ServiceDetail({ params }: { params: { service: string } 
                             animate="visible"
                             exit="exit"
                             variants={sectionVariants}
-                            className="flex-grow flex flex-col items-center md:justify-center justify-start text-center px-4 relative md:mr-[100px] md:overflow-y-hidden overflow-y-auto fit-content mb-6"
+                            className="flex-grow flex flex-col items-center md:justify-center justify-start text-center px-4 relative md:overflow-y-hidden overflow-y-auto fit-content  md:pb-[50px]"
                         >
                             <div className="space-y-4 mb-2">
                                 <h1 className={`text-[30px] md:text-[35px] font-bold tracking-tight md ${audiowide.className}`}>
