@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Audiowide, Roboto_Condensed } from "@next/font/google";
 import "./globals.css";
+import Script from 'next/script'
 
 // Import local fonts
 const geistSans = localFont({
@@ -37,6 +38,21 @@ export default function RootLayout({
                                    }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
+        <head>
+            {/* Google Analytics */}
+            <Script
+                strategy="afterInteractive"
+                src="https://www.googletagmanager.com/gtag/js?id=G-HV0FF2HSP1"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-HV0FF2HSP1');
+                `}
+            </Script>
+        </head>
         <body
             className={`${geistSans.variable} ${geistMono.variable} ${robotoCondensed.className} antialiased`}
         >
