@@ -3,7 +3,7 @@
 import React, { useState, useRef, RefObject, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp, ArrowRight, X, Menu } from "lucide-react";
+import { ChevronDown, ArrowRight, X, Menu } from "lucide-react";
 import { Audiowide } from "@next/font/google";
 import { MobileMenu } from "@/components/MobileMenu";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
