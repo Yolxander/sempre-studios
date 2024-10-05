@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Audiowide } from "@next/font/google";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { DarkModeToggle } from "@/components/DarkModeToggle";
+import { DarkModeToggle } from "@/components/landing-page/DarkModeToggle";
 import { services } from "@/data/services"; // Import services
 import { FaArrowRight } from "react-icons/fa"; // Import arrow icon
 
