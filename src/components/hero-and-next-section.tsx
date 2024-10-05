@@ -35,7 +35,7 @@ export function HeroAndNextSectionComponent() {
     const [copied, setCopied] = useState(false);
     const [currentSection, setCurrentSection] = useState("Home");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(false); // Dark mode state
+    const [isDarkMode, setIsDarkMode] = useState(true); // Dark mode state
     const [isMenuOpen, setIsMenuOpen] = useState(false); // Hamburger menu state
     const sectionRefs = useRef<RefObject<HTMLDivElement>[]>(
         sections.map(() => React.createRef<HTMLDivElement>())
