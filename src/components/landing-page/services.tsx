@@ -1,5 +1,9 @@
-import { motion } from "framer-motion"
+"use client"
+
+import { motion, useAnimation } from "framer-motion"
 import Image from 'next/image'
+import { useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
 
 export default function Services() {
     return (
@@ -50,13 +54,71 @@ export default function Services() {
 }
 
 function ServiceCard({ title, description, icon }) {
+    const controls = useAnimation()
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    })
+
+    useEffect(() => {
+        if (inView) {
+            controls.start("visible")
+        }
+    }, [controls, inView])
+
+    const cardVariants = {
+        hidden: {
+            width: "60px",
+            height: "60px",
+            background: "#f0f0f0",
+            boxShadow: "0 0 0 #cccccc, 0 0 0 #ffffff, 10px 10px 10px #cccccc inset, -10px -10px 10px #ffffff inset"
+        },
+        visible: {
+            width: "100%",
+            height: "auto",
+            background: "#fafafa",
+            boxShadow: "40px 40px 40px #cccccc, 0 0 0 #ffffff, 0 0 0 #cccccc inset, 2px 2px 2px #ffffff inset",
+            transition: {
+                duration: 1.5,
+                ease: [0.34, 1.56, 0.64, 1], // Custom spring-like easing
+            }
+        }
+    }
+
+    const contentVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { delay: 0.5, duration: 0.5 }
+        }
+    }
+
     return (
-        <div className="bg-white p-8 rounded-3xl shadow-md relative">
-            <div className="w-12 h-12 bg-black rounded-full absolute top-8 left-8 flex items-center justify-center">
+        <motion.div
+            ref={ref}
+            animate={controls}
+            initial="hidden"
+            variants={cardVariants}
+            className="bg-white rounded-3xl shadow-md relative overflow-hidden"
+            style={{ minHeight: "60px" }}
+        >
+            <motion.div
+                className="w-12 h-12 bg-black rounded-full absolute top-8 left-8 flex items-center justify-center"
+                initial={{ scale: 1 }}
+                animate={{ scale: inView ? 1 : 1.2 }}
+                transition={{ duration: 0.3 }}
+            >
                 {icon}
-            </div>
-            <h3 className="text-2xl font-bold mb-4 mt-16">{title}</h3>
-            <p className="text-gray-600">{description}</p>
-        </div>
+            </motion.div>
+            <motion.div
+                variants={contentVariants}
+                initial="hidden"
+                animate={controls}
+                className="p-8"
+            >
+                <h3 className="text-2xl font-bold mb-4 mt-16">{title}</h3>
+                <p className="text-gray-600">{description}</p>
+            </motion.div>
+        </motion.div>
     )
 }

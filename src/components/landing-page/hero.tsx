@@ -1,18 +1,33 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import {Poppins} from "@next/font/google";
+import { Poppins } from "next/font/google"
+import Lottie from "lottie-react"
+import { useState, useEffect } from "react"
 
 const poppins = Poppins({
-    weight: ["400", "300"], // Roboto Condensed has multiple weights
+    weight: ["300", "400", "700"],
     subsets: ["latin"],
-});
+})
+
 export default function Hero() {
+    const [animationData, setAnimationData] = useState(null)
+
+    useEffect(() => {
+        fetch("https://lottie.host/ee339356-ffe2-41dd-a50c-14d91e742d44/HnRcLCVxaB.json")
+            .then(response => response.json())
+            .then(data => setAnimationData(data))
+            .catch(error => console.error("Error loading Lottie animation:", error))
+    }, [])
+
     return (
-        <main className={`${poppins.className} container mx-auto px-4 py-24 text-center h-[95vh]`}>
+        <main className={`${poppins.className} container mx-auto px-4 py-24 text-center min-h-screen relative overflow-hidden`}>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
+                className="relative z-10"
             >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                     Your new website is ready<br />to launch
@@ -25,6 +40,15 @@ export default function Hero() {
                     <Button variant="outline" size="lg" className="rounded-full">Contact Sales</Button>
                 </div>
             </motion.div>
+            {animationData && (
+                <div className="absolute  flex items-center justify-center h-[420px] bottom-1 right-[30%]">
+                    <Lottie
+                        animationData={animationData}
+                        className="w-full h-full object-cover"
+                        style={{ opacity: 1 }}
+                    />
+                </div>
+            )}
         </main>
     )
 }
