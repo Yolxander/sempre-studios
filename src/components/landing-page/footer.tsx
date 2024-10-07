@@ -8,13 +8,13 @@ export default function Footer() {
             <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-8">
                     <div className="mb-8 md:mb-0">
-                        <Image
-                            src="/placeholder.svg"
-                            alt="Sempre Studios Logo"
-                            width={150}
-                            height={40}
-                            className="mb-4"
-                        />
+                        {/*<Image*/}
+                        {/*    src="/placeholder.svg"*/}
+                        {/*    alt="Sempre Studios Logo"*/}
+                        {/*    width={150}*/}
+                        {/*    height={40}*/}
+                        {/*    className="mb-4"*/}
+                        {/*/>*/}
                         <p className="text-sm text-gray-400 max-w-sm">
                             Empowering businesses with instant online presence and ongoing digital success.
                         </p>

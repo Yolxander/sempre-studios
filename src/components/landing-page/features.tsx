@@ -1,8 +1,12 @@
 import { motion } from "framer-motion"
-
+import {Poppins} from "@next/font/google";
+const poppins = Poppins({
+    weight: ["400", "300"], // Roboto Condensed has multiple weights
+    subsets: ["latin"],
+});
 export default function Features() {
     return (
-        <div className="bg-gray-100 py-12">
+        <div className={`${poppins.className} bg-gray-100 py-12`}>
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -10,7 +14,7 @@ export default function Features() {
                     transition={{ duration: 1, delay: 0.5 }}
                     className="text-center mb-12"
                 >
-                    <p className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-4xl mx-auto">
+                    <p className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-8xl mx-auto py-12">
                         Sempre Studios creates ready-to-launch websites for businesses across all industries. Get your professional online presence today.
                     </p>
                 </motion.div>

@@ -1,9 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import {Poppins} from "@next/font/google";
 
+const poppins = Poppins({
+    weight: ["400", "300"], // Roboto Condensed has multiple weights
+    subsets: ["latin"],
+});
 export default function Hero() {
     return (
-        <main className="container mx-auto px-4 py-24 text-center h-[95vh]">
+        <main className={`${poppins.className} container mx-auto px-4 py-24 text-center h-[95vh]`}>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

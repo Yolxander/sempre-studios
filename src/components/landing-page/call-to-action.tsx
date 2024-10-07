@@ -28,7 +28,7 @@ export default function CallToAction() {
                         <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-8">
                             Get started
                         </Button>
-                        <Button variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black rounded-full px-8">
+                        <Button variant="outline" size="lg" className="text-black border-white hover:bg-white hover:text-black rounded-full px-8">
                             Contact Sales
                         </Button>
                     </div>

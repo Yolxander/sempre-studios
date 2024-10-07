@@ -11,12 +11,18 @@ import Projects from './projects'
 import FAQ from './faq'
 import CallToAction from './call-to-action'
 import Footer from './footer'
+import {Poppins} from "@next/font/google";
+
+const poppins = Poppins({
+    weight: ["400", "300"], // Roboto Condensed has multiple weights
+    subsets: ["latin"],
+});
 
 export  function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-      <div className="min-h-screen bg-white font-['Gothic_A1',sans-serif]">
+      <div className={`${poppins.className} min-h-screen bg-white font-['Gothic_A1',sans-serif]`} >
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <Hero />
         <Features />

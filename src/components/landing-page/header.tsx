@@ -2,12 +2,17 @@ import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Menu } from 'lucide-react'
 import { motion } from "framer-motion"
+import {Audiowide} from "@next/font/google";
 
+const audiowide = Audiowide({
+    weight: "400", // Audiowide only has a 400 weight
+    subsets: ["latin"],
+});
 export default function Header({ isMenuOpen, setIsMenuOpen }) {
     return (
         <header className="container mx-auto px-4 py-6">
             <div className="flex items-center justify-between">
-                <Link href="/" className="text-2xl font-bold">
+                <Link href="/" className={`${audiowide.className} text-2xl font-bold`}>
                     Sempre Studios
                 </Link>
                 <nav className="hidden md:block bg-white rounded-full shadow-md px-6 py-2">

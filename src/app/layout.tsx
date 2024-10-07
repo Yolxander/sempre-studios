@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Audiowide, Roboto_Condensed } from "@next/font/google";
+import { Audiowide, Roboto_Condensed, Poppins } from "@next/font/google";
 import "./globals.css";
 import Script from 'next/script'
 
@@ -23,6 +23,11 @@ const audiowide = Audiowide({
 });
 
 const robotoCondensed = Roboto_Condensed({
+    weight: ["400", "700"], // Roboto Condensed has multiple weights
+    subsets: ["latin"],
+});
+
+const poppins = Poppins({
     weight: ["400", "700"], // Roboto Condensed has multiple weights
     subsets: ["latin"],
 });
