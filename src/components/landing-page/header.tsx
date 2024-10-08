@@ -25,7 +25,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen }) {
                     </ul>
                 </nav>
                 <div className="hidden md:flex items-center space-x-6 mr-6">
-                    {/*<Link href="#" className="text-gray-600 hover:text-gray-900">Log in</Link>*/}
+                    <Link href="#" className="text-gray-600 hover:text-gray-900">Log in</Link>
                     <Button variant="outline" className="rounded-full">Get Started</Button>
                 </div>
                 <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
