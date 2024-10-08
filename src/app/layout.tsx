@@ -27,11 +27,6 @@ const robotoCondensed = Roboto_Condensed({
     subsets: ["latin"],
 });
 
-const poppins = Poppins({
-    weight: ["400", "700"], // Roboto Condensed has multiple weights
-    subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
     title: "Sempre Studios",
     description: "fast and effective web services",

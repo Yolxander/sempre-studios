@@ -47,6 +47,21 @@ export default function Features() {
         },
     }
 
+    const outerBgVariants = {
+        initial: {
+            backgroundPosition: "0% 0%",
+        },
+        animate: {
+            backgroundPosition: "100% 100%",
+            transition: {
+                duration: 10,
+                ease: "linear",
+                repeat: Infinity,
+                repeatType: "reverse",
+            },
+        },
+    }
+
     return (
         <div className={`${poppins.className} bg-gray-100 py-12`}>
             <div className="container mx-auto px-4">
@@ -79,7 +94,16 @@ export default function Features() {
                             <h4 className="text-2xl md:text-3xl font-bold mb-4">Launch Your Site</h4>
                             <p className="text-gray-600">With a simple purchase, your new website can go live immediately. We offer ongoing support and management to keep your online presence thriving.</p>
                         </div>
-                        <div className="mt-8 flex-grow">
+                        <motion.div
+                            className="mt-8 flex-grow"
+                            variants={outerBgVariants}
+                            initial="initial"
+                            animate="animate"
+                            style={{
+                                backgroundImage: "radial-gradient(circle, #f3f4f6, #e5e7eb)",
+                                backgroundSize: "200% 200%",
+                            }}
+                        >
                             <motion.div
                                 className="w-full h-full bg-gray-100 rounded-xl p-6 flex flex-col items-center justify-center text-center"
                                 variants={bgVariants}
@@ -104,7 +128,7 @@ export default function Features() {
                                     </div>
                                 </div>
                             </motion.div>
-                        </div>
+                        </motion.div>
                     </AnimatedCard>
                 </div>
             </div>
