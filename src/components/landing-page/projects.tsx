@@ -5,7 +5,14 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-const projects = [
+interface Project {
+    image: string
+    title: string
+    description: string
+    link: string
+}
+
+const projects: Project[] = [
     {
         image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-07%20at%2011.33.38%E2%80%AFAM-voFeujlWtdkzG1xIJJsvLTMDGoOHd5.png",
         title: "NORTH SIMCOE PROPERTY MANAGEMENT",
@@ -124,7 +131,11 @@ export default function Projects() {
     )
 }
 
-function ProjectCard({ project }) {
+interface ProjectCardProps {
+    project: Project
+}
+
+function ProjectCard({ project }: ProjectCardProps) {
     return (
         <motion.div
             className="relative overflow-hidden rounded-3xl aspect-[3/4] cursor-pointer shadow-lg"
@@ -133,20 +144,17 @@ function ProjectCard({ project }) {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={() => window.open(project.link, '_blank')}
         >
-            {/* Image container fills the entire card */}
             <div className="absolute inset-0 w-full h-full">
                 <Image
                     src={project.image}
                     alt={project.title}
-                    layout="fill" // Ensures the image spans the full width/height of the parent
-                    objectFit="cover" // Ensures the image maintains aspect ratio while covering the container
-                    quality={100} // Increases the image quality
+                    layout="fill"
+                    objectFit="cover"
+                    quality={100}
                     className="rounded-3xl"
                 />
             </div>
-            {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-70"></div>
-            {/* Project text content */}
             <div className="absolute inset-0 flex flex-col justify-end p-6">
                 <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
                 <p className="text-base text-white">{project.description}</p>
