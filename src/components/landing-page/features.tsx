@@ -37,21 +37,6 @@ function AnimatedCard({ children, className }: AnimatedCardProps) {
 }
 
 export default function Features() {
-    const bgVariants = {
-        initial: {
-            backgroundPosition: "0% 50%",
-        },
-        animate: {
-            backgroundPosition: "100% 50%",
-            transition: {
-                duration: 5,
-                ease: "linear", // This is valid, but for custom easing, use cubic-bezier array
-                repeat: Infinity,
-                repeatType: "reverse",
-            },
-        },
-    }
-
     const outerBgVariants = {
         initial: {
             backgroundPosition: "0% 0%",
@@ -60,12 +45,29 @@ export default function Features() {
             backgroundPosition: "100% 100%",
             transition: {
                 duration: 10,
-                ease: "linear", // This can be a custom array for smoother animation
+                ease: "linear",
                 repeat: Infinity,
-                repeatType: "reverse",
+                repeatType: "reverse" as const, // This resolves both issues
             },
         },
-    }
+    };
+
+    const bgVariants = {
+        initial: {
+            backgroundPosition: "0% 50%",
+        },
+        animate: {
+            backgroundPosition: "100% 50%",
+            transition: {
+                duration: 5,
+                ease: "linear",
+                repeat: Infinity,
+                repeatType: "reverse" as const, // This resolves both issues
+            },
+        },
+    };
+
+
 
     return (
         <div className={`${poppins.className} bg-gray-100 py-12`}>
