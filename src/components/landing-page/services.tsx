@@ -1,9 +1,14 @@
-"use client"
-
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Rocket } from 'lucide-react'
+
+// Define the props interface for ServiceCard
+interface ServiceCardProps {
+    title: string;
+    description: string;
+    icon: React.ReactNode; // You can use JSX.Element if you prefer
+}
 
 export default function Services() {
     return (
@@ -49,8 +54,9 @@ export default function Services() {
     )
 }
 
-function ServiceCard({ title, description, icon }) {
-    const cardRef = useRef(null)
+// Update the ServiceCard function to use the props interface
+function ServiceCard({ title, description, icon }: ServiceCardProps) {
+    const cardRef = useRef<HTMLDivElement | null>(null)
     const { scrollYProgress } = useScroll({
         target: cardRef,
         offset: ["start end", "end start"]
@@ -64,7 +70,7 @@ function ServiceCard({ title, description, icon }) {
         threshold: 0.1,
     })
 
-    const setRefs = (node) => {
+    const setRefs = (node: HTMLDivElement | null) => {
         cardRef.current = node
         inViewRef(node)
     }
