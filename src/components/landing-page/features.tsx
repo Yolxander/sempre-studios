@@ -45,7 +45,7 @@ export default function Features() {
             backgroundPosition: "100% 50%",
             transition: {
                 duration: 5,
-                ease: "linear",
+                ease: "linear", // This is valid, but for custom easing, use cubic-bezier array
                 repeat: Infinity,
                 repeatType: "reverse",
             },
@@ -60,7 +60,7 @@ export default function Features() {
             backgroundPosition: "100% 100%",
             transition: {
                 duration: 10,
-                ease: "linear",
+                ease: "linear", // This can be a custom array for smoother animation
                 repeat: Infinity,
                 repeatType: "reverse",
             },
