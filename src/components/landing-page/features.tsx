@@ -3,14 +3,19 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Poppins } from "next/font/google"
 import { Rocket, Globe, Zap } from "lucide-react"
-import { useRef } from "react"
+import { useRef, ReactNode } from "react"
 
 const poppins = Poppins({
     weight: ["400", "300"],
     subsets: ["latin"],
 })
 
-function AnimatedCard({ children, className }) {
+interface AnimatedCardProps {
+    children: ReactNode
+    className?: string
+}
+
+function AnimatedCard({ children, className }: AnimatedCardProps) {
     const cardRef = useRef(null)
     const { scrollYProgress } = useScroll({
         target: cardRef,
