@@ -28,7 +28,7 @@ export default function OnlinePresence() {
                     </div>
                     <div className="lg:w-1/2 relative">
                         <Image
-                            src="/placeholder.svg"
+                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-08%20at%2010.49.28%E2%80%AFAM-iufg13rUeCVEcsqdpyUCbtJsy5ctHY.png"
                             width={600}
                             height={400}
                             alt="Online Presence Dashboard"
@@ -36,7 +36,9 @@ export default function OnlinePresence() {
                         />
                         <div className="absolute -bottom-10 -left-10 bg-white rounded-lg shadow-md p-4 max-w-xs">
                             <div className="flex items-center space-x-4">
-                                <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
+                                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    921
+                                </div>
                                 <div>
                                     <h4 className="font-semibold">Website Analytics</h4>
                                     <p className="text-sm text-gray-600">Your site traffic is up 25% this month!</p>
@@ -53,7 +55,9 @@ export default function OnlinePresence() {
                         </div>
                         <div className="absolute -bottom-4 right-10 bg-white rounded-lg shadow-md p-4 max-w-xs">
                             <div className="flex items-center space-x-4">
-                                <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
+                                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    849
+                                </div>
                                 <div>
                                     <p className="text-sm text-gray-600">SEO optimization complete for this week</p>
                                 </div>

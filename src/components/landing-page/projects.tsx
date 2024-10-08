@@ -79,7 +79,7 @@ export default function Projects() {
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
                         Our Projects
                     </h2>
-                    <div className="flex items-center">
+                    <div className="flex items-center md:flex hidden">
                         <button
                             onClick={prevProject}
                             className="mr-4 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"

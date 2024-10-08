@@ -22,11 +22,11 @@ export default function Hero() {
     }, [])
 
     return (
-        <main className={`${poppins.className} container mx-auto px-4 py-24 text-center min-h-screen relative overflow-hidden`}>
+        <main className={`${poppins.className} container mx-auto px-4 py-20 text-center min-h-screen relative overflow-hidden`}>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 2 }}
                 className="relative z-10"
             >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -41,7 +41,7 @@ export default function Hero() {
                 </div>
             </motion.div>
             {animationData && (
-                <div className="absolute  flex items-center justify-center h-[420px] bottom-1 right-[30%]">
+                <div className="absolute  flex items-center justify-center h-[420px] md:bottom-1 md:right-[30%] bottom-0 right-[-30px]">
                     <Lottie
                         animationData={animationData}
                         className="w-full h-full object-cover"

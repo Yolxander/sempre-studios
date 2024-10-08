@@ -24,8 +24,8 @@ export default function Header({ isMenuOpen, setIsMenuOpen }) {
                         <li><Link href="#" className="text-gray-600 hover:text-gray-900">Contact</Link></li>
                     </ul>
                 </nav>
-                <div className="hidden md:flex items-center space-x-4">
-                    <Link href="#" className="text-gray-600 hover:text-gray-900">Log in</Link>
+                <div className="hidden md:flex items-center space-x-6 mr-6">
+                    {/*<Link href="#" className="text-gray-600 hover:text-gray-900">Log in</Link>*/}
                     <Button variant="outline" className="rounded-full">Get Started</Button>
                 </div>
                 <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -45,7 +45,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen }) {
                         <li><Link href="#" className="text-gray-600 hover:text-gray-900">Projects</Link></li>
                         <li><Link href="#" className="text-gray-600 hover:text-gray-900">Pricing</Link></li>
                         <li><Link href="#" className="text-gray-600 hover:text-gray-900">Contact</Link></li>
-                        <li><Link href="#" className="text-gray-600 hover:text-gray-900">Log in</Link></li>
+                        {/*<li><Link href="#" className="text-gray-600 hover:text-gray-900">Log in</Link></li>*/}
                         <li><Button variant="outline" className="rounded-full w-full">Get Started</Button></li>
                     </ul>
                 </motion.nav>

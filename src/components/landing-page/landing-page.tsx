@@ -22,7 +22,7 @@ export  function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-      <div className={`${poppins.className} min-h-screen bg-white font-['Gothic_A1',sans-serif]`} >
+      <div className={`${poppins.className} min-h-screen bg-white font-['Gothic_A1',sans-serif] overflow-x-hidden scroll-smooth`} >
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <Hero />
         <Features />

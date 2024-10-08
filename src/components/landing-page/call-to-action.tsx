@@ -34,7 +34,7 @@ export default function CallToAction() {
                     </div>
                 </div>
             </div>
-            <div className="absolute top-8 right-8 z-20">
+            <div className="absolute top-8 right-8 z-20 hidden">
                 <Image
                     src="/placeholder.svg"
                     alt="QR Code"

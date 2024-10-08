@@ -1,9 +1,9 @@
 "use client"
 
-import { motion, useAnimation } from "framer-motion"
-import Image from 'next/image'
-import { useEffect } from 'react'
+import { motion, useAnimation, useScroll, useTransform } from "framer-motion"
+import { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
+import { Rocket } from 'lucide-react'
 
 export default function Services() {
     return (
@@ -15,13 +15,9 @@ export default function Services() {
         >
             <div className="container mx-auto px-4">
                 <div className="flex justify-center mb-8">
-                    <Image
-                        src="/placeholder.svg"
-                        width={120}
-                        height={40}
-                        alt="From Concept To Launch"
-                        className="rounded-full"
-                    />
+                    <div className="bg-primary rounded-full p-4">
+                        <Rocket className="w-12 h-12 text-primary-foreground" />
+                    </div>
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16">
                     Simple and secure web presence,<br />build trust with customers
@@ -54,58 +50,46 @@ export default function Services() {
 }
 
 function ServiceCard({ title, description, icon }) {
-    const controls = useAnimation()
-    const [ref, inView] = useInView({
-        triggerOnce: true,
+    const cardRef = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: cardRef,
+        offset: ["start end", "end start"]
+    })
+
+    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.6, 1, 0.6])
+
+    const [inViewRef, inView] = useInView({
+        triggerOnce: false,
         threshold: 0.1,
     })
 
-    useEffect(() => {
-        if (inView) {
-            controls.start("visible")
-        }
-    }, [controls, inView])
-
-    const cardVariants = {
-        hidden: {
-            width: "60px",
-            height: "60px",
-            background: "#f0f0f0",
-            boxShadow: "0 0 0 #cccccc, 0 0 0 #ffffff, 10px 10px 10px #cccccc inset, -10px -10px 10px #ffffff inset"
-        },
-        visible: {
-            width: "100%",
-            height: "auto",
-            background: "#fafafa",
-            boxShadow: "40px 40px 40px #cccccc, 0 0 0 #ffffff, 0 0 0 #cccccc inset, 2px 2px 2px #ffffff inset",
-            transition: {
-                duration: 1.5,
-                ease: [0.34, 1.56, 0.64, 1], // Custom spring-like easing
-            }
-        }
+    const setRefs = (node) => {
+        cardRef.current = node
+        inViewRef(node)
     }
 
     const contentVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { delay: 0.5, duration: 0.5 }
+            transition: { delay: 0.2, duration: 0.5 }
         }
     }
 
     return (
         <motion.div
-            ref={ref}
-            animate={controls}
-            initial="hidden"
-            variants={cardVariants}
+            ref={setRefs}
+            style={{
+                scale,
+                opacity,
+            }}
             className="bg-white rounded-3xl shadow-md relative overflow-hidden"
-            style={{ minHeight: "60px" }}
         >
             <motion.div
                 className="w-12 h-12 bg-black rounded-full absolute top-8 left-8 flex items-center justify-center"
                 initial={{ scale: 1 }}
-                animate={{ scale: inView ? 1 : 1.2 }}
+                animate={{ scale: inView ? 1.2 : 1 }}
                 transition={{ duration: 0.3 }}
             >
                 {icon}
@@ -113,7 +97,7 @@ function ServiceCard({ title, description, icon }) {
             <motion.div
                 variants={contentVariants}
                 initial="hidden"
-                animate={controls}
+                animate={inView ? "visible" : "hidden"}
                 className="p-8"
             >
                 <h3 className="text-2xl font-bold mb-4 mt-16">{title}</h3>

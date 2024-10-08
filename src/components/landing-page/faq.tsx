@@ -22,14 +22,14 @@ export default function FAQ() {
                         <p className="text-lg md:text-xl text-gray-600 mb-8">
                             Find answers to common questions about our services and how we can help your business succeed online.
                         </p>
-                        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full">
-                                Get Started
-                            </Button>
-                            <Button variant="outline" size="lg" className="rounded-full">
-                                Contact Sales
-                            </Button>
-                        </div>
+                        {/*<div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">*/}
+                        {/*    <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full">*/}
+                        {/*        Get Started*/}
+                        {/*    </Button>*/}
+                        {/*    <Button variant="outline" size="lg" className="rounded-full">*/}
+                        {/*        Contact Sales*/}
+                        {/*    </Button>*/}
+                        {/*</div>*/}
                     </div>
                     <div className="lg:w-1/2">
                         <Accordion type="single" collapsible className="w-full">
