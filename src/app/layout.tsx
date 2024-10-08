@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Audiowide, Roboto_Condensed, Poppins } from "@next/font/google";
+import { Audiowide, Roboto_Condensed } from "@next/font/google";
 import "./globals.css";
 import Script from 'next/script'
 
