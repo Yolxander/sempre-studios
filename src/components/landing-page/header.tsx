@@ -3,12 +3,19 @@ import { Button } from "@/components/ui/button"
 import { Menu } from 'lucide-react'
 import { motion } from "framer-motion"
 import {Audiowide} from "@next/font/google";
+import { Dispatch, SetStateAction } from 'react';
 
 const audiowide = Audiowide({
     weight: "400", // Audiowide only has a 400 weight
     subsets: ["latin"],
 });
-export default function Header({ isMenuOpen, setIsMenuOpen }) {
+
+interface HeaderProps {
+    isMenuOpen: boolean;
+    setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
     return (
         <header className="container mx-auto px-4 py-6">
             <div className="flex items-center justify-between">
@@ -45,7 +52,6 @@ export default function Header({ isMenuOpen, setIsMenuOpen }) {
                         <li><Link href="#" className="text-gray-600 hover:text-gray-900">Projects</Link></li>
                         <li><Link href="#" className="text-gray-600 hover:text-gray-900">Pricing</Link></li>
                         <li><Link href="#" className="text-gray-600 hover:text-gray-900">Contact</Link></li>
-                        {/*<li><Link href="#" className="text-gray-600 hover:text-gray-900">Log in</Link></li>*/}
                         <li><Button variant="outline" className="rounded-full w-full">Get Started</Button></li>
                     </ul>
                 </motion.nav>
