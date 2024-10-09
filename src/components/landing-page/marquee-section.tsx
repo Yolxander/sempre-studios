@@ -1,10 +1,25 @@
-import { motion } from "framer-motion"
+"use client"
+
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from "framer-motion"
 
 export default function MarqueeSection() {
+    const containerRef = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    })
+
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5])
+    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
+
     return (
         <section className="bg-white py-12 overflow-hidden">
-            <div className="relative">
+            <div
+                className="relative">
                 <motion.div
+                    ref={containerRef}
+                    style={{ opacity, scale }}
                     className="text-[50px] md:text-[100px] font-bold text-gray-100 whitespace-nowrap"
                     animate={{
                         x: [0, -1000],
