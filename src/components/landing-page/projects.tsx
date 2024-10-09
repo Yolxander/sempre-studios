@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from 'react'
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef, useEffect } from 'react'
+import { motion, useScroll, useTransform } from "framer-motion"
 import Image from 'next/image'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Button } from "@/components/ui/button"
 
 interface Project {
     image: string
@@ -30,52 +30,31 @@ const projects: Project[] = [
         title: "Premium Natural Wood Charcoal",
         description: "High-quality, sustainable wood charcoal products for grilling enthusiasts, restaurants, and industrial applications.",
         link: "https://charcoal.jonex.ca/"
-    },
-    {
-        image: "/placeholder.svg?height=600&width=400",
-        title: "Learn More",
-        description: "Discover more about our projects and how we can help your business succeed online.",
-        link: "#"
     }
 ]
 
 export default function Projects() {
     const [currentProject, setCurrentProject] = useState(0)
-    const [direction, setDirection] = useState(0)
+    const containerRef = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    })
 
-    const nextProject = () => {
-        setDirection(1)
-        setCurrentProject((prev) => (prev + 1) % projects.length)
-    }
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5])
+    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
 
-    const prevProject = () => {
-        setDirection(-1)
-        setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length)
-    }
-
-    const variants = {
-        enter: (direction: number) => {
-            return {
-                x: direction > 0 ? 1000 : -1000,
-                opacity: 0
-            }
-        },
-        center: {
-            zIndex: 1,
-            x: 0,
-            opacity: 1
-        },
-        exit: (direction: number) => {
-            return {
-                zIndex: 0,
-                x: direction < 0 ? 1000 : -1000,
-                opacity: 0
-            }
-        }
-    }
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentProject((prev) => (prev + 1) % projects.length)
+        }, 5000)
+        return () => clearInterval(interval)
+    }, [])
 
     return (
         <motion.section
+            ref={containerRef}
+            style={{ opacity, scale }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -86,45 +65,30 @@ export default function Projects() {
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
                         Our Projects
                     </h2>
-                    <div className="flex items-center md:flex hidden">
-                        <button
-                            onClick={prevProject}
-                            className="mr-4 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
-                            aria-label="Previous project"
-                        >
-                            <ChevronLeft className="w-6 h-6" />
-                        </button>
-                        <button
-                            onClick={nextProject}
-                            className="bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors"
-                            aria-label="Next project"
-                        >
-                            <ChevronRight className="w-6 h-6" />
-                        </button>
-                    </div>
+                    <Button
+                        variant="outline"
+                        size="lg"
+                        className="rounded-full"
+                        onClick={() => window.open("#projects", "_self")}
+                    >
+                        Read More
+                    </Button>
                 </div>
                 <div className="relative overflow-hidden">
-                    <AnimatePresence initial={false} custom={direction}>
-                        <motion.div
-                            key={currentProject}
-                            custom={direction}
-                            variants={variants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{
-                                x: { type: "spring", stiffness: 300, damping: 30 },
-                                opacity: { duration: 0.2 }
-                            }}
-                            className="w-full"
-                        >
-                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                                {projects.slice(currentProject, currentProject + 3).map((project, index) => (
-                                    <ProjectCard key={index} project={project} />
-                                ))}
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
+                    <motion.div
+                        key={currentProject}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="w-full"
+                    >
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            {projects.map((project, index) => (
+                                <ProjectCard key={index} project={project} />
+                            ))}
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </motion.section>

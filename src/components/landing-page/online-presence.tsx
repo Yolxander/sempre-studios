@@ -1,10 +1,20 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from "framer-motion"
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 
 export default function OnlinePresence() {
+    const containerRef = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    })
+
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5])
+    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
+
     const containerVariants = {
         hidden: { opacity: 0, y: 50 },
         visible: {
@@ -51,6 +61,8 @@ export default function OnlinePresence() {
 
     return (
         <motion.section
+            ref={containerRef}
+            style={{ opacity, scale }}
             variants={containerVariants}
             initial="hidden"
             animate="visible"

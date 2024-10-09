@@ -17,7 +17,7 @@ interface HeaderProps {
 
 export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
     return (
-        <header className="container mx-auto px-4 py-6">
+        <header className=" md:px-12 px-4 py-6 bg-white min-w-screen">
             <div className="flex items-center justify-between">
                 <Link href="/" className={`${audiowide.className} text-2xl font-bold`}>
                     Sempre Studios
