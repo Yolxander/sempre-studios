@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Image from 'next/image'
+import Link from "next/link";
 
 export default function CallToAction() {
     return (
@@ -25,9 +26,11 @@ export default function CallToAction() {
                         Ready to launch your new website?
                     </h2>
                     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
-                        <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-8">
-                            Get started
-                        </Button>
+                        <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
+                            <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-8">
+                                Get started
+                            </Button>
+                        </Link>
                         <Button variant="outline" size="lg" className="text-black border-white hover:bg-white hover:text-black rounded-full px-8">
                             Contact Sales
                         </Button>

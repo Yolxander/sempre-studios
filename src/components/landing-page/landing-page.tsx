@@ -11,28 +11,44 @@ import Projects from './projects'
 import FAQ from './faq'
 import CallToAction from './call-to-action'
 import Footer from './footer'
-import {Poppins} from "@next/font/google";
+import { Poppins } from "@next/font/google";
 
 const poppins = Poppins({
-    weight: ["400", "300"], // Roboto Condensed has multiple weights
+    weight: ["400", "300"],
     subsets: ["latin"],
 });
 
-export  function LandingPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+export function LandingPage() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  return (
-      <div className={`${poppins.className} min-h-screen font-['Gothic_A1',sans-serif] overflow-x-hidden scroll-smooth bg-gray-100`} >
-        <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-        <Hero />
-        <Features />
-        <OnlinePresence />
-        <MarqueeSection />
-        <Services />
-        <Projects />
-        <FAQ />
-        <CallToAction />
-        <Footer />
-      </div>
-  )
+    return (
+        <div className={`${poppins.className} min-h-screen font-['Gothic_A1',sans-serif] overflow-x-hidden scroll-smooth bg-gray-100`} >
+            <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+            <section id="hero">
+                <Hero />
+            </section>
+            <section id="features">
+                <Features />
+            </section>
+            <section id="online-presence">
+                <OnlinePresence />
+            </section>
+            <section id="marquee">
+                <MarqueeSection />
+            </section>
+            <section id="services">
+                <Services />
+            </section>
+            <section id="projects">
+                <Projects />
+            </section>
+            <section id="faq">
+                <FAQ />
+            </section>
+            <section id="call-to-action">
+                <CallToAction />
+            </section>
+            <Footer />
+        </div>
+    )
 }

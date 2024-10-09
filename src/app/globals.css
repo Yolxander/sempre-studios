@@ -289,6 +289,12 @@ body {
 .menuInput:checked ~ .menu {
   transform: none;
 }
+
+
+html {
+  scroll-behavior: smooth;
+}
+
 /*@keyframes ekumanslidein{0 % {*/
 /*  transform: translateX(-600*/
 /*  px)}50%{transform:translateX(-600px) scaleX(1)}75%{transform:translateX(30px) scaleX(.9)}87.5%{transform:translateX(-5px)}97%{transform:translateX(3px)}to{transform:translateX(0) scaleX(1)}}@keyframes*/
@@ -328,4 +334,7 @@ body {
 /*                                                                                                                                              #Man_screen .greenscrmove,#ku.svgmate #Man_screen .redskmove{animation - duration:6s}#ku.svgmate*/
 /*                                                                                                                                                                                                                                   #Man_screen .greenscrmove{animation - duration:7.2s}#ku.svgmate #hairback,#ku.svgmate*/
 /*#womanscreen{animation - name:manscreenpopup;animation-iteration-count:1;animation-duration:3.9s;animation-timing-function:ease-in-out;transform-origin:648.689px 361.659px}#ku.svgmate*/
-/*                                                                                                                                                                            #hairback{animation - name:backhairwave;animation-iteration-count:infinite;animation-duration:3.3s;transform-origin:785.132px 295.833px}*/
+/*
+
+
+                                                                                                                                                                      #hairback{animation - name:backhairwave;animation-iteration-count:infinite;animation-duration:3.3s;transform-origin:785.132px 295.833px}*/
