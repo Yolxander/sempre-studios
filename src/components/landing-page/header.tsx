@@ -20,6 +20,9 @@ const audiowide = Audiowide({
 export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+    // Close the menu when a link is clicked
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
         <header className="md:px-12 px-4 py-6 bg-white min-w-screen">
             <div className="flex items-center justify-between">
@@ -81,14 +84,26 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
                         className="md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center"
                     >
                         <ul className="flex flex-col space-y-4 text-lg">
-                            <li><Link href="#services" className="text-gray-600 hover:text-gray-900 ml-6">Services</Link></li>
-                            <li><Link href="#features" className="text-gray-600 hover:text-gray-900 ml-6">Features</Link></li>
-                            <li><Link href="#projects" className="text-gray-600 hover:text-gray-900 ml-6">Projects</Link></li>
-                            <li><Link href="#faq" className="text-gray-600 hover:text-gray-900 ml-6">FAQ</Link></li>
-                            <li><Link href="#call-to-action" className="text-gray-600 hover:text-gray-900 ml-6">Contact</Link></li>
+                            <li>
+                                <Link href="#services" className="text-gray-600 hover:text-gray-900  ml-6" onClick={closeMenu}>Services</Link>
+                            </li>
+                            <li>
+                                <Link href="#features" className="text-gray-600 hover:text-gray-900  ml-6" onClick={closeMenu}>Features</Link>
+                            </li>
+                            <li>
+                                <Link href="#projects" className="text-gray-600 hover:text-gray-900  ml-6" onClick={closeMenu}>Projects</Link>
+                            </li>
+                            <li>
+                                <Link href="#faq" className="text-gray-600 hover:text-gray-900  ml-6" onClick={closeMenu}>FAQ</Link>
+                            </li>
+                            <li>
+                                <Link href="#call-to-action" className="text-gray-600 hover:text-gray-900  ml-6" onClick={closeMenu}>Contact</Link>
+                            </li>
                             <li>
                                 <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
-                                    <Button variant="outline" className="rounded-full w-full text-[20px] text-gray-600">Get Started</Button>
+                                    <Button variant="outline" className="rounded-full w-full text-[20px] text-gray-600" onClick={closeMenu}>
+                                        Get Started
+                                    </Button>
                                 </Link>
                             </li>
                         </ul>
