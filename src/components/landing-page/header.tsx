@@ -81,11 +81,11 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
                         className="md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center"
                     >
                         <ul className="flex flex-col space-y-4 text-lg">
-                            <li><Link href="#services" className="text-gray-600 hover:text-gray-900">Services</Link></li>
-                            <li><Link href="#features" className="text-gray-600 hover:text-gray-900">Features</Link></li>
-                            <li><Link href="#projects" className="text-gray-600 hover:text-gray-900">Projects</Link></li>
-                            <li><Link href="#faq" className="text-gray-600 hover:text-gray-900">FAQ</Link></li>
-                            <li><Link href="#call-to-action" className="text-gray-600 hover:text-gray-900">Contact</Link></li>
+                            <li><Link href="#services" className="text-gray-600 hover:text-gray-900 ml-6">Services</Link></li>
+                            <li><Link href="#features" className="text-gray-600 hover:text-gray-900 ml-6">Features</Link></li>
+                            <li><Link href="#projects" className="text-gray-600 hover:text-gray-900 ml-6">Projects</Link></li>
+                            <li><Link href="#faq" className="text-gray-600 hover:text-gray-900 ml-6">FAQ</Link></li>
+                            <li><Link href="#call-to-action" className="text-gray-600 hover:text-gray-900 ml-6">Contact</Link></li>
                             <li>
                                 <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
                                     <Button variant="outline" className="rounded-full w-full text-[20px] text-gray-600">Get Started</Button>
