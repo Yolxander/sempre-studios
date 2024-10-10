@@ -2,8 +2,16 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Image from 'next/image'
 import Link from "next/link";
+import {useState} from "react";
+import ContactForm from "@/components/ContactForm"
 
 export default function CallToAction() {
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const handleModalToggle = () => {
+        setIsModalOpen(!isModalOpen)
+    }
+
     return (
         <motion.section
             initial={{ opacity: 0, y: 50 }}
@@ -31,7 +39,7 @@ export default function CallToAction() {
                                 Get started
                             </Button>
                         </Link>
-                        <Button variant="outline" size="lg" className="text-black border-white hover:bg-white hover:text-black rounded-full px-8">
+                        <Button onClick={handleModalToggle} variant="outline" size="lg" className="text-black border-white hover:bg-white hover:text-black rounded-full px-8">
                             Contact Sales
                         </Button>
                     </div>
@@ -46,6 +54,13 @@ export default function CallToAction() {
                     className="bg-white p-2 rounded-lg"
                 />
             </div>
+
+            {/* Modal for Contact Sales */}
+            {isModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                    <ContactForm onClose={handleModalToggle} />
+                </div>
+            )}
         </motion.section>
     )
 }

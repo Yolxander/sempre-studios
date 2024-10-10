@@ -32,7 +32,7 @@ export default function FAQ() {
                         <Accordion type="single" collapsible className="w-full">
                             <FAQItem
                                 value="item-1"
-                                question="What are the payment options?"
+                                question=" What are the payment options available?"
                                 answer="We offer two forms of payment: a subscription-based model and a one-time payment option, depending on the package you choose."
                             />
                             <FAQItem
