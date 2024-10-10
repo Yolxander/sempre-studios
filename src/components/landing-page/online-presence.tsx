@@ -90,8 +90,8 @@ export default function OnlinePresence() {
                             <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full" onClick={handleModalToggle}>
                                 View Packages
                             </Button>
-                            <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
-                                <Button variant="outline" size="lg" className="rounded-full">
+                            <Link className="w-full" href="https://calendly.com/hello-semprestudios/30min" passHref>
+                                <Button variant="outline" size="lg" className="rounded-full w-full md:max-w-[150px]">
                                     Learn More
                                 </Button>
                             </Link>
