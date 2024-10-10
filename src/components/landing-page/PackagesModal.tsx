@@ -23,9 +23,10 @@ export default function PackagesModal({ onClose }: { onClose: () => void }) {
                 "Landing Page",
                 "Booking System",
                 "Brand Support",
-                "Multipage Website",
+                "Multi page Website",
                 "SEO",
-                "Analytics"
+                "Analytics",
+                "Technical Support"
             ],
         },
         {
@@ -34,7 +35,7 @@ export default function PackagesModal({ onClose }: { onClose: () => void }) {
             features: [
                 "All features from Business Package",
                 "Email Marketing Integration",
-                "Social Media Marketing",
+                "Social Media Management",
             ],
         },
     ]

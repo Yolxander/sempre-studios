@@ -26,8 +26,8 @@ export default function CallToAction() {
                         Ready to launch your new website?
                     </h2>
                     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
-                        <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
-                            <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-8">
+                        <Link className="md:w-fit	w-full" href="https://calendly.com/hello-semprestudios/30min" passHref>
+                            <Button size="lg" className="bg-white text-black hover:bg-gray-200 rounded-full px-8 w-full">
                                 Get started
                             </Button>
                         </Link>

@@ -32,29 +32,35 @@ export default function FAQ() {
                         <Accordion type="single" collapsible className="w-full">
                             <FAQItem
                                 value="item-1"
+                                question="What are the payment options?"
+                                answer="We offer two forms of payment: a subscription-based model and a one-time payment option, depending on the package you choose."
+                            />
+                            <FAQItem
+                                value="item-2"
                                 question="How does the demo website process work?"
                                 answer="We create a customized demo website for your business and send it directly to you via email. You can review the demo and decide to purchase and launch it with minimal changes required."
                             />
                             <FAQItem
-                                value="item-2"
-                                question="What's included in the starting price of $1000?"
-                                answer="The $1000 starting price includes a fully functional website with custom design, basic SEO optimization, and mobile responsiveness. Additional features and ongoing management are available through our monthly packages."
+                                value="item-3"
+                                question="What's included in the starting price of $1500?"
+                                answer="The $1500 starting price includes a fully functional landing page with custom design and mobile responsiveness. Additional features and ongoing management are available through our monthly packages."
                             />
                             <FAQItem
-                                value="item-3"
+                                value="item-4"
                                 question="Can I edit my website after it's launched?"
                                 answer="Yes, we provide a user-friendly content management system that allows you to make basic edits. For more significant changes or ongoing management, we offer various monthly packages to suit your needs."
                             />
                             <FAQItem
-                                value="item-4"
+                                value="item-5"
                                 question="What ongoing services do you offer?"
                                 answer="We offer a range of ongoing services including content updates, SEO optimization, social media management, email marketing, and technical support. Our packages can be customized to fit your specific business needs."
                             />
                             <FAQItem
-                                value="item-5"
+                                value="item-6"
                                 question="How long does it take to launch a website?"
                                 answer="With our demo website approach, we can have your site ready to launch within days of your approval. The exact timeline may vary depending on any customizations or additional features you request."
                             />
+
                         </Accordion>
                     </div>
                 </div>
