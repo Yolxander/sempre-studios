@@ -4,7 +4,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import {X} from "lucide-react";
+import { X } from "lucide-react";
 
 export default function PackagesModal({ onClose }: { onClose: () => void }) {
     const packages = [
@@ -47,7 +47,8 @@ export default function PackagesModal({ onClose }: { onClose: () => void }) {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-auto">
-            <div className="bg-white p-6 rounded-lg w-full md:max-w-[50vw] max-w-sm max-h-[90vh] overflow-y-auto relative">
+            {/* Update to cover full screen */}
+            <div className="bg-white p-6 rounded-lg w-full md:h-full h-[100vh] md:max-h-[90vh] overflow-y-auto relative">
                 {/* Close button positioned in the top right */}
                 <button
                     onClick={onClose}
