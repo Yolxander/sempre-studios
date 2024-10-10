@@ -1,19 +1,23 @@
 "use client";
 
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Audiowide } from "next/font/google";
+
+// Define the prop types
+interface HeaderProps {
+    isMenuOpen: boolean;
+    setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
+}
 
 const audiowide = Audiowide({
     weight: "400",
     subsets: ["latin"],
 });
 
-export default function Header() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     return (
