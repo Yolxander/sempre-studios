@@ -45,8 +45,8 @@ export default function Hero() {
                     We create customized demo sites for businesses that need an updated or first-time web presence. See your future website today!
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <Link className="md:w-fi w-full" href="https://calendly.com/hello-semprestudios/30min" passHref>
-                        <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full w-full">Get Demo</Button>
+                    <Link className="md:w-fit w-full" href="https://calendly.com/hello-semprestudios/30min" passHref>
+                        <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full md:w-full">Get Demo</Button>
                     </Link>
 
                     {/* Contact Sales Button triggers modal */}

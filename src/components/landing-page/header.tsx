@@ -1,21 +1,21 @@
+"use client"
+
+import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
-import { Menu } from 'lucide-react'
-import { motion } from "framer-motion"
-import { Audiowide } from "@next/font/google";
-import { Dispatch, SetStateAction } from 'react';
+import { motion, AnimatePresence } from "framer-motion"
+import { Audiowide } from "next/font/google"
 
 const audiowide = Audiowide({
     weight: "400",
     subsets: ["latin"],
-});
+})
 
-interface HeaderProps {
-    isMenuOpen: boolean;
-    setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-}
+export default function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+
     return (
         <header className="md:px-12 px-4 py-6 bg-white min-w-screen">
             <div className="flex items-center justify-between">
@@ -36,29 +36,57 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
                     <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
                         <Button variant="outline" className="rounded-full">Get Started</Button>
                     </Link>
-
                 </div>
-                <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                    <Menu className="w-6 h-6" />
+                <button className="md:hidden relative z-50" onClick={toggleMenu}>
+                    <motion.div
+                        className="h-1 w-6 bg-black rounded"
+                        animate={{
+                            rotate: isMenuOpen ? 45 : 0,
+                            translateY: isMenuOpen ? 6 : 0
+                        }}
+                        transition={{ duration: 0.3 }}
+                    />
+                    <motion.div
+                        className="h-1 w-6 bg-black rounded my-1"
+                        animate={{
+                            opacity: isMenuOpen ? 0 : 1
+                        }}
+                        transition={{ duration: 0.3 }}
+                    />
+                    <motion.div
+                        className="h-1 w-6 bg-black rounded"
+                        animate={{
+                            rotate: isMenuOpen ? -45 : 0,
+                            translateY: isMenuOpen ? -6 : 0
+                        }}
+                        transition={{ duration: 0.3 }}
+                    />
                 </button>
             </div>
-            {isMenuOpen && (
-                <motion.nav
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="md:hidden mt-4"
-                >
-                    <ul className="flex flex-col space-y-2">
-                        <li><Link href="#services" className="text-gray-600 hover:text-gray-900">Services</Link></li>
-                        <li><Link href="#features" className="text-gray-600 hover:text-gray-900">Features</Link></li>
-                        <li><Link href="#projects" className="text-gray-600 hover:text-gray-900">Projects</Link></li>
-                        <li><Link href="#faq" className="text-gray-600 hover:text-gray-900">FAQ</Link></li>
-                        <li><Link href="#call-to-action" className="text-gray-600 hover:text-gray-900">Contact</Link></li>
-                        <li><Button variant="outline" className="rounded-full w-full">Get Started</Button></li>
-                    </ul>
-                </motion.nav>
-            )}
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.nav
+                        initial={{ opacity: 0, y: "-100%" }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: "-100%" }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        className="md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center"
+                    >
+                        <ul className="flex flex-col space-y-4 text-lg">
+                            <li><Link href="#services" className="text-gray-600 hover:text-gray-900 ml-6">Services</Link></li>
+                            <li><Link href="#features" className="text-gray-600 hover:text-gray-900 ml-6">Features</Link></li>
+                            <li><Link href="#projects" className="text-gray-600 hover:text-gray-900 ml-6">Projects</Link></li>
+                            <li><Link href="#faq" className="text-gray-600 hover:text-gray-900 ml-6">FAQ</Link></li>
+                            <li><Link href="#call-to-action" className="text-gray-600 hover:text-gray-900 ml-6">Contact</Link></li>
+                            <li>
+                                <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
+                                    <Button variant="outline" className="rounded-full w-full text-[20px] text-gray-600">Get Started</Button>
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.nav>
+                )}
+            </AnimatePresence>
         </header>
     )
 }
