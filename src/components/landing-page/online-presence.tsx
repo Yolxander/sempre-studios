@@ -1,9 +1,13 @@
+// src/components/OnlinePresence.tsx
+
 "use client"
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from "framer-motion"
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
+import PackagesModal from "@/components/landing-page/PackagesModal"
+import Link from "next/link";
 
 export default function OnlinePresence() {
     const containerRef = useRef<HTMLDivElement>(null)
@@ -14,6 +18,12 @@ export default function OnlinePresence() {
 
     const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5])
     const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const handleModalToggle = () => {
+        setIsModalOpen(!isModalOpen)
+    }
 
     const containerVariants = {
         hidden: { opacity: 0, y: 50 },
@@ -76,12 +86,15 @@ export default function OnlinePresence() {
                             From website creation to ongoing management, we offer complete solutions to establish and maintain your digital presence.
                         </motion.p>
                         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full">
+                            {/* Button to open modal */}
+                            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full" onClick={handleModalToggle}>
                                 View Packages
                             </Button>
-                            <Button variant="outline" size="lg" className="rounded-full">
-                                Learn More
-                            </Button>
+                            <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
+                                <Button variant="outline" size="lg" className="rounded-full">
+                                    Learn More
+                                </Button>
+                            </Link>
                         </motion.div>
                     </motion.div>
                     <motion.div className="lg:w-1/2 relative" variants={itemVariants}>
@@ -145,6 +158,11 @@ export default function OnlinePresence() {
                     </motion.div>
                 </div>
             </div>
+
+            {/* Modal for Packages */}
+            {isModalOpen && (
+                <PackagesModal onClose={handleModalToggle} />
+            )}
         </motion.section>
     )
 }
