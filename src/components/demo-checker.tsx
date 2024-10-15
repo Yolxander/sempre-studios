@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ExternalLink, Info, Mail, CheckCircle } from "lucide-react"
+import { ArrowRight, ExternalLink, Mail, CheckCircle, HelpCircle } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const demos = [
@@ -76,24 +76,6 @@ export default function DemoCheckerPage() {
             {isDarkMode ? 'LIGHT MODE' : 'DARK MODE'}
           </Button>
         </motion.div>
-        <div className="absolute top-4 left-4 z-10 flex space-x-2">
-          <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setShowHowItWorks(true)}
-              className="text-xs bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
-            <Info className="w-4 h-4 mr-1" /> How It Works
-          </Button>
-          <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setShowContact(true)}
-              className="text-xs bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
-            <Mail className="w-4 h-4 mr-1" /> Contact
-          </Button>
-        </div>
         <div className="grow flex items-center justify-center bg-[#dedede] dark:bg-[#05012a] transition-colors duration-300">
           <motion.div
               className="relative w-full max-w-md"
@@ -102,7 +84,27 @@ export default function DemoCheckerPage() {
               transition={{ type: "spring", stiffness: 100 }}
           >
             <div className="bg-white dark:bg-[#05012a] rounded-[50px] shadow-[20px_20px_60px_#acacac,-20px_-20px_60px_#ffffff] dark:shadow-[50px_50px_100px_#020011,-50px_-50px_100px_#080243] p-8 transition-all duration-300">
-              <h2 className="text-2xl font-bold text-center mb-6">Hi, there</h2>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Hi, there</h2>
+                <div className="flex space-x-2">
+                  <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setShowHowItWorks(true)}
+                      className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
+                  >
+                    <HelpCircle className="w-5 h-5" />
+                  </Button>
+                  <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => setShowContact(true)}
+                      className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
+                  >
+                    <Mail className="w-5 h-5" />
+                  </Button>
+                </div>
+              </div>
               <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleCheck(); }}>
                 <div className="space-y-2 relative">
                   <Label htmlFor="businessName" className="text-gray-700 dark:text-gray-300 sr-only">
@@ -244,7 +246,7 @@ export default function DemoCheckerPage() {
                     </div>
                     <div>
                       <h4 className="text-xl font-semibold mb-2">4. Customize Your Site</h4>
-                      <p className="text-gray-600 dark:text-gray-300">During our chat, we'll discuss your needs and offer package options:</p>
+                      <p className="text-gray-600 dark:text-gray-300">During our chat, we will discuss your needs and offer package options:</p>
                       <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
                         <li>Basic: Launch your demo site as-is</li>
                         <li>Custom: Add extra features and pages</li>
@@ -258,7 +260,7 @@ export default function DemoCheckerPage() {
                     </div>
                     <div>
                       <h4  className="text-xl font-semibold mb-2">5. Quick Turnaround</h4>
-                      <p className="text-gray-600 dark:text-gray-300">We'll finalize your site within one week, keeping you updated throughout the process.</p>
+                      <p className="text-gray-600 dark:text-gray-300">We will finalize your site within one week, keeping you updated throughout the process.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -266,8 +268,9 @@ export default function DemoCheckerPage() {
                       <CheckCircle className="w-8 h-8 text-green-500" />
                     </div>
                     <div>
+
                       <h4 className="text-xl font-semibold mb-2">6. Launch and Support</h4>
-                      <p className="text-gray-600 dark:text-gray-300">Once you're happy, we'll launch your site and provide full access. We're here to support you even after your site goes live!</p>
+                      <p className="text-gray-600 dark:text-gray-300">Once you are happy, we will launch your site and provide full access. We are here to support you even after your site goes live!</p>
                     </div>
                   </div>
                 </div>

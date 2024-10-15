@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ExternalLink } from "lucide-react"
+import { ArrowRight, ExternalLink, HelpCircle, Mail, CheckCircle, Moon, Sun } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const demos = [
@@ -20,6 +20,8 @@ export default function DemoCheckerPage() {
     const [suggestions, setSuggestions] = useState<string[]>([])
     const [demoUrl, setDemoUrl] = useState<string | null>(null)
     const [error, setError] = useState<string | null>(null)
+    const [showHowItWorks, setShowHowItWorks] = useState(false)
+    const [showContact, setShowContact] = useState(false)
 
     useEffect(() => {
         if (businessName.length > 2) {
@@ -67,11 +69,11 @@ export default function DemoCheckerPage() {
             >
                 <Button
                     variant="outline"
-                    size="sm"
+                    size="icon"
                     onClick={() => setIsDarkMode(!isDarkMode)}
-                    className="text-xs bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                    {isDarkMode ? 'LIGHT MODE' : 'DARK MODE'}
+                    {isDarkMode ? <Sun className="h-[1.2rem] w-[1.2rem]" /> : <Moon className="h-[1.2rem] w-[1.2rem]" />}
                 </Button>
             </motion.div>
             <div className="grow flex items-center justify-center bg-[#dedede] dark:bg-[#05012a] transition-colors duration-300">
@@ -82,7 +84,27 @@ export default function DemoCheckerPage() {
                     transition={{ type: "spring", stiffness: 100 }}
                 >
                     <div className="bg-white dark:bg-[#05012a] rounded-[50px] shadow-[20px_20px_60px_#acacac,-20px_-20px_60px_#ffffff] dark:shadow-[50px_50px_100px_#020011,-50px_-50px_100px_#080243] p-8 transition-all duration-300">
-                        <h2 className="text-2xl font-bold text-center mb-6">Hi, there</h2>
+                        <div className="flex items-center justify-between mb-6">
+                            <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Hi, there</h2>
+                            <div className="flex space-x-2">
+                                <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    onClick={() => setShowHowItWorks(true)}
+                                    className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
+                                >
+                                    <HelpCircle className="w-5 h-5" />
+                                </Button>
+                                <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    onClick={() => setShowContact(true)}
+                                    className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100"
+                                >
+                                    <Mail className="w-5 h-5" />
+                                </Button>
+                            </div>
+                        </div>
                         <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleCheck(); }}>
                             <div className="space-y-2 relative">
                                 <Label htmlFor="businessName" className="text-gray-700 dark:text-gray-300 sr-only">
@@ -109,7 +131,7 @@ export default function DemoCheckerPage() {
                                                     initial={{ opacity: 0, y: -5 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     transition={{ delay: index * 0.05 }}
-                                                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                                                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer text-gray-800 dark:text-gray-200"
                                                     onClick={() => handleSuggestionClick(suggestion)}
                                                 >
                                                     {suggestion}
@@ -182,6 +204,91 @@ export default function DemoCheckerPage() {
                     </div>
                 </motion.div>
             </div>
+            {showHowItWorks && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-800 p-8 rounded-lg max-w-3xl max-h-[80vh] overflow-y-auto">
+                        <h3 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">How It Works</h3>
+                        <div className="space-y-6">
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <CheckCircle className="w-8 h-8 text-green-500" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">1. Enter Your Details</h4>
+                                    <p className="text-gray-600 dark:text-gray-300">Simply input your business name and postal code to view your personalized demo site.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <CheckCircle className="w-8 h-8 text-green-500" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">2. Review Your Demo</h4>
+                                    <p className="text-gray-600 dark:text-gray-300">Take a look at your custom-made demo site and imagine the possibilities for your business online presence.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <CheckCircle className="w-8 h-8 text-green-500" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">3. Choose Your Next Step</h4>
+                                    <p className="text-gray-600 dark:text-gray-300">After viewing, you can either:</p>
+                                    <ul className="list-disc list-inside ml-4 mt-2 space-y-1 text-gray-600 dark:text-gray-300">
+                                        <li>Email us directly to discuss your project</li>
+                                        <li>Book a quick 10-minute consultation call</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <CheckCircle className="w-8 h-8 text-green-500" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">4. Customize Your Site</h4>
+                                    <p className="text-gray-600 dark:text-gray-300">During our chat, we will discuss your needs and offer package options:</p>
+                                    <ul className="list-disc list-inside ml-4 mt-2 space-y-1 text-gray-600 dark:text-gray-300">
+                                        <li>Basic: Launch your demo site as-is</li>
+                                        <li>Custom: Add extra features and pages</li>
+                                        <li>Ongoing Support: Get SEO, updates, and marketing help</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <CheckCircle className="w-8 h-8 text-green-500" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-semibold mb-2  text-gray-800 dark:text-gray-200">5. Quick Turnaround</h4>
+                                    <p className="text-gray-600 dark:text-gray-300">We will finalize your site within one week, keeping you updated throughout the process.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <CheckCircle className="w-8 h-8 text-green-500" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">6. Launch and Support</h4>
+                                    <p className="text-gray-600 dark:text-gray-300">Once you are happy, we will launch your site and provide full access. We are here to support you even after your site goes live!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="mt-6 text-lg italic text-center text-gray-600 dark:text-gray-300">Our mission: Get your stunning site live fast, ensuring it perfectly fits your business needs!</p>
+                        <div className="mt-6 text-center">
+                            <Button onClick={() => setShowHowItWorks(false)} className="bg-blue-500 hover:bg-blue-600 text-white">Close</Button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {showContact && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg max-w-md">
+                        <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Contact Us</h3>
+                        <p className="mb-4 text-gray-600 dark:text-gray-300">For any inquiries, please contact us at support@semprestudios.com</p>
+                        <Button onClick={() => setShowContact(false)} className="bg-blue-500 hover:bg-blue-600 text-white">Close</Button>
+                    </div>
+                </div>
+            )}
         </motion.div>
     )
 }
