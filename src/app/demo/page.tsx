@@ -275,7 +275,7 @@ export default function DemoCheckerPage() {
                         </div>
                         <p className="mt-6 text-lg italic text-center text-gray-600 dark:text-gray-300">Our mission: Get your stunning site live fast, ensuring it perfectly fits your business needs!</p>
                         <div className="mt-6 text-center">
-                            <Button onClick={() => setShowHowItWorks(false)} className="bg-blue-500 hover:bg-blue-600 text-white">Close</Button>
+                            <Button onClick={() => setShowHowItWorks(false)}>Close</Button>
                         </div>
                     </div>
                 </div>
