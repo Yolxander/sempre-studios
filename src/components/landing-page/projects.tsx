@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, useRef, useEffect } from 'react'
-import { motion, useScroll, useTransform } from "framer-motion"
+import { useState, useRef } from 'react'
+import { motion, useScroll, useTransform} from "framer-motion"
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
+import { ArrowRight, ExternalLink } from 'lucide-react'
 
 interface Project {
     image: string
@@ -13,6 +14,12 @@ interface Project {
 }
 
 const projects: Project[] = [
+    {
+        image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-12%20at%206.45.23%E2%80%AFPM-cxhdRCNNxuU98DU0KHEQFiH4fDyDsP.png",
+        title: "HOTEL DALEESE",
+        description: "Boutique hotel in the heart of Uvita, Costa Rica, offering eccentric charm, privacy, and ultimate comfort for discerning travelers.",
+        link: "https://hoteldaleese.com"
+    },
     {
         image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-10-07%20at%2011.33.38%E2%80%AFAM-voFeujlWtdkzG1xIJJsvLTMDGoOHd5.png",
         title: "NORTH SIMCOE PROPERTY MANAGEMENT",
@@ -34,62 +41,95 @@ const projects: Project[] = [
 ]
 
 export default function Projects() {
-    const [currentProject, setCurrentProject] = useState(0)
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
     const containerRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
     })
 
-    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5])
-    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8])
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentProject((prev) => (prev + 1) % projects.length)
-        }, 5000)
-        return () => clearInterval(interval)
-    }, [])
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+    const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, 100])
 
     return (
         <motion.section
             ref={containerRef}
-            style={{ opacity, scale }}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-white py-24"
+            style={{ opacity, y }}
+            className="py-24 bg-white"
         >
             <div className="container mx-auto px-4">
-                <div className="flex justify-between items-center mb-8">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-                        Our Projects
-                    </h2>
-                    <Button
-                        variant="outline"
-                        size="lg"
-                        className="rounded-full"
-                        onClick={() => window.open("#projects", "_self")}
-                    >
-                        Read More
-                    </Button>
-                </div>
-                <div className="relative overflow-hidden">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4"
+                >
+                    <div>
+                        <motion.h2
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-black"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            Our Projects
+                        </motion.h2>
+                        <motion.p
+                            className="mt-4 text-lg text-gray-600 max-w-2xl"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                        >
+                            Explore our portfolio of successful projects across hospitality and property management.
+                        </motion.p>
+                    </div>
                     <motion.div
-                        key={currentProject}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="w-full"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
                     >
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                            {projects.map((project, index) => (
-                                <ProjectCard key={index} project={project} />
-                            ))}
-                        </div>
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            className="group rounded-full border-2 border-black hover:bg-black hover:text-white transition-all duration-300"
+                        >
+                            View All
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Button>
                     </motion.div>
-                </div>
+                </motion.div>
+
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.2
+                            }
+                        }
+                    }}
+                >
+                    {projects.map((project, index) => (
+                        <motion.div
+                            key={project.title}
+                            variants={{
+                                hidden: { opacity: 0, y: 50 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                        >
+                            <ProjectCard
+                                project={project}
+                                isHovered={hoveredIndex === index}
+                                onHover={() => setHoveredIndex(index)}
+                                onLeave={() => setHoveredIndex(null)}
+                            />
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </motion.section>
     )
@@ -97,32 +137,81 @@ export default function Projects() {
 
 interface ProjectCardProps {
     project: Project
+    isHovered: boolean
+    onHover: () => void
+    onLeave: () => void
 }
 
-function ProjectCard({ project }: ProjectCardProps) {
+function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps) {
     return (
         <motion.div
-            className="relative overflow-hidden rounded-3xl aspect-[3/4] cursor-pointer shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            className="relative overflow-hidden rounded-3xl aspect-[4/3] cursor-pointer group"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onHoverStart={onHover}
+            onHoverEnd={onLeave}
             onClick={() => window.open(project.link, '_blank')}
         >
-            <div className="absolute inset-0 w-full h-full">
+            <motion.div
+                className="absolute inset-0 w-full h-full"
+                initial={false}
+                animate={{ scale: isHovered ? 1.1 : 1 }}
+                transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+            >
                 <Image
                     src={project.image}
                     alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
-                    quality={100}
-                    className="rounded-3xl"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-70"></div>
-            <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <h3 className="text-2xl font-bold mb-3 text-white">{project.title}</h3>
-                <p className="text-base text-white">{project.description}</p>
-            </div>
+            </motion.div>
+
+            <motion.div
+                className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"
+                initial={false}
+                animate={{ opacity: isHovered ? 0.9 : 0.7 }}
+                transition={{ duration: 0.3 }}
+            />
+
+            <motion.div
+                className="absolute inset-0 p-8 flex flex-col justify-end"
+                initial={false}
+                animate={{ y: isHovered ? 0 : 8, opacity: isHovered ? 1 : 0.9 }}
+                transition={{ duration: 0.3 }}
+            >
+                <motion.h3
+                    className="text-2xl md:text-3xl font-bold text-white mb-3"
+                    initial={false}
+                    animate={{ y: isHovered ? 0 : 20 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    {project.title}
+                </motion.h3>
+                <motion.p
+                    className="text-gray-200 text-base md:text-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                >
+                    {project.description}
+                </motion.p>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
+                    className="mt-4"
+                >
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-white border-white hover:bg-black hover:text-white transition-all duration-300 group"
+                    >
+                        Learn More
+                        <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                </motion.div>
+            </motion.div>
         </motion.div>
     )
 }
