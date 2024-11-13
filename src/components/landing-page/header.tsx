@@ -24,7 +24,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
     const closeMenu = () => setIsMenuOpen(false);
 
     return (
-        <header className="md:px-12 px-4 py-6 bg-white min-w-screen">
+        <header className="md:px-12 px-4 py-6 bg-[#F3F2EF] min-w-screen">
             <div className="flex items-center justify-between">
                 <Link href="/" className={`${audiowide.className} text-2xl font-bold`}>
                     Sempre Studios
@@ -101,7 +101,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
                             </li>
                             <li>
                                 <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
-                                    <Button variant="outline" className="rounded-full w-full text-[20px] text-gray-600" onClick={closeMenu}>
+                                    <Button variant="outline" className="rounded-full w-full text-[20px] text-gray-600 shadow-md" onClick={closeMenu}>
                                         Get Started
                                     </Button>
                                 </Link>
