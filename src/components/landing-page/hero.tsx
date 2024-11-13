@@ -78,7 +78,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="relative z-10"
+                className="relative z-10 pt-20"
             >
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
@@ -86,7 +86,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.7 }}
                     className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                 >
-                    Your new website is ready<br />to launch
+                    Guiding Your Digital Journey
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -94,7 +94,8 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.9 }}
                     className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
                 >
-                    We create customized demo sites for businesses that need an updated or first-time web presence. See your future website today!
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
+                    We're your partners in navigating the online world, combining creativity and tech-savvy solutions to boost your online presence and connect you with loyal customers.
                 </motion.p>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
