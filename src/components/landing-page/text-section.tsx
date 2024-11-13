@@ -30,7 +30,7 @@ export function TextSectionComponent() {
             <span className="w-2 h-2 bg-black rounded-full animate-pulse"></span>
             <span>how it works</span>
           </span>
-          <span className="font-bold pb-3">
+          <span className="font-bold pb-[10px]">
             With Sempre Studios {" "}
           </span>
         </span>
@@ -40,7 +40,7 @@ export function TextSectionComponent() {
             custom={index}
             animate={controls}
             style={{ color: "#D1D5DB" }}
-            className={animationComplete ? "text-black leading-loose" : ""}
+            className={animationComplete ? "text-black leading-[6rem]" : ""}
           >
             {letter}
           </motion.span>
