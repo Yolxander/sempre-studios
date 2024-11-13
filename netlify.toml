@@ -7,3 +7,4 @@
 
 [build.environment]
   NEXT_USE_NETLIFY_CACHE = "true"
+  NODE_VERSION = "16.14.0"
