@@ -40,7 +40,7 @@ export function TextSectionComponent() {
             custom={index}
             animate={controls}
             style={{ color: "#D1D5DB" }}
-            className={animationComplete ? "text-black leading-[6rem]" : ""}
+            className={animationComplete ? "text-black" : ""}
           >
             {letter}
           </motion.span>
