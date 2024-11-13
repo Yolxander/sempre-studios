@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { Poppins } from "next/font/google"
 import { Rocket, Globe, Zap } from "lucide-react"
 import { useRef, ReactNode } from "react"
+import {TextSectionComponent} from "@/components/landing-page/text-section";
 
 const poppins = Poppins({
     weight: ["400", "300"],
@@ -72,16 +73,7 @@ export default function Features() {
     return (
         <div className={`${poppins.className} bg-gray-100 py-12`}>
             <div className="container mx-auto px-4">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="text-center mb-12"
-                >
-                    <p className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-8xl mx-auto py-12">
-                        Sempre Studios creates ready-to-launch websites for businesses across all industries. Get your professional online presence today.
-                    </p>
-                </motion.div>
+                <TextSectionComponent />
                 <div className="flex flex-col lg:flex-row gap-8 lg:h-[90vh]">
                     <div className="lg:w-1/2 flex flex-col gap-8 h-full">
                         <AnimatedCard className="bg-white p-8 rounded-3xl shadow-md flex-1">

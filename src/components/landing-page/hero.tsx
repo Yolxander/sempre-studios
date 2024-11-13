@@ -86,7 +86,7 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.7 }}
                     className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                 >
-                    Guiding Your Digital Journey
+                    Your Online Presence, Made Easy
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -95,8 +95,7 @@ export default function Hero() {
                     className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
                 >
                     {/* eslint-disable-next-line react/no-unescaped-entities */}
-                    We're your partners in navigating the online world, combining creativity and tech-savvy solutions to boost your online presence and connect you with loyal customers.
-                </motion.p>
+                    Building a professional website doesn’t have to be difficult or time-consuming. At Sempre Studios, we make it simple for businesses to establish and grow their online presence.                </motion.p>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
