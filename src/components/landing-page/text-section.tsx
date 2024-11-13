@@ -30,7 +30,7 @@ export function TextSectionComponent() {
             <span className="w-2 h-2 bg-black rounded-full animate-pulse"></span>
             <span>how it works</span>
           </span>
-          <span className="font-bold">
+          <span className="font-bold pb-5">
             With Sempre Studios {" "}
           </span>
         </span>
