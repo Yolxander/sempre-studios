@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { TextSectionComponent, TextSectionProps } from "@/components/landing-page/text-section"
+import { TextSectionComponent } from "@/components/landing-page/text-section"
 import { Globe, Cog, PenTool, Users, CreditCard, Rocket } from 'lucide-react'
 
 interface ServiceCardProps {
@@ -13,11 +13,7 @@ interface ServiceCardProps {
 }
 
 export default function Services() {
-    const textSectionProps: TextSectionProps = {
-        title: "Our Services",
-        subtitle: "Empowering Your Digital Success",
-        description: "We're dedicated to helping businesses of all sizes establish and grow their online presence. Our services are tailored to maximize your digital potential and drive real results for your business."
-    }
+
 
     return (
         <motion.section
@@ -27,7 +23,7 @@ export default function Services() {
             className="bg-gray-100 py-24"
         >
             <div className="container mx-auto px-4">
-                <TextSectionComponent {...textSectionProps} />
+                <TextSectionComponent />
                 <div className="grid md:grid-cols-2 gap-8">
                     <ServiceCard
                         title="Rapid Website Development"
