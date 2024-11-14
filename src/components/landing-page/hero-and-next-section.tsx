@@ -4,7 +4,7 @@ import React, { useState, useRef, RefObject, useEffect, useCallback } from "reac
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ArrowRight, X, Menu } from "lucide-react";
-import { Audiowide } from "@next/font/google";
+import { Audiowide } from "next/font/google";
 import { MobileMenu } from "@/components/landing-page/MobileMenu";
 import { DarkModeToggle } from "@/components/landing-page/DarkModeToggle";
 import Link from "next/link";

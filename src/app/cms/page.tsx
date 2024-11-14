@@ -1,5 +1,5 @@
 import {DashboardWithNavigation} from "@/components/dashboard-with-navigation";
-import {Poppins} from "@next/font/google";
+import {Poppins} from "next/font/google";
 
 const poppins = Poppins({
     weight: ["400", "300"], // Roboto Condensed has multiple weights

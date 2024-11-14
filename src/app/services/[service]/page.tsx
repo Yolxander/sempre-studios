@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Audiowide } from "@next/font/google";
+import { Audiowide } from "next/font/google";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DarkModeToggle } from "@/components/landing-page/DarkModeToggle";

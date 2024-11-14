@@ -11,7 +11,7 @@ import Projects from './projects';
 import FAQ from './faq';
 import CallToAction from './call-to-action';
 import Footer from './footer';
-import { Poppins } from "@next/font/google";
+import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
     weight: ["400", "300"],

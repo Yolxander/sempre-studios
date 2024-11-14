@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
-import { Audiowide } from "@next/font/google"; // Import Audiowide font
+import { Audiowide } from "next/font/google"; // Import Audiowide font
 
 interface MobileMenuProps {
     sections: string[];

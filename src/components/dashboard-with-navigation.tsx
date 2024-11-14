@@ -10,7 +10,7 @@ import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Bell, Settings, HelpCircle, Home, FileText, Users, BarChart, Mail } from 'lucide-react'
-import {Audiowide} from "@next/font/google";
+import {Audiowide} from "next/font/google";
 
 const audiowide = Audiowide({
   weight: "400", // Audiowide only has a 400 weight
