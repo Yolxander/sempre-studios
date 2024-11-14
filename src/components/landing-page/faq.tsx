@@ -33,18 +33,18 @@ export default function FAQ() {
                             <FAQItem
                                 value="item-1"
                                 question=" What are the payment options available?"
-                                answer="We offer two forms of payment: a subscription-based model and a one-time payment option, depending on the package you choose."
+                                answer="We offer two forms of payment: a subscription-based model and a one-time payment option."
                             />
                             <FAQItem
                                 value="item-2"
                                 question="How does the demo website process work?"
                                 answer="We create a customized demo website for your business and send it directly to you via email. You can review the demo and decide to purchase and launch it with minimal changes required."
                             />
-                            <FAQItem
-                                value="item-3"
-                                question="What's included in the starting price of $1500?"
-                                answer="The $1500 starting price includes a fully functional landing page with custom design and mobile responsiveness. Additional features and ongoing management are available through our monthly packages."
-                            />
+                            {/*<FAQItem*/}
+                            {/*    value="item-3"*/}
+                            {/*    question="What's included in the starting price of $1500?"*/}
+                            {/*    answer="The $1500 starting price includes a fully functional landing page with custom design and mobile responsiveness. Additional features and ongoing management are available through our monthly packages."*/}
+                            {/*/>*/}
                             <FAQItem
                                 value="item-4"
                                 question="Can I edit my website after it's launched?"
@@ -53,7 +53,7 @@ export default function FAQ() {
                             <FAQItem
                                 value="item-5"
                                 question="What ongoing services do you offer?"
-                                answer="We offer a range of ongoing services including content updates, SEO optimization, social media management, email marketing, and technical support. Our packages can be customized to fit your specific business needs."
+                                answer="We offer a range of ongoing services including content updates, SEO optimization, social media management, email marketing, and technical support. Our services can be customized to fit your specific business needs."
                             />
                             <FAQItem
                                 value="item-6"
