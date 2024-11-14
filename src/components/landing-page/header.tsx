@@ -35,6 +35,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
                         <li><Link href="#services" className="text-gray-600 hover:text-gray-900">Services</Link></li>
                         <li><Link href="#features" className="text-gray-600 hover:text-gray-900">Features</Link></li>
                         <li><Link href="#projects" className="text-gray-600 hover:text-gray-900">Projects</Link></li>
+                        <li><Link href="#about" className="text-gray-600 hover:text-gray-900">About Us</Link></li>
                         <li><Link href="#faq" className="text-gray-600 hover:text-gray-900">FAQ</Link></li>
                         <li><Link href="#call-to-action" className="text-gray-600 hover:text-gray-900">Contact</Link></li>
                     </ul>
@@ -92,6 +93,9 @@ export default function Header({ isMenuOpen, setIsMenuOpen }: HeaderProps) {
                             </li>
                             <li>
                                 <Link href="#projects" className="text-gray-600 hover:text-gray-900  ml-6" onClick={closeMenu}>Projects</Link>
+                            </li>
+                            <li>
+                                <Link href="#about" className="text-gray-600 hover:text-gray-900  ml-6" onClick={closeMenu}>About Us</Link>
                             </li>
                             <li>
                                 <Link href="#faq" className="text-gray-600 hover:text-gray-900  ml-6" onClick={closeMenu}>FAQ</Link>

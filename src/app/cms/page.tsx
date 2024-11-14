@@ -1,4 +1,4 @@
-import {DashboardWithNavigation} from "@/components/dashboard-with-navigation";
+import {DashboardWithNavigation} from "@/components/demo/dashboard-with-navigation";
 import {Poppins} from "next/font/google";
 
 const poppins = Poppins({

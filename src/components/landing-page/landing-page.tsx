@@ -12,6 +12,8 @@ import FAQ from './faq';
 import CallToAction from './call-to-action';
 import Footer from './footer';
 import { Poppins } from "next/font/google";
+import {FunAboutSection} from "@/components/fun-about-section";
+
 
 const poppins = Poppins({
     weight: ["400", "300"],
@@ -41,6 +43,9 @@ export function LandingPage() {
             </section>
             <section id="projects">
                 <Projects />
+            </section>
+            <section id="about">
+            <FunAboutSection />
             </section>
             <section id="faq">
                 <FAQ />

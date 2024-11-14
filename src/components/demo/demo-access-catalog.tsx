@@ -6,11 +6,11 @@ import { Audiowide } from "next/font/google"
 import { Button } from "@/components/ui/button"
 import { Mail } from 'lucide-react'
 import Header from '@/components/header'
-import HeroSection from '@/components/hero-section'
-import CustomerAccessSection from '@/components/customer-access-section'
-import DemoCatalogSection from '@/components/demo-catalog-section'
-import RequestCallbackSection from '@/components/request-callback-section'
-import DemoDialog from '@/components/demo-dialog'
+import HeroSection from '@/components/demo/hero-section'
+import CustomerAccessSection from '@/components/demo/customer-access-section'
+import DemoCatalogSection from '@/components/demo/demo-catalog-section'
+import RequestCallbackSection from '@/components/landing-page/request-callback-section'
+import DemoDialog from '@/components/demo/demo-dialog'
 
 const audiowide = Audiowide({
     weight: "400",
