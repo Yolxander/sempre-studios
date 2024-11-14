@@ -9,7 +9,7 @@ const poppins = Poppins({
   subsets: ["latin"],
 })
 
-export function FunAboutSection() {
+export default function FunAboutSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   const funFacts = [
