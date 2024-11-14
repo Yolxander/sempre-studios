@@ -39,21 +39,21 @@ const clientSites: ClientSite[] = [
 ]
 
 const demoSites: DemoSite[] = [
-    { 
-        id: "1", 
-        name: "Infinity Property Management", 
-        description: "Modern property management website", 
-        imageUrl: "/placeholder.svg?height=200&width=300", 
-        demoUrl: "https://infinitypm.netlify.app/", 
-        industry: "Real Estate" 
+    {
+        id: "1",
+        name: "Infinity Property Management",
+        description: "Modern property management website",
+        imageUrl: "/placeholder.svg?height=200&width=300",
+        demoUrl: "https://infinitypm.netlify.app/",
+        industry: "Real Estate"
     },
-    { 
-        id: "2", 
-        name: "Packaging World", 
-        description: "Innovative packaging solutions website", 
-        imageUrl: "/placeholder.svg?height=200&width=300", 
-        demoUrl: "https://packaging-world.netlify.app/", 
-        industry: "Manufacturing" 
+    {
+        id: "2",
+        name: "Packaging World",
+        description: "Innovative packaging solutions website",
+        imageUrl: "/placeholder.svg?height=200&width=300",
+        demoUrl: "https://packaging-world.netlify.app/",
+        industry: "Manufacturing"
     },
 ]
 
@@ -72,7 +72,7 @@ export function DemoAccessCatalog() {
     const [callbackMessage, setCallbackMessage] = useState('')
 
     useEffect(() => {
-        const filtered = demoSites.filter(demo => 
+        const filtered = demoSites.filter(demo =>
             demo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             demo.industry.toLowerCase().includes(searchTerm.toLowerCase())
         )
@@ -118,7 +118,7 @@ export function DemoAccessCatalog() {
 
     return (
         <div className="min-h-screen bg-[#F3F2EF]">
-            <motion.header 
+            <motion.header
                 className="md:px-12 px-4 py-6 bg-[#F3F2EF] min-w-screen"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -198,26 +198,26 @@ export function DemoAccessCatalog() {
                 </AnimatePresence>
             </motion.header>
 
-            <motion.section 
+            <motion.section
                 className="bg-gradient-to-r from-primary to-primary-dark text-white py-20"
                 initial="hidden"
                 animate="visible"
                 variants={staggerChildren}
             >
                 <div className="container mx-auto px-4">
-                    <motion.h1 
+                    <motion.h1
                         className={`${audiowide.className} text-5xl font-bold mb-6 text-center`}
                         variants={fadeInUp}
                     >
                         Welcome to Sempre Studios Demo Portal
                     </motion.h1>
-                    <motion.p 
+                    <motion.p
                         className="text-xl text-center mb-12"
                         variants={fadeInUp}
                     >
                         Access your custom-built site or explore our demo catalog
                     </motion.p>
-                    <motion.div 
+                    <motion.div
                         className="flex justify-center space-x-4"
                         variants={fadeInUp}
                     >
@@ -233,7 +233,7 @@ export function DemoAccessCatalog() {
 
             <section id="customer-access" className="py-20">
                 <div className="container mx-auto px-4">
-                    <motion.h2 
+                    <motion.h2
                         className={`${audiowide.className} text-3xl font-bold mb-8 text-center`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -296,8 +296,8 @@ export function DemoAccessCatalog() {
                         <AlertTitle>Site Found</AlertTitle>
                         <AlertDescription>
                             Your site is ready. Click the button below to view it.
-                            <Button 
-                                variant="link" 
+                            <Button
+                                variant="link"
                                 onClick={() => window.open(clientSiteUrl, '_blank', 'noopener,noreferrer')}
                             >
                                 View My Site <ExternalLink className="ml-2 h-4 w-4" />
@@ -313,7 +313,7 @@ export function DemoAccessCatalog() {
 
             <section id="demo-catalog" className="py-20 bg-[#F3F2EF]">
                 <div className="container mx-auto px-4">
-                    <motion.h2 
+                    <motion.h2
                         className={`${audiowide.className} text-3xl font-bold mb-8 text-center`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -342,7 +342,7 @@ export function DemoAccessCatalog() {
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                         </div>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                         variants={staggerChildren}
                         initial="hidden"
@@ -377,7 +377,7 @@ export function DemoAccessCatalog() {
 
             <section id="request-callback" className="py-20">
                 <div className="container mx-auto px-4">
-                    <motion.h2 
+                    <motion.h2
                         className={`${audiowide.className} text-3xl font-bold mb-8 text-center`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -432,7 +432,7 @@ export function DemoAccessCatalog() {
                                         />
                                     </div>
                                     <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 rounded-full">
-                                        Request Callback <Phone className="ml-2 h-4 w-4" />
+                                        Book a <Phone className="ml-2 h-4 w-4" />
                                     </Button>
                                 </form>
                             </CardContent>
@@ -459,7 +459,7 @@ export function DemoAccessCatalog() {
 
             <section className="py-20 bg-[#F3F2EF]">
                 <div className="container mx-auto px-4 text-center">
-                    <motion.h2 
+                    <motion.h2
                         className={`${audiowide.className} text-3xl font-bold mb-4`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -468,7 +468,7 @@ export function DemoAccessCatalog() {
                     >
                         Need Help?
                     </motion.h2>
-                    <motion.p 
+                    <motion.p
                         className="text-gray-600 mb-8"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
