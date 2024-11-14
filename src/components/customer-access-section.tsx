@@ -12,7 +12,7 @@ import { ExternalLink, Globe, Key, ArrowRight } from 'lucide-react'
 import { ClientSite } from './demo-access-catalog'
 
 interface CustomerAccessSectionProps {
-    audiowide: any // Replace 'any' with the actual type from the font import
+    audiowide: { className: string }// Replace 'any' with the actual type from the font import
     clientSites: ClientSite[]
 }
 

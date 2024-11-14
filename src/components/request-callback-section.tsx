@@ -48,6 +48,7 @@ export default function RequestCallbackSectionComponent({ audiowide }: RequestCa
                     <Card className="max-w-md mx-auto bg-white rounded-3xl shadow-md">
                         <CardHeader>
                             <CardTitle>Get in Touch</CardTitle>
+                            {/* eslint-disable-next-line react/no-unescaped-entities */}
                             <CardDescription>We'd love to hear from you about our web services or to help you order a site from our catalog.</CardDescription>
                         </CardHeader>
                         <CardContent>
