@@ -205,7 +205,7 @@ function ProjectCard({ project, isHovered, onHover, onLeave }: ProjectCardProps)
                     <Button
                         variant="outline"
                         size="sm"
-                        className="text-white border-white hover:bg-black hover:text-white transition-all duration-300 group"
+                        className="text-black border-white hover:bg-black hover:text-white transition-all duration-300 group"
                     >
                         Learn More
                         <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
