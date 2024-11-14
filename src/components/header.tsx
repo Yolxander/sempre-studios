@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 interface HeaderProps {
     isMenuOpen: boolean
     setIsMenuOpen: (isOpen: boolean) => void
-    audiowide: any // Replace 'any' with the actual type from the font import
+    audiowide: { className: string } // Replace 'any' with the actual type from the font import
 }
 
 export default function HeaderComponent({ isMenuOpen, setIsMenuOpen, audiowide }: HeaderProps) {

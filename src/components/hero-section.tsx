@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { fadeInUp, staggerChildren } from './demo-access-catalog'
 
 interface HeroSectionProps {
-    audiowide: any // Replace 'any' with the actual type from the font import
+    audiowide: { className: string } // Replace 'any' with the actual type from the font import
 }
 
 export default function HeroSectionComponent({ audiowide }: HeroSectionProps) {

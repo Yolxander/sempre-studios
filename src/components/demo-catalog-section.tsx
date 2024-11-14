@@ -9,7 +9,7 @@ import { ExternalLink, Search } from 'lucide-react'
 import { DemoSite, fadeInUp, staggerChildren } from './demo-access-catalog'
 
 interface DemoCatalogSectionProps {
-    audiowide: any // Replace 'any' with the actual type from the font import
+    audiowide: { className: string }
     searchTerm: string
     setSearchTerm: (term: string) => void
     filteredDemos: DemoSite[]

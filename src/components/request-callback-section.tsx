@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Phone } from 'lucide-react'
 
 interface RequestCallbackSectionProps {
-    audiowide: any // Replace 'any' with the actual type from the font import
+    audiowide: { className: string }// Replace 'any' with the actual type from the font import
 }
 
 export default function RequestCallbackSectionComponent({ audiowide }: RequestCallbackSectionProps) {

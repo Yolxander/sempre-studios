@@ -59,7 +59,9 @@ export default function CustomerAccessSectionComponent({ audiowide, clientSites 
                         <ol className="list-decimal list-inside space-y-4">
                             <li>Enter your business name and postal code in the form.</li>
                             <li>Our system will verify your information.</li>
+                            {/* eslint-disable-next-line react/no-unescaped-entities */}
                             <li>If a match is found, you'll get instant access to your custom site.</li>
+                            {/* eslint-disable-next-line react/no-unescaped-entities */}
                             <li>If not found, don't worry! We're here to help you get started.</li>
                         </ol>
                         <div className="mt-8">
