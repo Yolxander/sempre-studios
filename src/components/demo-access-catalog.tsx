@@ -68,7 +68,7 @@ export function DemoAccessCatalog() {
     const [searchTerm, setSearchTerm] = useState('')
     const [filteredDemos, setFilteredDemos] = useState<DemoSite[]>(demoSites)
     const [selectedDemo, setSelectedDemo] = useState<DemoSite | null>(null)
-    const [showCallbackForm, setShowCallbackForm] = useState(false)
+    const [, setShowCallbackForm] = useState(false)
     const [callbackName, setCallbackName] = useState('')
     const [callbackEmail, setCallbackEmail] = useState('')
     const [callbackMessage, setCallbackMessage] = useState('')
