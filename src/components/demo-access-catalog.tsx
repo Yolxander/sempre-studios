@@ -395,6 +395,7 @@ export function DemoAccessCatalog() {
                         <Card className="max-w-md mx-auto bg-white rounded-3xl shadow-md">
                             <CardHeader>
                                 <CardTitle>Get in Touch</CardTitle>
+                                {/* eslint-disable-next-line react/no-unescaped-entities */}
                                 <CardDescription>We'd love to hear from you about our web services or to help you order a site from our catalog.</CardDescription>
                             </CardHeader>
                             <CardContent>
@@ -474,6 +475,7 @@ export function DemoAccessCatalog() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
+                        {/* eslint-disable-next-line react/no-unescaped-entities */}
                         If you're having trouble accessing your site or have any questions, please contact our support team.
                     </motion.p>
                     <motion.div
