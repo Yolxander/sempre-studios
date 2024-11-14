@@ -12,7 +12,7 @@ import FAQ from './faq';
 import CallToAction from './call-to-action';
 import Footer from './footer';
 import { Poppins } from "next/font/google";
-import {FunAboutSection} from "@/components/fun-about-section";
+import {FunAboutSection} from "@/components/demo/fun-about-section";
 
 
 const poppins = Poppins({
