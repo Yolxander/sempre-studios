@@ -23,7 +23,7 @@ export function TextSectionComponent() {
   }, [controls, fullText])
 
   return (
-    <div className="text-center mb-12 px-4 relative">
+    <div className="text-center mb-16 px-4 relative">
       <p className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight max-w-7xl mx-auto py-12">
         <span className="relative inline-flex items-center">
           <span className="mr-2 inline-flex items-center space-x-2 bg-gray-100 text-gray-600 text-sm px-3 py-1 rounded-full shadow-sm transition-all duration-300 hover:bg-gray-200 hover:shadow-md">

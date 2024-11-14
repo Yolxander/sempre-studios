@@ -87,10 +87,10 @@ export default function OnlinePresence() {
                         </motion.p>
                         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                             {/* Button to open modal */}
-                            <Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full" onClick={handleModalToggle}>
-                                View Packages
-                            </Button>
-                            <Link className="w-full" href="https://calendly.com/hello-semprestudios/30min" passHref>
+                            {/*<Button size="lg" className="bg-black text-white hover:bg-gray-800 rounded-full" onClick={handleModalToggle}>*/}
+                            {/*    View Packages*/}
+                            {/*</Button>*/}
+                            <Link className="w-full" href="https://calendly.com/hello-semprestudios/welcome" passHref>
                                 <Button variant="outline" size="lg" className="rounded-full w-full md:max-w-[150px]">
                                     Learn More
                                 </Button>

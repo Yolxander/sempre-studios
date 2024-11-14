@@ -27,8 +27,8 @@ export function LandingPage() {
             <section id="hero">
                 <Hero />
             </section>
-            <section id="features">
-                <Features />
+            <section id="services">
+                <Services />
             </section>
             <section id="online-presence">
                 <OnlinePresence />
@@ -36,8 +36,8 @@ export function LandingPage() {
             <section id="marquee">
                 <MarqueeSection />
             </section>
-            <section id="services">
-                <Services />
+            <section id="features">
+                <Features />
             </section>
             <section id="projects">
                 <Projects />
