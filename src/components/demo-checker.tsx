@@ -67,7 +67,7 @@ export default function DemoAccessCatalogPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredDemos, setFilteredDemos] = useState<DemoSite[]>(demoSites)
   const [selectedDemo, setSelectedDemo] = useState<DemoSite | null>(null)
-  const [showCallbackForm, setShowCallbackForm] = useState(false)
+  const [, setShowCallbackForm] = useState(false)
   const [callbackName, setCallbackName] = useState('')
   const [callbackEmail, setCallbackEmail] = useState('')
   const [callbackMessage, setCallbackMessage] = useState('')
@@ -408,6 +408,7 @@ export default function DemoAccessCatalogPage() {
               <Card className="max-w-md mx-auto">
                 <CardHeader>
                   <CardTitle>Get in Touch</CardTitle>
+                  {/* eslint-disable-next-line react/no-unescaped-entities */}
                   <CardDescription>We'd love to hear from you about our web services or to help you order a site from our catalog.</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -488,6 +489,7 @@ export default function DemoAccessCatalogPage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
             >
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
               If you're having trouble accessing your site or have any questions, please contact our support team.
             </motion.p>
             <motion.div
