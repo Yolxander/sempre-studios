@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { TextSectionComponent } from "@/components/landing-page/text-section"
-import {Globe, Cog, PenTool, Users, CreditCard, Headphones, Rocket} from 'lucide-react'
+import {Globe, Cog, PenTool, Users, CreditCard, Rocket} from 'lucide-react'
 
 interface ServiceCardProps {
     title: string;
