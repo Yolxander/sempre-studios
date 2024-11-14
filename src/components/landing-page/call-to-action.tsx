@@ -39,9 +39,9 @@ export default function CallToAction() {
                                 Get started
                             </Button>
                         </Link>
-                        <Button onClick={handleModalToggle} variant="outline" size="lg" className="text-black border-white hover:bg-white hover:text-black rounded-full px-8">
-                            Contact Sales
-                        </Button>
+                        {/*<Button onClick={handleModalToggle} variant="outline" size="lg" className="text-black border-white hover:bg-white hover:text-black rounded-full px-8">*/}
+                        {/*    Contact Sales*/}
+                        {/*</Button>*/}
                     </div>
                 </div>
             </div>

@@ -6,12 +6,10 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import {  ExternalLink, Mail, Search, Globe, Key, Phone } from 'lucide-react'
+import { ExternalLink, Mail, Search, Globe, Key, Phone } from 'lucide-react'
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-
 import { Textarea } from "@/components/ui/textarea"
-
 import { Audiowide } from "next/font/google"
 import Link from 'next/link'
 
@@ -96,14 +94,11 @@ export function DemoAccessCatalog() {
 
     const handleCallbackSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        // Here you would typically send this data to your backend
         console.log("Callback request:", { callbackName, callbackEmail, callbackMessage })
-        // Reset form and show confirmation
         setCallbackName('')
         setCallbackEmail('')
         setCallbackMessage('')
         setShowCallbackForm(false)
-        // You might want to show a success message to the user here
     }
 
     const fadeInUp = {
@@ -122,8 +117,7 @@ export function DemoAccessCatalog() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            {/* Header */}
+        <div className="min-h-screen bg-[#F3F2EF]">
             <motion.header 
                 className="md:px-12 px-4 py-6 bg-[#F3F2EF] min-w-screen"
                 initial={{ opacity: 0, y: -50 }}
@@ -134,7 +128,6 @@ export function DemoAccessCatalog() {
                     <Link href="/" className={`${audiowide.className} text-2xl font-bold`}>
                         Sempre Studios
                     </Link>
-                    {/* Desktop Navigation */}
                     <nav className="hidden md:block bg-white rounded-full shadow-md px-6 py-2">
                         <ul className="flex space-x-6">
                             <li><Link href="#customer-access" className="text-gray-600 hover:text-gray-900">Access Your Site</Link></li>
@@ -142,13 +135,11 @@ export function DemoAccessCatalog() {
                             <li><Link href="#request-callback" className="text-gray-600 hover:text-gray-900">Request a Call</Link></li>
                         </ul>
                     </nav>
-                    {/* Desktop Call-to-Action */}
                     <div className="hidden md:flex items-center space-x-6 mr-6">
                         <Link href="https://calendly.com/hello-semprestudios/30min" passHref>
-                            <Button variant="outline" className="rounded-full">Get Started</Button>
+                            <Button variant="outline" className="rounded-full bg-[#F3F2EF] border-[2px] shadow-md">Get Started</Button>
                         </Link>
                     </div>
-                    {/* Hamburger Menu Button */}
                     <button className="md:hidden relative z-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         <motion.div
                             className="h-1 w-6 bg-black rounded"
@@ -175,7 +166,6 @@ export function DemoAccessCatalog() {
                         />
                     </button>
                 </div>
-                {/* Mobile Menu */}
                 <AnimatePresence>
                     {isMenuOpen && (
                         <motion.nav
@@ -208,7 +198,6 @@ export function DemoAccessCatalog() {
                 </AnimatePresence>
             </motion.header>
 
-            {/* Hero Section */}
             <motion.section 
                 className="bg-gradient-to-r from-primary to-primary-dark text-white py-20"
                 initial="hidden"
@@ -232,17 +221,16 @@ export function DemoAccessCatalog() {
                         className="flex justify-center space-x-4"
                         variants={fadeInUp}
                     >
-                        <Button variant="secondary" size="lg" asChild>
+                        <Button variant="secondary" size="lg" asChild className="bg-black text-white hover:bg-gray-800 rounded-full">
                             <Link href="#customer-access">Access Your Site</Link>
                         </Button>
-                        <Button variant="outline" size="lg" asChild>
+                        <Button variant="outline" size="lg" asChild className="rounded-full bg-[#F3F2EF] border-[2px] shadow-md text-black">
                             <Link href="#demo-catalog">Explore Demos</Link>
                         </Button>
                     </motion.div>
                 </div>
             </motion.section>
 
-            {/* Customer Access Section */}
             <section id="customer-access" className="py-20">
                 <div className="container mx-auto px-4">
                     <motion.h2 
@@ -260,7 +248,7 @@ export function DemoAccessCatalog() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        <Card className="max-w-md mx-auto">
+                        <Card className="max-w-md mx-auto bg-white rounded-3xl shadow-md">
                             <CardHeader>
                                 <CardTitle>Enter Your Details</CardTitle>
                                 <CardDescription>Provide your business name and postal code to view your site</CardDescription>
@@ -292,39 +280,38 @@ export function DemoAccessCatalog() {
                                                 className="pl-10"
                                             />
                                         </div>
-                                    </div>
-                                    <Button type="submit" className="w-full">Access My Site</Button>
-                                </form>
-                            </CardContent>
-                            <CardFooter>
-                                {error && (
-                                    <Alert variant="destructive">
-                                        <AlertTitle>Error</AlertTitle>
-                                        <AlertDescription>{error}</AlertDescription>
-                                    </Alert>
-                                )}
-                                {clientSiteUrl && (
-                                    <Alert>
-                                        <AlertTitle>Site Found</AlertTitle>
-                                        <AlertDescription>
-                                            Your site is ready. Click the button below to view it.
-                                            <Button 
-                                                variant="link" 
-                                                onClick={() => window.open(clientSiteUrl, '_blank', 'noopener,noreferrer')}
-                                            >
-                                                View My Site <ExternalLink className="ml-2 h-4 w-4" />
-                                            </Button>
-                                        </AlertDescription>
-                                    </Alert>
-                                )}
-                            </CardFooter>
-                        </Card>
-                    </motion.div>
-                </div>
-            </section>
+                    </div>
+                    <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 rounded-full">Access My Site</Button>
+                </form>
+            </CardContent>
+            <CardFooter>
+                {error && (
+                    <Alert variant="destructive">
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>{error}</AlertDescription>
+                    </Alert>
+                )}
+                {clientSiteUrl && (
+                    <Alert>
+                        <AlertTitle>Site Found</AlertTitle>
+                        <AlertDescription>
+                            Your site is ready. Click the button below to view it.
+                            <Button 
+                                variant="link" 
+                                onClick={() => window.open(clientSiteUrl, '_blank', 'noopener,noreferrer')}
+                            >
+                                View My Site <ExternalLink className="ml-2 h-4 w-4" />
+                            </Button>
+                        </AlertDescription>
+                    </Alert>
+                )}
+            </CardFooter>
+        </Card>
+    </motion.div>
+</div>
+</section>
 
-            {/* Demo Catalog Section */}
-            <section id="demo-catalog" className="py-20 bg-gray-50">
+            <section id="demo-catalog" className="py-20 bg-[#F3F2EF]">
                 <div className="container mx-auto px-4">
                     <motion.h2 
                         className={`${audiowide.className} text-3xl font-bold mb-8 text-center`}
@@ -332,7 +319,7 @@ export function DemoAccessCatalog() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         viewport={{ once: true }}
-                >
+                    >
                         Explore Our Demo Catalog
                     </motion.h2>
                     <motion.div
@@ -364,7 +351,7 @@ export function DemoAccessCatalog() {
                     >
                         {filteredDemos.map((demo) => (
                             <motion.div key={demo.id} variants={fadeInUp}>
-                                <Card className="flex flex-col h-full">
+                                <Card className="flex flex-col h-full bg-white rounded-3xl shadow-md">
                                     <CardHeader>
                                         <CardTitle>{demo.name}</CardTitle>
                                         <CardDescription>{demo.industry}</CardDescription>
@@ -374,10 +361,10 @@ export function DemoAccessCatalog() {
                                         <p className="text-sm text-gray-600">{demo.description}</p>
                                     </CardContent>
                                     <CardFooter className="flex justify-between">
-                                        <Button variant="outline" onClick={() => setSelectedDemo(demo)}>
+                                        <Button variant="outline" onClick={() => setSelectedDemo(demo)} className="rounded-full bg-[#F3F2EF] border-[2px] shadow-md">
                                             View Details
                                         </Button>
-                                        <Button onClick={() => window.open(demo.demoUrl, '_blank', 'noopener,noreferrer')}>
+                                        <Button onClick={() => window.open(demo.demoUrl, '_blank', 'noopener,noreferrer')} className="bg-black text-white hover:bg-gray-800 rounded-full">
                                             Open Demo <ExternalLink className="ml-2 h-4 w-4" />
                                         </Button>
                                     </CardFooter>
@@ -388,7 +375,6 @@ export function DemoAccessCatalog() {
                 </div>
             </section>
 
-            {/* Request Callback Section */}
             <section id="request-callback" className="py-20">
                 <div className="container mx-auto px-4">
                     <motion.h2 
@@ -406,10 +392,9 @@ export function DemoAccessCatalog() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        <Card className="max-w-md mx-auto">
+                        <Card className="max-w-md mx-auto bg-white rounded-3xl shadow-md">
                             <CardHeader>
                                 <CardTitle>Get in Touch</CardTitle>
-                                {/* eslint-disable-next-line react/no-unescaped-entities */}
                                 <CardDescription>We'd love to hear from you about our web services or to help you order a site from our catalog.</CardDescription>
                             </CardHeader>
                             <CardContent>
@@ -445,7 +430,7 @@ export function DemoAccessCatalog() {
                                             required
                                         />
                                     </div>
-                                    <Button type="submit" className="w-full">
+                                    <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 rounded-full">
                                         Request Callback <Phone className="ml-2 h-4 w-4" />
                                     </Button>
                                 </form>
@@ -456,7 +441,7 @@ export function DemoAccessCatalog() {
             </section>
 
             <Dialog open={!!selectedDemo} onOpenChange={() => setSelectedDemo(null)}>
-                <DialogContent>
+                <DialogContent className="bg-white rounded-3xl">
                     <DialogHeader>
                         <DialogTitle>{selectedDemo?.name}</DialogTitle>
                         <DialogDescription>{selectedDemo?.industry}</DialogDescription>
@@ -464,15 +449,14 @@ export function DemoAccessCatalog() {
                     <div className="mt-4">
                         <img src={selectedDemo?.imageUrl} alt={selectedDemo?.name} className="w-full h-64 object-cover rounded-md mb-4" />
                         <p className="text-gray-600 mb-4">{selectedDemo?.description}</p>
-                        <Button className="w-full" onClick={() => window.open(selectedDemo?.demoUrl, '_blank', 'noopener,noreferrer')}>
+                        <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-full" onClick={() => window.open(selectedDemo?.demoUrl, '_blank', 'noopener,noreferrer')}>
                             Open Full Demo <ExternalLink className="ml-2 h-4 w-4" />
                         </Button>
                     </div>
                 </DialogContent>
             </Dialog>
 
-            {/* Contact Support Section */}
-            <section className="py-20 bg-gray-50">
+            <section className="py-20 bg-[#F3F2EF]">
                 <div className="container mx-auto px-4 text-center">
                     <motion.h2 
                         className={`${audiowide.className} text-3xl font-bold mb-4`}
@@ -490,7 +474,6 @@ export function DemoAccessCatalog() {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        {/* eslint-disable-next-line react/no-unescaped-entities */}
                         If you're having trouble accessing your site or have any questions, please contact our support team.
                     </motion.p>
                     <motion.div
@@ -499,7 +482,7 @@ export function DemoAccessCatalog() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         viewport={{ once: true }}
                     >
-                        <Button size="lg" onClick={() => window.location.href = 'mailto:support@semprestudios.com'}>
+                        <Button size="lg" onClick={() => window.location.href = 'mailto:support@semprestudios.com'} className="bg-black text-white hover:bg-gray-800 rounded-full">
                             Contact Support <Mail className="ml-2 h-5 w-5" />
                         </Button>
                     </motion.div>
