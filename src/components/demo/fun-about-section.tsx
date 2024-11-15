@@ -28,6 +28,7 @@ export default function FunAboutSection() {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-center">About Us</h2>
             <div className="space-y-6 text-lg md:text-xl text-gray-600">
               <p>
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
                 Sempre Studios is a Toronto-based digital agency on a mission to make having a powerful online presence accessible for all businesses. We believe that creating a professional website shouldn't be complicated or out of reach. With a focus on simplicity and results, we design, build, and deliver customized, ready-to-launch websites that help businesses across industries connect with their audience and grow online.
               </p>
               <p>
