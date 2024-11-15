@@ -11,7 +11,7 @@ const poppins = Poppins({
 export default function FunAboutSection() {
 
   return (
-      <section className={`${poppins.className} bg-[#F3F2EF] py-[200px] relative overflow-hidden`}>
+      <section className={`${poppins.className} bg-gray-100 py-[200px] relative overflow-hidden`}>
         <BackgroundAnimation />
         <motion.div
             initial={{ opacity: 0 }}
