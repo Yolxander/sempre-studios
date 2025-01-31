@@ -1,4 +1,4 @@
-import {DashboardWithNavigation} from "@/components/demo/dashboard-with-navigation";
+
 import {Poppins} from "next/font/google";
 
 const poppins = Poppins({
@@ -9,7 +9,6 @@ export default function Cms() {
     return (
         <div className={`${poppins.className} `} >
 
-        <DashboardWithNavigation/>
         </div>
     );
 }
