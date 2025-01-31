@@ -96,7 +96,7 @@ export default function ContactForm({ onClose }: { onClose: () => void }) {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="like">I like my demo site</SelectItem>
-                      <SelectItem value="changes">I'd like to make some changes</SelectItem>
+                      <SelectItem value="changes">I would like to make some changes</SelectItem>
                       <SelectItem value="questions">I have a few questions</SelectItem>
                     </SelectContent>
                   </Select>
@@ -132,7 +132,7 @@ export default function ContactForm({ onClose }: { onClose: () => void }) {
               className="text-center text-white space-y-4"
             >
               <h2 className="text-3xl font-bold">Message sent, thank you</h2>
-              <p className="text-lg">We'll get back to you soon!</p>
+              <p className="text-lg">We will get back to you soon!</p>
               <motion.div
                 className="w-full h-1 bg-white mt-4"
                 initial={{ scaleX: 0 }}
