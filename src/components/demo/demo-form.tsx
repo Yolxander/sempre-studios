@@ -11,7 +11,7 @@ const DEMOS: Demo[] = [
   },
   {
     name: "Fallen Feather",
-    url: "https://kzmingxcun0pbbdpf8eq.lite.vusercontent.net",
+    url: "https://fallenfeather.netlify.app",
   },
   {
     name: "La Pizzeria",
