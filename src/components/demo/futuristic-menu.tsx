@@ -78,7 +78,33 @@ export default function FuturisticMenu({ onFormShow, onFormHide, titleWidth }: F
             </div>
             <div className="relative z-10 flex items-center justify-between">
               <span className="absolute left-0 text-2xl">[</span>
-              <span className="mx-auto">See Restaurant Demo</span>
+              <span className="mx-auto">Find your Restaurant Demo</span>
+              <span className="absolute right-0 text-2xl">]</span>
+            </div>
+          </motion.button>
+
+
+          {/* How It Works Button */}
+          <motion.button
+            className="group relative px-8 py-4 text-white font-bold overflow-hidden w-full"
+            onClick={handleShowHowItWorks}
+            variants={buttonVariants}
+            initial="rest"
+            whileHover="hover"
+            whileTap="tap"
+          >
+            <div className="absolute inset-0 border border-white">
+              {/* Corner cuts */}
+              <div className="absolute -top-px -left-px w-4 h-4 border-l border-t border-white" />
+              <div className="absolute -top-px -right-px w-4 h-4 border-r border-t border-white" />
+              <div className="absolute -bottom-px -left-px w-4 h-4 border-l border-b border-white" />
+              <div className="absolute -bottom-px -right-px w-4 h-4 border-r border-b border-white" />
+              {/* Animated scanner effect */}
+              <div className="absolute top-0 -left-full w-full h-[2px] bg-white/50 group-hover:animate-scanner" />
+            </div>
+            <div className="relative z-10 flex items-center justify-between">
+              <span className="absolute left-0 text-2xl">[</span>
+              <span className="mx-auto">How It Works</span>
               <span className="absolute right-0 text-2xl">]</span>
             </div>
           </motion.button>
@@ -108,30 +134,6 @@ export default function FuturisticMenu({ onFormShow, onFormHide, titleWidth }: F
             </div>
           </motion.button>
 
-          {/* How It Works Button */}
-          <motion.button
-            className="group relative px-8 py-4 text-white font-bold overflow-hidden w-full"
-            onClick={handleShowHowItWorks}
-            variants={buttonVariants}
-            initial="rest"
-            whileHover="hover"
-            whileTap="tap"
-          >
-            <div className="absolute inset-0 border border-white">
-              {/* Corner cuts */}
-              <div className="absolute -top-px -left-px w-4 h-4 border-l border-t border-white" />
-              <div className="absolute -top-px -right-px w-4 h-4 border-r border-t border-white" />
-              <div className="absolute -bottom-px -left-px w-4 h-4 border-l border-b border-white" />
-              <div className="absolute -bottom-px -right-px w-4 h-4 border-r border-b border-white" />
-              {/* Animated scanner effect */}
-              <div className="absolute top-0 -left-full w-full h-[2px] bg-white/50 group-hover:animate-scanner" />
-            </div>
-            <div className="relative z-10 flex items-center justify-between">
-              <span className="absolute left-0 text-2xl">[</span>
-              <span className="mx-auto">How It Works</span>
-              <span className="absolute right-0 text-2xl">]</span>
-            </div>
-          </motion.button>
         </motion.div>
       ) : showContact ? (
         <ContactForm onClose={handleCloseForm} />
