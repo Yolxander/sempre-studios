@@ -78,7 +78,7 @@ export default function FuturisticMenu({ onFormShow, onFormHide, titleWidth }: F
             </div>
             <div className="relative z-10 flex items-center justify-between">
               <span className="absolute left-0 text-2xl">[</span>
-              <span className="mx-auto">See Your Demo</span>
+              <span className="mx-auto">See Restaurant Demo</span>
               <span className="absolute right-0 text-2xl">]</span>
             </div>
           </motion.button>
