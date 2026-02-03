@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 import { Poppins } from "next/font/google"
-import Lottie from "lottie-react"
+import Lottie from "@/components/landing-page/LottiePlayer"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import ContactForm from "@/components/ContactForm"
